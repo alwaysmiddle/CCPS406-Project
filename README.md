@@ -1,2 +1,10 @@
 # CCPS406-Project
-Group 1
+## By: Group 1
+
+## Project Aim
+Welcome to Group 1, test based game project. We are still figuring few things out.
+
+Our language choice is Java, but where is the language settings in the repo?
+
+## Link to requirements
+[Requirements of Project](https://github.com/ikokkari/CCPS406/blob/main/CCPS%20406%20Programming%20Project.pdf)
