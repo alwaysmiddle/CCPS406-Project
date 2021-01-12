@@ -1,4 +1,4 @@
-# CCPS406-Project
+# CCPS406-Intro to Software Engineering-Project
 ## By: Group 1
 
 ## Project Aim
