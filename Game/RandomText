@@ -1,0 +1,4 @@
+This is a test file I have created to read and write text to a JPanel.
+If we are successful then this file should load and display text.
+
+Once this is successful, we need to work on the mapping which will read and determine which file should be loaded.
