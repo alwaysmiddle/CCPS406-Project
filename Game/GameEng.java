@@ -1,10 +1,12 @@
 import java.awt.*;
+import java.io.Console;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.*;
 
 public class GameEng extends JFrame{
+
 
     private JPanel panel = new JPanel(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();
@@ -68,18 +70,20 @@ public class GameEng extends JFrame{
         }
         txtArea.setText(fileContent);
         txtArea.setEditable(false);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.anchor = GridBagConstraints.PAGE_START;
-        panel.add(txtArea, c);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.ipady = 40;
-        c.weightx = 0.0;
-        c.gridwidth = 3;
-        c.gridx = 0;
-        c.gridy = 1;
-        panel.add(txtField, c);
+        //c.fill = GridBagConstraints.HORIZONTAL;
+        //c.gridx = 0;
+        //c.gridy = 0;
+        //c.anchor = GridBagConstraints.PAGE_START;
+        //panel.add(txtArea, c);
+        //c.fill = GridBagConstraints.HORIZONTAL;
+        //c.ipady = 40;
+        //c.weightx = 0.0;
+        //c.gridwidth = 3;
+        //c.gridx = 0;
+        //c.gridy = 1;
+        //panel.add(txtField, c);
+            add(txtArea);
+            add(txtField);
         fileIn.close();
         }catch (FileNotFoundException e){
             System.out.println("Invalid Input.");
