@@ -4,20 +4,21 @@ import java.util.*;
 public class Room {
 
     //max number of rooms in house
-    public static final int MAXROOMS = 8;
+    public static final int ROOMS = 9;
+    public static final int FEATURES = 8;
 
     //array to hold all of the rooms
-    public static Room[] house = new Room[MAXROOMS+1];
+    public static Room[][] house = new Room[ROOMS][FEATURES];
 
     //provides long description of room
-    public String longDescription(){
+    private String longDescription(){
         String longDes = "long";
 
         return longDes;
     }
 
     //provides short description of rooms
-    public String shortDescription(){
+    private String shortDescription(){
         String shortDes = "short";
 
         return shortDes;
@@ -30,7 +31,12 @@ public class Room {
     }
 
     //determine which description to load
-    public static void loadDescription(Boolean visited){
-
+    public String loadDescription(Boolean visited){
+        if (visited = false){
+            return longDescription();
+        }
+        else {
+            return shortDescription();
+        }
     }
 }
