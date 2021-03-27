@@ -50,22 +50,22 @@ public class Room {
     }
 
     //provides short description of rooms
-    private String shortDescription(){
-        return house[room][SHORT];
+    private void shortDescription(){
+        System.out.print(house[room][SHORT]);
     }
 
     //provides long description of room
-    private String longDescription(){
-        return house[room][LONG];
+    private void longDescription(){
+        System.out.print(house[room][LONG]);
     }
 
     //determine which description to load
-    public String loadDescription(Boolean visited){
+    public void loadDescription(Boolean visited){
         if (!visited()){
-            return longDescription();
+            longDescription();
         }
         else {
-            return shortDescription();
+            shortDescription();
         }
     }
 
