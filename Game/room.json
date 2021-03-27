@@ -1,6 +1,10 @@
 {
   "id": "0",
   "name": "hallway",
+  "visited": "no",
   "longDescription": "This is the long description",
-  "shortDescription": "This is the short description"
+  "shortDescription": "This is the short description",
+  "feature_1": "",
+  "feature_2": "",
+  "feature_3": ""
 }
