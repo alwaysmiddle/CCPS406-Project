@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -6,13 +7,22 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class Room {
+
     //max number of rooms in house
     public static final int ROOMS = 6;
-    public static final int FEATURES = 6;
+    public static final int INFO = 6;
+
+    // index of room information
+    int NAME = 0;
+    int VISITED = 1;
+    int SHORT = 2;
+    int LONG = 3;
+    int FEATURES = 4;
+
     int room = 0;
 
     //array to hold all of the rooms and room details
-    public static String[][] house = new String[ROOMS][FEATURES];
+    public static String[][] house = new String[ROOMS][INFO];
 
     //loads starting state room info into array
     private Room(){
@@ -31,8 +41,8 @@ public class Room {
 
     //indicates whether a room has been visited or not
     public boolean visited(){
-        if (house[room][1] == "no") {
-            house[room][1] = "yes";
+        if (house[room][VISITED].equals("no")) {
+            house[room][VISITED] = "yes";
             return false;
         }
         else {
@@ -42,12 +52,12 @@ public class Room {
 
     //provides short description of rooms
     private String shortDescription(){
-        return house[room][2];
+        return house[room][SHORT];
     }
 
     //provides long description of room
     private String longDescription(){
-        return house[room][3];
+        return house[room][LONG];
     }
 
     //determine which description to load
@@ -57,6 +67,13 @@ public class Room {
         }
         else {
             return shortDescription();
+        }
+    }
+
+    //loop through current room features
+    public static void listOfRoomFeatures (Integer room){
+        for (var i=0; i<3; i++){
+            System.out.print(house[room][FEATURES+i]);
         }
     }
 }
