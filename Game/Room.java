@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -13,11 +12,11 @@ public class Room {
     public static final int INFO = 6;
 
     // index of room information
-    int NAME = 0;
-    int VISITED = 1;
-    int SHORT = 2;
-    int LONG = 3;
-    int FEATURES = 4;
+    public static final int  NAME = 0;
+    public static final int  VISITED = 1;
+    public static final int  SHORT = 2;
+    public static final int  LONG = 3;
+    public static final int  FEATURES = 4;
 
     int room = 0;
 
@@ -71,7 +70,7 @@ public class Room {
     }
 
     //loop through current room features
-    public static void listOfRoomFeatures (Integer room){
+    public void listOfRoomFeatures (Integer room){
         for (var i=0; i<3; i++){
             System.out.print(house[room][FEATURES+i]);
         }
