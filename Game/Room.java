@@ -7,6 +7,11 @@ import org.json.simple.parser.ParseException;
 
 public class Room {
 
+    public static void main(String[] arg)
+    {
+        new Room();
+    }
+
     //max number of rooms in house
     public static final int ROOMS = 6;
     public static final int INFO = 6;
@@ -24,18 +29,43 @@ public class Room {
     public static String[][] house = new String[ROOMS][INFO];
 
     //loads starting state room info into array
-    private Room(){
+    public Room(){
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("room.json"))
+        try (FileReader reader = new FileReader("Game/room.json"))
         {
             //read JSON file into JSON array
+
             Object obj = jsonParser.parse(reader);
-            JSONArray roomList = (JSONArray) obj;
+
+            JSONArray roomList = new JSONArray();
+            roomList.add(obj);
+
+            System.out.print(roomList);
+
+            roomList.forEach( emp -> parseRoomObject ((JSONObject) emp ));
 
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void parseRoomObject(JSONObject room)
+    {
+        //Get employee object within list
+        JSONObject roomObject = (JSONObject) room.get("name");
+
+        //Get room name
+        String name = (String) roomObject.get("longDescription");
+        System.out.println(name);
+
+        //Get short description
+        String shortDes = (String) roomObject.get("shortDescription");
+        System.out.println(shortDes);
+
+        //Get long description
+        String longDes = (String) roomObject.get("website");
+        System.out.println(longDes);
     }
 
     //indicates whether a room has been visited or not
@@ -50,12 +80,12 @@ public class Room {
     }
 
     //provides short description of rooms
-    private void shortDescription(){
+    public void shortDescription(){
         System.out.print(house[room][SHORT]);
     }
 
     //provides long description of room
-    private void longDescription(){
+    public void longDescription(){
         System.out.print(house[room][LONG]);
     }
 

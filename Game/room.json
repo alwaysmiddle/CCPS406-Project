@@ -1,62 +1,74 @@
-{ "rooms": [
+[
   {
-    "id": "0",
-    "name": "hallway",
-    "visited": "no",
-    "longDescription": "This is the long description",
-    "shortDescription": "This is the short description",
-    "feature_1": "",
-    "feature_2": "",
-    "feature_3": ""
+    "room": {
+      "id": "0",
+      "name": "hallway",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
   },
   {
-    "id": "1",
-    "name": "closet",
-    "visited": "no",
-    "longDescription": "This is the long description",
-    "shortDescription": "This is the short description",
-    "feature_1": "",
-    "feature_2": "",
-    "feature_3": ""
+    "room": {
+      "id": "0",
+      "name": "hallway",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
   },
   {
-    "id": "2",
-    "name": "dining room",
-    "visited": "no",
-    "longDescription": "This is the long description",
-    "shortDescription": "This is the short description",
-    "feature_1": "",
-    "feature_2": "",
-    "feature_3": ""
+    "room": {
+      "id": "0",
+      "name": "hallway",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
   },
   {
-    "id": "3",
-    "name": "library",
-    "visited": "no",
-    "longDescription": "This is the long description",
-    "shortDescription": "This is the short description",
-    "feature_1": "",
-    "feature_2": "",
-    "feature_3": ""
+    "room": {
+      "id": "0",
+      "name": "hallway",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
   },
   {
-    "id": "4",
-    "name": "kitchen",
-    "visited": "no",
-    "longDescription": "This is the long description",
-    "shortDescription": "This is the short description",
-    "feature_1": "",
-    "feature_2": "",
-    "feature_3": ""
+    "room": {
+      "id": "0",
+      "name": "hallway",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
   },
   {
-    "id": "5",
-    "name": "bedroom",
-    "visited": "no",
-    "longDescription": "This is the long description",
-    "shortDescription": "This is the short description",
-    "feature_1": "",
-    "feature_2": "",
-    "feature_3": ""
+    "room": {
+      "id": "0",
+      "name": "hallway",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
   }
-]}
+]
