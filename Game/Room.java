@@ -38,9 +38,7 @@ public class Room {
 
             Object obj = jsonParser.parse(reader);
 
-            JSONArray roomList = new JSONArray();
-            roomList.add(obj);
-
+            JSONArray roomList = (JSONArray) obj;
             System.out.print(roomList);
 
             roomList.forEach( emp -> parseRoomObject ((JSONObject) emp ));
@@ -53,10 +51,10 @@ public class Room {
     private static void parseRoomObject(JSONObject room)
     {
         //Get employee object within list
-        JSONObject roomObject = (JSONObject) room.get("name");
+        JSONObject roomObject = (JSONObject) room.get("room");
 
         //Get room name
-        String name = (String) roomObject.get("longDescription");
+        String name = (String) roomObject.get("name");
         System.out.println(name);
 
         //Get short description
@@ -64,7 +62,7 @@ public class Room {
         System.out.println(shortDes);
 
         //Get long description
-        String longDes = (String) roomObject.get("website");
+        String longDes = (String) roomObject.get("longDescription");
         System.out.println(longDes);
     }
 
