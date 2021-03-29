@@ -4,12 +4,13 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Console extends WindowAdapter implements WindowListener, Runnable, KeyListener {
-    private JFrame frame;
-    private JTextArea textArea;
-    private Thread reader;
-    private Thread reader2;
+    private final JFrame frame;
+    public static JTextArea textArea;
+    private final Thread reader;
+    private final Thread reader2;
     private boolean quit;
-    private JTextArea txtArea=new JTextArea("clear");
+    private JTextArea txtArea = new JTextArea("Enter text here...");
+    public static String input = "No input yet.";
 
     private final PipedInputStream pin=new PipedInputStream();
     private final PipedInputStream pin2=new PipedInputStream();
@@ -21,9 +22,9 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         // create all components and add them
         frame=new JFrame("Java Console");
         Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension frameSize=new Dimension((int)(screenSize.width - screenSize.width/4),(int)(screenSize.height - screenSize.height/4));
-        int x=(int)(frameSize.width/2);
-        int y=(int)(frameSize.height/2);
+        Dimension frameSize=new Dimension((screenSize.width - screenSize.width/4),(screenSize.height - screenSize.height/4));
+        int x=frameSize.width/2;
+        int y=frameSize.height/2;
         frame.setBounds(x,y,frameSize.width,frameSize.height);
 
         textArea=new JTextArea();
@@ -67,7 +68,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 
         quit=false; // signals the Threads that they should exit
 
-        // Starting two seperate threads to read from the PipedInputStreams
+        // Starting two separate threads to read from the PipedInputStreams
         //
         reader=new Thread(this);
         reader.setDaemon(true);
@@ -83,9 +84,9 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         System.out.println("All fonts available to Graphic2D:\n");
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         String[] fontNames=ge.getAvailableFontFamilyNames();
-        for(int n=0;n<fontNames.length;n++)  System.out.println(fontNames[n]);
+        for (String fontName : fontNames) System.out.println(fontName);
         // Testing part: simple an error thrown anywhere in this JVM will be printed on the Console
-        // We do it with a seperate Thread becasue we don't wan't to break a Thread used by the Console.
+        // We do it with a separate Thread because we can't break a Thread used by the Console.
         System.out.println("\nLets throw an error on this console");
         errorThrower=new Thread(this);
         errorThrower.setDaemon(true);
@@ -105,11 +106,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     {
         frame.setVisible(false); // default behaviour of JFrame
         frame.dispose();
-    }
-
-    public synchronized void actionPerformed(ActionEvent evt)
-    {
-        textArea.setText("");
     }
 
     public synchronized void run()
@@ -159,7 +155,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         {
             int available=in.available();
             if (available==0) break;
-            byte b[]=new byte[available];
+            byte[] b=new byte[available];
             in.read(b);
             input=input+new String(b,0,b.length);
         }while( !input.endsWith("\n") &&  !input.endsWith("\r\n") && !quit);
@@ -178,11 +174,13 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 
     @Override
     public void keyPressed(KeyEvent e) {
-        int id = e.getKeyCode();
+        int id = e.getKeyCode() ;
         if(id==10){
+            input = txtArea.getText();
             txtArea.setText("");
             textArea.setText("");
             textArea.append("Congrats, this somehow works.");
+            Verbs.main();
         }
 
     }
