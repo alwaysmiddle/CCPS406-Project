@@ -39,7 +39,6 @@ public class Room {
             Object obj = jsonParser.parse(reader);
 
             JSONArray roomList = (JSONArray) obj;
-            System.out.print(roomList);
 
             roomList.forEach( emp -> parseRoomObject ((JSONObject) emp ));
 
