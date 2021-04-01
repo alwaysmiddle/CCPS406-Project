@@ -23,7 +23,6 @@ public class Item {
             Object obj = jsonParser.parse(reader);
 
             JSONArray itemList = (JSONArray) obj;
-            System.out.print(itemList);
 
             itemList.forEach( emp -> parseItemObject ((JSONObject) emp ));
 
