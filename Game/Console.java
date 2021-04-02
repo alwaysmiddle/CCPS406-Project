@@ -162,9 +162,16 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         return input;
     }
 
+    public synchronized void updateStates(JTextArea consoleTextArea) throws Exception
+    {
+        //Here we updates all the backend state
+
+    }
+
     public static void main(String[] arg)
     {
         new Console(); // create console with no reference
+
     }
 
     @Override
@@ -181,6 +188,12 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
             textArea.setText("");
             textArea.append("Congrats, this somehow works.");
             Verbs.main();
+
+            try {
+                updateStates(this.txtArea);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
 
     }
