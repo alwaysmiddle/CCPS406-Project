@@ -1,23 +1,23 @@
 //import java.util.ArrayList;
 //
-//public class JsonObjReferences {
+//public class JsonDataObjList {
 //    //public fields
 //    public static List<Room> ListOfRooms = new ArrayList<Room>();
 //    public static List<Item> ListOfItems = new ArrayList<Item>();
 //
 //    //private fields
-//    private static JsonObjReferences singletonInstance = null;
+//    private static JsonDataObjList singletonInstance = null;
 //
 //    //constructor
-//    public JsonObjReferences() {
+//    public JsonDataObjList() {
 //        //load the list of json objects into public fields for rest of the program to work with
 //        //TODO implentation using Gson
 //    }
 //
-//    public static JsonObjReferences getInstance()
+//    public static JsonDataObjList getInstance()
 //    {
 //        if (singletonInstance == null){
-//            singletonInstance = new JsonObjReferences();
+//            singletonInstance = new JsonDataObjList();
 //        }
 //        return singletonInstance;
 //    }
