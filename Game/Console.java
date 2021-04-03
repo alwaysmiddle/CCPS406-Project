@@ -1,3 +1,5 @@
+import org.json.simple.JSONArray;
+
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -175,6 +177,11 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     public static void main(String[] arg)
     {
         new Console(); // create console with no reference
+
+        //test out json item read/write class
+
+        JSONArray jsonArr = (JSONArray)JsonDataFileIO.getInstance().ReadFile(GlobalReference.ROOM_JSON_FILE_LOCATION);
+        jsonArr.forEach( a -> System.out.println(a.toString()));
 
     }
 

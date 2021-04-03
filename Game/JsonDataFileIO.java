@@ -8,7 +8,7 @@ import java.io.IOException;
 
 //singleton object only 1 instance exists per game.
 public class JsonDataFileIO {
-    private static JsonDataFileIO jsonIoInstance = null;
+    private static JsonDataFileIO singletonInstance = null;
     private JSONParser jsonParser = new JSONParser();
 
     public Object ReadFile(String filePath){
@@ -41,9 +41,9 @@ public class JsonDataFileIO {
 
     public static JsonDataFileIO getInstance()
     {
-        if (jsonIoInstance == null){
-            jsonIoInstance = new JsonDataFileIO();
+        if (singletonInstance == null){
+            singletonInstance = new JsonDataFileIO();
         }
-        return jsonIoInstance;
+        return singletonInstance;
     }
 }
