@@ -3,6 +3,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 //singleton object only 1 instance exists per game.
@@ -17,7 +18,6 @@ public class JsonDataFileIO {
         {
             //read JSON file into JSON array
             obj = jsonParser.parse(reader);
-
             return obj;
 
         } catch (ParseException | IOException e) {
@@ -26,9 +26,17 @@ public class JsonDataFileIO {
         }
     }
 
-    public void WriteToJsonFile(Object fileToWrite)
+    public void WriteToJsonFile(Object objectToWrite, String filePath)
     {
         //write file to game folder here
+        try (FileWriter file = new FileWriter(filePath)) {
+            //We can write any JSONArray or JSONObject instance to the file
+            file.write(((JSONObject)objectToWrite).toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static JsonDataFileIO getInstance()
