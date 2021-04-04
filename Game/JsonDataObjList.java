@@ -12,6 +12,7 @@
 //    public JsonDataObjList() {
 //        //load the list of json objects into public fields for rest of the program to work with
 //        //TODO implentation using Gson
+//
 //    }
 //
 //    public static JsonDataObjList getInstance()

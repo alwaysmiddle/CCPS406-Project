@@ -65,7 +65,7 @@ public class Room {
         System.out.println(longDes);
     }
 
-    //indicates whether a room has been visited or not
+    //indicates whether a room has been visited or NOT
     public boolean visited(){
         if (house[room][VISITED].equals("no")) {
             house[room][VISITED] = "yes";

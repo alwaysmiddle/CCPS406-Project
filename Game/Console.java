@@ -180,8 +180,8 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 
         //test out json item read/write class
 
-        JSONArray jsonArr = (JSONArray)JsonDataFileIO.getInstance().ReadFile(GlobalReference.ROOM_JSON_FILE_LOCATION);
-        jsonArr.forEach( a -> System.out.println(a.toString()));
+//        JSONArray jsonArr = (JSONArray)JsonDataFileIO.getInstance().ReadFile(GlobalReference.ROOM_JSON_FILE_LOCATION);
+//        jsonArr.forEach( a -> System.out.println(a.toString()));
 
     }
 
