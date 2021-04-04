@@ -22,7 +22,6 @@ public class Verbs {
         Integer act = 0;
         String direction = "some direction.";
         String someItem = "bread";
-        int count = 0;
         //after splitting the input compare the input with the verbs and get direction
         //need to add items to this one that has been completed
         for (String s : split) {
@@ -39,32 +38,31 @@ public class Verbs {
             case 0 -> {
                 Console.textArea.setText("Cannot resolve \"" + split[0] + "\". Try one of the following: \n");
                 for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
-                    count++;
-                    System.out.println(count + ". " + entry.getKey());
+                    System.out.println("- " + entry.getKey());
                 }
             }
             case 1 -> {
-                if (direction.equals("some direction.")) {
-                    Console.textArea.setText("Where are you headed? Please specify. You can go: \n");
-                    for (String s : compass) {
-                        count++;
-                        System.out.println(count + ". " + s);
-                    }
-                    break;
+                boolean check = false;
+                for (String s : compass) {
+                        if (direction.equals(s)) {
+                            check = true;
+                        }
                 }
+                if (check){
                 Console.textArea.setText("You are headed " + direction + ".");
+                }else {
+                    Console.textArea.setText("Where are you headed? Maybe try going North?");
+                }
             }
             case 2 -> Console.textArea.setText("Congratulations. You have finally obtained " + someItem + ".");
             case 3 -> Console.textArea.setText("Within your inventory are the following items: \n" + someItem);
             case 4 -> Console.textArea.setText("You have used " + someItem + "  to attack.");
             case 5 -> {
-                Console.textArea.setText("You have used the item" + someItem);
+                Console.textArea.setText("You have used the item" + someItem +".");
                 if (someItem.equals("bread")) {
-                    Console.textArea.append("\n Not the greatest meal, but it'll do. Your health has increased 2 points.");
+                    Console.textArea.append(" Not the greatest meal, but it'll do. Your health has increased 2 points.");
                 }
             }
         }
     }
-
-
 }
