@@ -3,42 +3,48 @@
     "item": {
       "itemLocation": "Hallway",
       "itemName": "no",
-      "itemDescription": "This is the long description"
+      "itemDescription": "This is the long description",
+      "isWeapon": false
     }
   },
   {
     "item": {
       "itemLocation": "Closet",
       "itemName": "no",
-      "itemDescription": "This is the long description"
+      "itemDescription": "This is the long description",
+      "isWeapon": false
     }
   },
   {
     "item": {
       "itemLocation": "Dining Room",
       "itemName": "no",
-      "itemDescription": "This is the long description"
+      "itemDescription": "This is the long description",
+      "isWeapon": false
     }
   },
   {
     "item": {
       "itemLocation": "Library",
       "itemName": "no",
-      "itemDescription": "This is the long description"
+      "itemDescription": "This is the long description",
+      "isWeapon": false
     }
   },
   {
     "item": {
       "itemLocation": "Kitchen",
       "itemName": "no",
-      "itemDescription": "This is the long description"
+      "itemDescription": "This is the long description",
+      "isWeapon": false
     }
   },
   {
     "item": {
       "itemLocation": "Bedroom",
       "itemName": "no",
-      "itemDescription": "This is the long description"
+      "itemDescription": "This is the long description",
+      "isWeapon": false
     }
   }
 ]
