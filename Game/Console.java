@@ -1,8 +1,14 @@
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.json.simple.JSONArray;
 
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import javax.swing.*;
 
 public class Console extends WindowAdapter implements WindowListener, Runnable, KeyListener {
@@ -84,9 +90,10 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         // you may omit this part for your application
         //
         System.out.println("All fonts available to Graphic2D:\n");
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        String[] fontNames=ge.getAvailableFontFamilyNames();
-        for (String fontName : fontNames) System.out.println(fontName);
+        System.out.println("KKW");
+//        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+//        String[] fontNames=ge.getAvailableFontFamilyNames();
+//        for (String fontName : fontNames) System.out.println(fontName);
         // Testing part: simple an error thrown anywhere in this JVM will be printed on the Console
         // We do it with a separate Thread because we can't break a Thread used by the Console.
         System.out.println("\nLets throw an error on this console");
@@ -176,12 +183,41 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 
     public static void main(String[] arg)
     {
-        new Console(); // create console with no reference
+        //new Console(); // create console with no reference
 
-        //test out json item read/write class
+        Gson gson = new Gson();
+//        Test t1 = new Test();
+//        Test t2 = new Test();
+//        //test out json item read/write class
+//
+//        t1.level1 = "HAHAHA";
+//        t2.level1 = "KKKKWWWEEE";
+//
+//        List<Test> l = new ArrayList<Test>();
+//        l.add(t1);
+//        l.add(t2);
+//
+//        try (FileWriter writer = new FileWriter(GlobalReference.TEST_LOCATION)) {
+//            gson.toJson(l, writer);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        try (FileReader reader = new FileReader("Data/test.json"))
+//        {
+//            Type listType = new TypeToken<List<Test>>(){}.getType();
+//            List<Test> list = gson.fromJson(reader, listType);
+//            System.out.println(list.size());
+//            for (Test o : list) { System.out.println(o.level1);}
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
 
-        JSONArray jsonArr = (JSONArray)JsonDataFileIO.getInstance().ReadFile(GlobalReference.ROOM_JSON_FILE_LOCATION);
-        jsonArr.forEach( a -> System.out.println(a.toString()));
+//        List<Test> list = JsonDataFileIO.getInstance().ReadFile(new TypeToken<List<Test>>(){}, "Data/test.json");
+//        System.out.println(list.size());
+//
+//        for (Test o : list) { System.out.println(o.level1);}
+
 
     }
 
