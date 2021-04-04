@@ -212,7 +212,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 //            e.printStackTrace();
 //        }
 //
-//        List<Test> list = JsonDataFileIO.getInstance().ReadFile(new TypeToken<ArrayList<Test>>(){}.getType(), "Data/test.json");
+
 //        List<Test> list = JsonDataFileIO.getInstance().ReadFile(new TypeToken<List<Test>>(){}, "Data/test.json");
 //        System.out.println(list.size());
 //

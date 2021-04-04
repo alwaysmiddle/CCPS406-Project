@@ -11,7 +11,7 @@ import java.util.List;
 public class JsonDataFileIO {
     private static JsonDataFileIO singletonInstance = null;
 
-    public static <T> List<T> ReadFile(TypeToken<List<T>> fileType, String filePath){
+    public static <T> List<T> readJsonFile(TypeToken<List<T>> fileType, String filePath){
         Gson gson = new Gson();
 
         try (FileReader reader = new FileReader(filePath))
@@ -23,7 +23,7 @@ public class JsonDataFileIO {
         }
     }
 
-    public static <T> void WriteToJsonFile(List<T> objToWrite, String filePath)
+    public static <T> void writeJsonFile(List<T> objToWrite, String filePath)
     {
         Gson gson = new Gson();
         //write file to game folder here

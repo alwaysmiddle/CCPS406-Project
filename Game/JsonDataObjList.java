@@ -1,21 +1,30 @@
+import com.google.gson.reflect.TypeToken;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class JsonDataObjList {
     //private fields
-    private static List<Room> _listOfRooms = new ArrayList<Room>();
-    private static List<Item> _listOfItems = new ArrayList<Item>();
+    private static Map<String, Room> _mapOfRooms = new HashMap<String, Room>;
+    private static Map<String, Item> _mapOfItems = new HashMap<String, Item>;
     private static JsonDataObjList singletonInstance = null;
 
     //constructor
     public JsonDataObjList() {
         //load the list of json objects into public fields for rest of the program to work with
-        _listOfRooms = JsonDataFileIO.getInstance().ReadFile(GlobalReference.ROOM_JSON_FILE_LOCATION);
+        List<Room> _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}, GlobalReference.ROOM_JSON_FILE_LOCATION);
+        _mapOfRooms = _listOfRooms.stream().collect(Room.)
+
+        List<Item> _listOfItems = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Item>>(){}, GlobalReference.ITEM_JSON_FILE_LOCATION);
+        _mapOfItems
 
     }
 
     public void Save()
     {
+
         //save the list of rooms
         //save the list of items
         //save the player status
