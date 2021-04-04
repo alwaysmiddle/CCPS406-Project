@@ -1,39 +1,34 @@
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 //singleton object only 1 instance exists per game.
 public class JsonDataFileIO {
     private static JsonDataFileIO singletonInstance = null;
-    private JSONParser jsonParser = new JSONParser();
 
-    public Object ReadFile(String filePath){
-        Object obj;
+    public static <T> List<T> readJsonFile(TypeToken<List<T>> fileType, String filePath){
+        Gson gson = new Gson();
 
         try (FileReader reader = new FileReader(filePath))
         {
-            //read JSON file into JSON array
-            obj = jsonParser.parse(reader);
-            return obj;
-
-        } catch (ParseException | IOException e) {
+            return gson.fromJson(reader, fileType.getType());
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public void WriteToJsonFile(Object objectToWrite, String filePath)
+    public static <T> void writeJsonFile(List<T> objToWrite, String filePath)
     {
+        Gson gson = new Gson();
         //write file to game folder here
-        try (FileWriter file = new FileWriter(filePath)) {
-            //We can write any JSONArray or JSONObject instance to the file
-            file.write(((JSONObject)objectToWrite).toJSONString());
-            file.flush();
-
+        try (FileWriter writer = new FileWriter(filePath)) {
+            gson.toJson(objToWrite, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }

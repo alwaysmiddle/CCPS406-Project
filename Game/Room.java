@@ -13,7 +13,7 @@ public class Room {
     }
 
     //max number of rooms in house
-    public static final int ROOMS = 6;
+    public static final int RoomNumber = 6;
     public static final int INFO = 6;
 
     // index of room information
@@ -30,42 +30,11 @@ public class Room {
 
     //loads starting state room info into array
     public Room(){
-        JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("Game/room.json"))
-        {
-            //read JSON file into JSON array
-
-            Object obj = jsonParser.parse(reader);
-
-            JSONArray roomList = (JSONArray) obj;
-
-            roomList.forEach( emp -> parseRoomObject ((JSONObject) emp ));
-
-        } catch (ParseException | IOException e) {
-            e.printStackTrace();
-        }
     }
 
-    private static void parseRoomObject(JSONObject room)
-    {
-        //Get employee object within list
-        JSONObject roomObject = (JSONObject) room.get("room");
 
-        //Get room name
-        String name = (String) roomObject.get("name");
-        System.out.println(name);
-
-        //Get short description
-        String shortDes = (String) roomObject.get("shortDescription");
-        System.out.println(shortDes);
-
-        //Get long description
-        String longDes = (String) roomObject.get("longDescription");
-        System.out.println(longDes);
-    }
-
-    //indicates whether a room has been visited or not
+    //indicates whether a room has been visited or NOT
     public boolean visited(){
         if (house[room][VISITED].equals("no")) {
             house[room][VISITED] = "yes";
