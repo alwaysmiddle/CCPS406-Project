@@ -1,5 +1,3 @@
-import org.json.simple.JSONArray;
-
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -9,7 +7,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     private final JFrame frame;
     public static JTextArea textArea;
     private final Thread reader;
-    //private final Thread reader2;
+    private final Thread reader2;
     private boolean quit;
     private JTextArea txtArea = new JTextArea("Enter text here...");
     public static String input = "No input yet.";
@@ -22,7 +20,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     public Console()
     {
         // create all components and add them
-        frame=new JFrame("Capulet Manor v1.0");
+        frame=new JFrame("Java Console");
         Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize=new Dimension((screenSize.width - screenSize.width/4),(screenSize.height - screenSize.height/4));
         int x=frameSize.width/2;
@@ -76,9 +74,9 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         reader.setDaemon(true);
         reader.start();
         //
-//        reader2=new Thread(this);
-//        reader2.setDaemon(true);
-//        reader2.start();
+        reader2=new Thread(this);
+        reader2.setDaemon(true);
+        reader2.start();
 
         // testing part
         // you may omit this part for your application
@@ -95,15 +93,12 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         errorThrower.start();
     }
 
-
-
-    //region Frame events
     public synchronized void windowClosed(WindowEvent evt)
     {
         quit=true;
         this.notifyAll(); // stop all threads
         try { reader.join(1000);pin.close();   } catch (Exception e){}
-        //try { reader2.join(1000);pin2.close(); } catch (Exception e){}
+        try { reader2.join(1000);pin2.close(); } catch (Exception e){}
         System.exit(0);
     }
 
@@ -112,7 +107,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         frame.setVisible(false); // default behaviour of JFrame
         frame.dispose();
     }
-    //endregion
 
     public synchronized void run()
     {
@@ -123,22 +117,21 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
                 try { this.wait(100);}catch(InterruptedException ie) {}
                 if (pin.available()!=0)
                 {
-                    String input=this.readLine(pin);
-                    textArea.append(input);
+
                 }
                 if (quit) return;
             }
 
-//            while (Thread.currentThread()==reader2)
-//            {
-//                try { this.wait(100);}catch(InterruptedException ie) {}
-//                if (pin2.available()!=0)
-//                {
-//                    String input=this.readLine(pin2);
-//                    textArea.append(input);
-//                }
-//                if (quit) return;
-//            }
+            while (Thread.currentThread()==reader2)
+            {
+                try { this.wait(100);}catch(InterruptedException ie) {}
+                if (pin2.available()!=0)
+                {
+                    String input=this.readLine(pin2);
+                    textArea.append(input);
+                }
+                if (quit) return;
+            }
         } catch (Exception e)
         {
             textArea.append("\nConsole reports an Internal error.");
@@ -168,24 +161,11 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         return input;
     }
 
-    public synchronized void updateStates(JTextArea consoleTextArea) throws Exception
-    {
-        //Here we updates all the backend state
-
-    }
-
     public static void main(String[] arg)
     {
         new Console(); // create console with no reference
-
-        //test out json item read/write class
-
-        JSONArray jsonArr = (JSONArray)JsonDataFileIO.getInstance().ReadFile(GlobalReference.ROOM_JSON_FILE_LOCATION);
-        jsonArr.forEach( a -> System.out.println(a.toString()));
-
     }
 
-    //region keyboard trigger events
     @Override
     public void keyTyped(KeyEvent e) {
         //do absolutely nothing, useless -_-
@@ -196,23 +176,19 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         int id = e.getKeyCode() ;
         if(id==10){
             input = txtArea.getText();
-            txtArea.setText("");
             textArea.setText("");
             textArea.append("Congrats, this somehow works.");
             Verbs.main();
-
-            try {
-                updateStates(this.txtArea);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
         }
 
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+        int id = e.getKeyCode() ;
+        if(id==10) {
+            txtArea.setText("");
+        }
         //do nothing
     }
-    //endregion
 }

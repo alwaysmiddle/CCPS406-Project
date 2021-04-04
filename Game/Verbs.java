@@ -3,8 +3,7 @@ import java.util.*;
 public class Verbs {
     //action verbs and the directions the player can move, item names "borrowed"
     public static final HashMap<String, Integer> verbs = new HashMap<>();
-    private static final String[] LIST = {"north", "south", "east", "west"};
-    public static final List<String> compass = Arrays.asList(LIST);
+    //public static final HashMap<String, Integer>
 
     public static void main(String... args){
         verbs.put("go", 1);
@@ -20,8 +19,10 @@ public class Verbs {
     public static void IdentifyInput(){
         String[] split = Console.input.trim().split(" ");
         Integer act = 0;
-        String direction = "some direction.";
+        String direction = "some direction";
         String someItem = "bread";
+        //Arrays ListofConnectedRooms = JsonDataObjLit.getInstance().getRoom(PlayerStatus.position);
+        //Arrays ListofItems = JsonDataObjLit.getInstance().getItems();
         //after splitting the input compare the input with the verbs and get direction
         //need to add items to this one that has been completed
         for (String s : split) {
@@ -29,30 +30,41 @@ public class Verbs {
             if (verbs.containsKey(s)) {
                 act = verbs.get(s);
             }
-            if (compass.contains(s)) {
-                direction = s;
-            }
+            //for(int i = 0; i < listofConnectedRooms.length, i++){
+            //    if(s.equalsIgnoreCase(listofConnectedRooms[i])){
+            //        PlayerStatus.position = listofConnectedRooms[i];
+            //        direction = listofConnectedRooms[i];
+            //    }
+            //}
+            //for(int k = 0; k < ListofItems.length; k++){
+            //    if(s.equalsIgnoreCase(ListofItems[k]){
+            //        PlayerInventory.add(ListofItems[k]);
+            //        someItem = ListofItems[k];
+            //        if(Item.isWeapon(ListofItems[k])
+            //    }
+            //}
         }
         //will execute different actions depending on the verb
         switch (act) {
             case 0 -> {
                 Console.textArea.setText("Cannot resolve \"" + split[0] + "\". Try one of the following: \n");
                 for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
-                    System.out.println("- " + entry.getKey());
+                    System.out.println("  - " + entry.getKey());
                 }
             }
             case 1 -> {
                 boolean check = false;
-                for (String s : compass) {
-                        if (direction.equals(s)) {
-                            check = true;
-                        }
+                if (direction.equals("some direction")){
+                    if(split.length > 1) {
+                        System.out.println("You cannot go to that room.\n");
+                    }
+                    System.out.println("You can head to the following rooms: \n");
+                    //for(int j = 0; j < listofConnectedRooms.length; j++){
+                    //    System.out.println("  - " + listofConnectedRooms[i] + "\n");
+                    //}
+                    break;
                 }
-                if (check){
                 Console.textArea.setText("You are headed " + direction + ".");
-                }else {
-                    Console.textArea.setText("Where are you headed? Maybe try going North?");
-                }
             }
             case 2 -> Console.textArea.setText("Congratulations. You have finally obtained " + someItem + ".");
             case 3 -> Console.textArea.setText("Within your inventory are the following items: \n" + someItem);
