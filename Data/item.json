@@ -1,32 +1,28 @@
 [
   {
-    "item": {
+    "itemName1": {
       "itemLocation": "Hallway",
-      "itemName": "no",
       "itemDescription": "This is the long description",
       "isWeapon": false
     }
   },
   {
-    "item": {
+    "itemName2": {
       "itemLocation": "Closet",
-      "itemName": "no",
       "itemDescription": "This is the long description",
       "isWeapon": false
     }
   },
   {
-    "item": {
+    "itemName3": {
       "itemLocation": "Dining Room",
-      "itemName": "no",
       "itemDescription": "This is the long description",
       "isWeapon": false
     }
   },
   {
-    "item": {
+    "itemName4": {
       "itemLocation": "Library",
-      "itemName": "no",
       "itemDescription": "This is the long description",
       "isWeapon": false
     }
@@ -34,7 +30,6 @@
   {
     "item": {
       "itemLocation": "Kitchen",
-      "itemName": "no",
       "itemDescription": "This is the long description",
       "isWeapon": false
     }
@@ -42,7 +37,6 @@
   {
     "item": {
       "itemLocation": "Bedroom",
-      "itemName": "no",
       "itemDescription": "This is the long description",
       "isWeapon": false
     }
