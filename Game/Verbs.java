@@ -38,7 +38,7 @@ public class Verbs {
             case 0 -> {
                 Console.textArea.setText("Cannot resolve \"" + split[0] + "\". Try one of the following: \n");
                 for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
-                    System.out.println("-" + entry.getKey());
+                    System.out.println("- " + entry.getKey());
                 }
             }
             case 1 -> {
