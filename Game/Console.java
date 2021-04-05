@@ -89,13 +89,12 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         // testing part
         // you may omit this part for your application
         //
-        System.out.println("All fonts available to Graphic2D:\n");
+        System.out.println("Welcome to Capulet Manor!\n\nShall we being?!");
 //        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 //        String[] fontNames=ge.getAvailableFontFamilyNames();
 //        for (String fontName : fontNames) System.out.println(fontName);
         // Testing part: simple an error thrown anywhere in this JVM will be printed on the Console
         // We do it with a separate Thread because we can't break a Thread used by the Console.
-        System.out.println("\nLets throw an error on this console");
         errorThrower=new Thread(this);
         errorThrower.setDaemon(true);
         errorThrower.start();
@@ -182,7 +181,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 
     public static void main(String[] arg)
     {
-        //new Console(); // create console with no reference
+        new Console(); // create console with no reference
 
 //        Gson gson = new Gson();
 //        String[] connected1 = {"connectedRoom1", "urdad"};
@@ -253,7 +252,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         int id = e.getKeyCode() ;
         if(id==10){
             input = txtArea.getText();
-            txtArea.setText("");
             textArea.setText("");
             textArea.append("Congrats, this somehow works.");
             Verbs.main();
@@ -269,6 +267,10 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 
     @Override
     public void keyReleased(KeyEvent e) {
+        int id = e.getKeyCode() ;
+        if(id==10) {
+            txtArea.setText("");
+        }
         //do nothing
     }
     //endregion
