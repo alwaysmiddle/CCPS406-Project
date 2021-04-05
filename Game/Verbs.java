@@ -21,8 +21,8 @@ public class Verbs {
         Integer act = 0;
         String direction = "some direction";
         String someItem = "bread";
-        //Arrays ListofConnectedRooms = JsonDataObjLit.getInstance().getRoom(PlayerStatus.position);
-        //Arrays ListofItems = JsonDataObjLit.getInstance().getItems();
+        //String[] ListofConnectedRooms = JsonDataFileIO.getSingleRoom(PlayerStatus.position).getConnectedRooms();
+
         //after splitting the input compare the input with the verbs and get direction
         //need to add items to this one that has been completed
         for (String s : split) {
@@ -36,22 +36,15 @@ public class Verbs {
             //        direction = listofConnectedRooms[i];
             //    }
             //}
-            //for(int k = 0; k < ListofItems.length; k++){
-            //    if(s.equalsIgnoreCase(ListofItems[k]){
-            //        PlayerInventory.add(ListofItems[k]);
-            //        someItem = ListofItems[k];
-            //        if(Item.isWeapon(ListofItems[k])
-            //    }
-            //}
         }
         //will execute different actions depending on the verb
-        switch (act) {
-            case 0 -> {
-                Console.textArea.setText("Cannot resolve \"" + split[0] + "\". Try one of the following: \n");
-                for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
-                    System.out.println("  - " + entry.getKey());
+            switch (act) {
+                case 0 -> {
+                    Console.textArea.setText("Cannot resolve \"" + split[0] + "\". Try one of the following: \n");
+                    for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
+                        Console.textArea.append("  - " + entry.getKey());
+                    }
                 }
-            }
             case 1 -> {
                 boolean check = false;
                 if (direction.equals("some direction")){
@@ -66,7 +59,14 @@ public class Verbs {
                 }
                 Console.textArea.setText("You are headed " + direction + ".");
             }
-            case 2 -> Console.textArea.setText("Congratulations. You have finally obtained " + someItem + ".");
+            case 2 -> {
+                //String item = JsonDataFileIO.getSingleItem()
+                //if(item != null){
+                   Console.textArea.setText("Congratulations. You have finally obtained " + someItem + ".");
+                //}else{
+                    //Console.textArea.setText("How dare you try to take this item. This is not yours for the taking.");
+                //}
+            }
             case 3 -> Console.textArea.setText("Within your inventory are the following items: \n" + someItem);
             case 4 -> Console.textArea.setText("You have used " + someItem + "  to attack.");
             case 5 -> {
@@ -74,6 +74,9 @@ public class Verbs {
                 if (someItem.equals("bread")) {
                     Console.textArea.append(" Not the greatest meal, but it'll do. Your health has increased 2 points.");
                 }
+            }
+            case 6 -> {
+                Console.textArea.setText("hi");
             }
         }
     }
