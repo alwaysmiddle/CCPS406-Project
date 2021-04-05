@@ -5,7 +5,7 @@ public class JsonDataObjList {
     //private fields
     private static Map<String, Room> _mapOfRooms = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     private static Map<String, Item> _mapOfItems = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-    private static PlayerStatus _player;
+    private static PlayerStatus _player = new PlayerStatus();
     private List<Room> _listOfRooms;
     private List<Item> _listOfItems;
     private List<PlayerStatus> _players;
@@ -17,19 +17,19 @@ public class JsonDataObjList {
         //load the list of json objects into public fields for rest of the program to work with
 
         //rooms
-        _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}.getType(), GlobalReference.ROOM_JSON_FILE_LOCATION);
+        List<Room> _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}.getType(), GlobalReference.ROOM_JSON_FILE_LOCATION);
         for (Room r: _listOfRooms) {
             _mapOfRooms.put(r.getRoomName().toLowerCase(), r);
         }
 
         //items
-        _listOfItems = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Item>>(){}.getType(), GlobalReference.ITEM_JSON_FILE_LOCATION);
+        List<Item> _listOfItems = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Item>>(){}.getType(), GlobalReference.ITEM_JSON_FILE_LOCATION);
         for (Item t: _listOfItems) {
             _mapOfItems.put(t.getItemName().toLowerCase(), t);
         }
 
         //Player status
-        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+        List<PlayerStatus> _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_FILE_LOCATION);
         _player = _players.get(0);
 
     }
