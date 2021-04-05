@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Verbs {
@@ -44,7 +43,6 @@ public class Verbs {
                     }
                 }
             case 1 -> {
-                boolean check = false;
                 if (direction != null) {
                     Console.textArea.setText("You are headed to the " + direction.getRoomName() + ".\n");
                     Console.textArea.append(direction.loadDescription());
@@ -52,8 +50,8 @@ public class Verbs {
                     System.out.println();
                 } else {
                     Console.textArea.setText("You can head to the following rooms: \n");
-                    for (int j = 0; j < ListofConnectedRooms.size(); j++) {
-                        Console.textArea.append("  - " + ListofConnectedRooms.get(j) + "\n");
+                    for (String listofConnectedRoom : ListofConnectedRooms) {
+                        Console.textArea.append("  - " + listofConnectedRoom + "\n");
                     }
                 }
             }
@@ -68,14 +66,14 @@ public class Verbs {
             }
             case 3 ->{
                     Console.textArea.setText("Within your inventory are the following items: \n" + item);
-                    for(int l = 0; l < inventory.size(); l++){
-                        Console.textArea.append("  - " + inventory.get(l) + ".\n");
+                    for (String s : inventory) {
+                        Console.textArea.append("  - " + s + ".\n");
                     }
             }
             case 4 -> Console.textArea.setText("You have used " + item + "  to attack.");
             case 5 -> {
                 Console.textArea.setText("You have used the item" + item +".");
-                if (item.equals("bread")) {
+                if (item.isEdible()) {
                     Console.textArea.append(" Not the greatest meal, but it'll do. Your health has increased 2 points.");
                 }
             }
