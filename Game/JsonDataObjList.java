@@ -1,58 +1,78 @@
 import com.google.gson.reflect.TypeToken;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JsonDataObjList {
     //private fields
-    private static Map<String, Room> _mapOfRooms = new HashMap<String, Room>;
-    private static Map<String, Item> _mapOfItems = new HashMap<String, Item>;
+    private static Map<String, Room> _mapOfRooms = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    private static Map<String, Item> _mapOfItems = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    private static PlayerStatus _player;
+    private List<Room> _listOfRooms;
+    private List<Item> _listOfItems;
+    private List<PlayerStatus> _players;
+
     private static JsonDataObjList singletonInstance = null;
 
     //constructor
     public JsonDataObjList() {
         //load the list of json objects into public fields for rest of the program to work with
-        List<Room> _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}, GlobalReference.ROOM_JSON_FILE_LOCATION);
-        _mapOfRooms = _listOfRooms.stream().collect(Room.)
 
-        List<Item> _listOfItems = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Item>>(){}, GlobalReference.ITEM_JSON_FILE_LOCATION);
-        _mapOfItems
+        //rooms
+        _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}.getType(), GlobalReference.ROOM_JSON_FILE_LOCATION);
+        for (Room r: _listOfRooms) {
+            _mapOfRooms.put(r.getRoomName().toLowerCase(), r);
+        }
+
+        //items
+        _listOfItems = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Item>>(){}.getType(), GlobalReference.ITEM_JSON_FILE_LOCATION);
+        for (Item t: _listOfItems) {
+            _mapOfItems.put(t.getItemName().toLowerCase(), t);
+        }
+
+        //Player status
+        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+        _player = _players.get(0);
 
     }
 
     public void Save()
     {
-
         //save the list of rooms
+        JsonDataFileIO.writeJsonFile(_listOfRooms, GlobalReference.ROOM_JSON_FILE_LOCATION);
+
         //save the list of items
+        JsonDataFileIO.writeJsonFile(_listOfItems, GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+
         //save the player status
-
+        JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_FILE_LOCATION);
     }
 
+    //map format is: <room_name, room_object>, getSingle will try to match the input with key and return object
+    //returns null if this method fails to find the passed field within dictionary. Case insensitive.
     public Room getSingleRoom(String roomName){
-
-        return null;
+        return _mapOfRooms.get(roomName.trim().toLowerCase());
     }
 
-    public Room getSingleItem(String roomName){
-
-        return null;
+    //map format is: <item_name, item_object>, getSingle will try to match the input with key and return object
+    //returns null if this method fails to find the passed field within dictionary. Case insensitive.
+    public Item getSingleItem(String itemName){
+        return _mapOfItems.get(itemName.trim().toLowerCase());
     }
 
 
-    public List<Room> getRoomsHashmap() {
+    public Map<String, Room> getRoomsHashmap() {
         //return hashmap
-        return _listOfRooms;
-
+        return _mapOfRooms;
     }
 
-    public List<Room> getItemsHashmap()
+    public Map<String, Item> getItemsHashmap()
     {
         //return hashmap
-        return _listOfItems;
+        return _mapOfItems;
+    }
 
+    public PlayerStatus getPlayerStatus()
+    {
+        return _player;
     }
 
 

@@ -1,22 +1,24 @@
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.List;
 
 //singleton object only 1 instance exists per game.
 public class JsonDataFileIO {
     private static JsonDataFileIO singletonInstance = null;
 
-    public static <T> List<T> readJsonFile(TypeToken<List<T>> fileType, String filePath){
+    public static <T> List<T> readJsonFile(Type fileType, String filePath){
         Gson gson = new Gson();
 
         try (FileReader reader = new FileReader(filePath))
         {
-            return gson.fromJson(reader, fileType.getType());
+            return gson.fromJson(reader, fileType);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -25,7 +27,7 @@ public class JsonDataFileIO {
 
     public static <T> void writeJsonFile(List<T> objToWrite, String filePath)
     {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().serializeNulls().create();
         //write file to game folder here
         try (FileWriter writer = new FileWriter(filePath)) {
             gson.toJson(objToWrite, writer);

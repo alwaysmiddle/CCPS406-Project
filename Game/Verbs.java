@@ -3,7 +3,6 @@ import java.util.*;
 public class Verbs {
     //action verbs and the directions the player can move, item names "borrowed"
     public static final HashMap<String, Integer> verbs = new HashMap<>();
-    //public static final HashMap<String, Integer>
 
     public static void main(String... args){
         verbs.put("go", 1);
@@ -19,10 +18,10 @@ public class Verbs {
     public static void IdentifyInput(){
         String[] split = Console.input.trim().split(" ");
         Integer act = 0;
-        String direction = "some direction";
-        String someItem = "bread";
-        //Arrays ListofConnectedRooms = JsonDataObjLit.getInstance().getRoom(PlayerStatus.position);
-        //Arrays ListofItems = JsonDataObjLit.getInstance().getItems();
+        String direction = null;
+        String item = null;
+        //String[] ListofConnectedRooms = JsonDataFileIO.getSingleRoom(PlayerStatus.position).getConnectedRooms();
+
         //after splitting the input compare the input with the verbs and get direction
         //need to add items to this one that has been completed
         for (String s : split) {
@@ -36,44 +35,46 @@ public class Verbs {
             //        direction = listofConnectedRooms[i];
             //    }
             //}
-            //for(int k = 0; k < ListofItems.length; k++){
-            //    if(s.equalsIgnoreCase(ListofItems[k]){
-            //        PlayerInventory.add(ListofItems[k]);
-            //        someItem = ListofItems[k];
-            //        if(Item.isWeapon(ListofItems[k])
-            //    }
-            //}
+            //item = JsonDataFileIO.getSingleItem()
         }
         //will execute different actions depending on the verb
-        switch (act) {
-            case 0 -> {
-                Console.textArea.setText("Cannot resolve \"" + split[0] + "\". Try one of the following: \n");
-                for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
-                    System.out.println("  - " + entry.getKey());
+            switch (act) {
+                case 0 -> {
+                    Console.textArea.setText("Cannot resolve \"" + split[0] + "\". Try one of the following: \n");
+                    for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
+                        Console.textArea.append("  - " + entry.getKey());
+                    }
                 }
-            }
             case 1 -> {
                 boolean check = false;
-                if (direction.equals("some direction")){
-                    if(split.length > 1) {
-                        System.out.println("You cannot go to that room.\n");
-                    }
+                    if(direction != null){
+                        Console.textArea.setText("You are headed to the " + direction + "\n");
+                        //Console.textArea.append(JsonDataFileIO.getRoomDescription);
                     System.out.println("You can head to the following rooms: \n");
-                    //for(int j = 0; j < listofConnectedRooms.length; j++){
-                    //    System.out.println("  - " + listofConnectedRooms[i] + "\n");
-                    //}
-                    break;
-                }
-                Console.textArea.setText("You are headed " + direction + ".");
+                    }else {
+                        Console.textArea.setText("You are headed " + direction + ".");
+                        //for(int j = 0; j < listofConnectedRooms.length; j++){
+                        //    System.out.println("  - " + listofConnectedRooms[i] + "\n");
+                    }
             }
-            case 2 -> Console.textArea.setText("Congratulations. You have finally obtained " + someItem + ".");
-            case 3 -> Console.textArea.setText("Within your inventory are the following items: \n" + someItem);
-            case 4 -> Console.textArea.setText("You have used " + someItem + "  to attack.");
+                case 2 -> {
+                if(item != null){
+                   Console.textArea.setText("Congratulations. You have finally obtained " + item + ".");
+                   //PlayerStatus.accumulate("inventory", );
+                //}else{
+                    //Console.textArea.setText("How dare you try to take this item. This is not yours for the taking.");
+                }
+            }
+            case 3 -> Console.textArea.setText("Within your inventory are the following items: \n" + item);
+            case 4 -> Console.textArea.setText("You have used " + item + "  to attack.");
             case 5 -> {
-                Console.textArea.setText("You have used the item" + someItem +".");
-                if (someItem.equals("bread")) {
+                Console.textArea.setText("You have used the item" + item +".");
+                if (item.equals("bread")) {
                     Console.textArea.append(" Not the greatest meal, but it'll do. Your health has increased 2 points.");
                 }
+            }
+            case 6 -> {
+                Console.textArea.setText("hi");
             }
         }
     }
