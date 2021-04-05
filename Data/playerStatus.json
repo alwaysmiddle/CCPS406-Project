@@ -4,5 +4,6 @@
   "position": "room1",
   "inventory" : ["itemName", "itemName2"],
   "weaponEquipped" : "knife",
-  "weaponValue" : 2
+  "weaponValue" : 2,
+  "isUnderworld": false
 }

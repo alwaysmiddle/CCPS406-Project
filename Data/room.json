@@ -54,11 +54,67 @@
   },
   {
     "Supplies CLoset": {
-      "longDescription": "Recently developed dark closet to house strong checmicals, cleaning supplies and handy tools for use of the groundskeeper. Tread carefully ",
+      "longDescription": "Recently developed dark closet to house strong checmicals, cleaning supplies and handy tools for use of the groundskeeper. Tread carefully.",
       "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
       "visited": false,
       "RoomsConnected": ["Bedroom"],
       "roomInventory": [
+      ]
+    }
+  },
+  {
+    "Powder Room": {
+      "longDescription": "A simple yet elegant room used by guests for to brush up on their makeup. There have been reports of ghost sightings in the reflection of the mirror.",
+      "shortDescription": "A guest washroom with basic toiletries.",
+      "visited": false,
+      "RoomsConnected": ["Bedroom"],
+      "roomInventory": [
+      ]
+    }
+  },
+  {
+    "Kitchen": {
+      "longDescription": "A simple kitchen with heritage cabinets and updated appliances. The kitchen is usually a few degrees hotter than the rest of the house and smells delectable at all hours.",
+      "shortDescription": "A simple looking kitchen with the latest appliances. Managed by the cook.",
+      "visited": false,
+      "RoomsConnected": ["Dining Room"],
+      "roomInventory": [
+        "Bread"
+      ]
+    }
+  },
+  {
+    "Bedroom": {
+      "longDescription": "This Swedish Gustavian style room was built by hand by the previous owner for his daughter, Lady Capulet, and has remained empty since her marriage.",
+      "shortDescription": "Your room. This room once belonged to Lady Capulet.",
+      "visited": false,
+      "RoomsConnected": ["Washroom", "Hallway 3"],
+      "roomInventory": [
+        "Key"
+
+      ]
+    }
+  },
+  {
+    "Hallway 1": {
+      "longDescription": "The main hallway leading from the foyer steps connecting to the Storage Closet, Office, Powder Room, Dining Room and Hallway 2. This long hallway is endorned simply compared to the interior of other rooms.",
+      "shortDescription": "A long hallway connecting the main parts of the mansion.",
+      "visited": false,
+      "RoomsConnected": ["Storage Closet","Powder Room", "Office", "Dining Room", "Hallway 2"],
+      "roomInventory": [
+
+      ]
+    }
+  },
+  {
+    "Office": {
+      "longDescription": "Bookshelves filled with knowledge, trophies and pictures against the wall. An office table in the middle of the room with locked drawers to hide confidentail documents.",
+      "shortDescription": "An office with bookshelves and an office desk with locked drawers.",
+      "visited": false,
+      "RoomsConnected": ["Hallway 1"],
+      "roomInventory": [
+        "Shotgun",
+        "Gemstone"
       ]
     }
   }
