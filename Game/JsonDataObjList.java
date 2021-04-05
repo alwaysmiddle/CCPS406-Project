@@ -25,7 +25,7 @@ public class JsonDataObjList {
         }
 
         //Player status
-        _player = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<PlayerStatus>(){}.getType(), GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+        //_player = JsonDataFileIO.getInstance().readJsonFile(PlayerStatus.class, GlobalReference.PLAYER_STATUS_FILE_LOCATION);
 
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
 public class JsonDataFileIO {
     private static JsonDataFileIO singletonInstance = null;
 
-    public static <T> T readJsonFile(Type fileType, String filePath){
+    public static <T> List<T> readJsonFile(Type fileType, String filePath){
         Gson gson = new Gson();
 
         try (FileReader reader = new FileReader(filePath))
