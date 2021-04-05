@@ -219,7 +219,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         List<Room> list = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}, GlobalReference.ROOM_JSON_FILE_LOCATION);
         System.out.println(list.size());
 
-        for (Room o : list) { System.out.println(Arrays.deepToString( o.getConnectedRooms()));}
+        for (Room o : list) { System.out.println(Arrays.toString(o.getRoomInventory()));}
 
 
     }

@@ -5,9 +5,6 @@ public class Room {
     private String longDescription;
     private boolean visited;
     private String[] roomsConnected;
-
-
-
     private String[] roomInventory;
 
     //public constructor, do not recommend using

@@ -1,10 +1,9 @@
 [
   {
-    "Knife": {
-      "itemDescription": "A dull blade dropped by a missing chef.",
-      "isWeapon": true,
-      "Edible": false
-    }
+    "itemName": "Knife",
+    "itemDescription": "A dull blade dropped by a missing chef.",
+    "isWeapon": true,
+    "Edible": false
   },
   {
     "Key": {
