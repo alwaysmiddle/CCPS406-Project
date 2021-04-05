@@ -60,7 +60,7 @@ public class Verbs {
                 case 2 -> {
                 if(item != null){
                    Console.textArea.setText("Congratulations. You have finally obtained " + item + ".");
-                   //PlayerStatus.accumulate("inventory",);
+                   //PlayerStatus.accumulate("inventory", );
                 //}else{
                     //Console.textArea.setText("How dare you try to take this item. This is not yours for the taking.");
                 }
