@@ -79,7 +79,8 @@
       "visited": false,
       "RoomsConnected": ["Dining Room"],
       "roomInventory": [
-        "Bread"
+        "Bread",
+        "Knife"
       ]
     }
   },
