@@ -1,67 +1,73 @@
-//import com.google.gson.reflect.TypeToken;
-//
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
-//
-//public class JsonDataObjList {
-//    //private fields
-//    private static Map<String, Room> _mapOfRooms = new HashMap<String, Room>;
-//    private static Map<String, Item> _mapOfItems = new HashMap<String, Item>;
-//    private static JsonDataObjList singletonInstance = null;
-//
-//    //constructor
-//    public JsonDataObjList() {
-//        //load the list of json objects into public fields for rest of the program to work with
-//        List<Room> _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}, GlobalReference.ROOM_JSON_FILE_LOCATION);
-//        _mapOfRooms = _listOfRooms.stream().collect(Room.)
-//
-//        List<Item> _listOfItems = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Item>>(){}, GlobalReference.ITEM_JSON_FILE_LOCATION);
-//        _mapOfItems
-//
-//    }
-//
-//    public void Save()
-//    {
-//
-//        //save the list of rooms
-//        //save the list of items
-//        //save the player status
-//
-//    }
-//
-//    public Room getSingleRoom(String roomName){
-//        //map, roomName as key to look up in the map to retrieve a room object
-//        return null;
-//    }
-//
-//    public Room getSingleItem(String roomName){
-//        //this does a lookup in the hashmap, return null if one doesn't exist
-//        return null;
-//    }
-//
-//
-//    public List<Room> getRoomsHashmap() {
-//        //return hashmap
-//        return _listOfRooms;
-//
-//    }
-//
-//    public List<Item> getItemsHashmap()
-//    {
-//        //return hashmap
-//        return _listOfItems;
-//
-//    }
-//
-//    public PlayerStatus getPlayerStatus(){ return null;}
-//
-//
-//    public static JsonDataObjList getInstance()
-//    {
-//        if (singletonInstance == null){
-//            singletonInstance = new JsonDataObjList();
-//        }
-//        return singletonInstance;
-//    }
-//}
+import com.google.gson.reflect.TypeToken;
+import java.util.*;
+
+public class JsonDataObjList {
+    //private fields
+    private static Map<String, Room> _mapOfRooms = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    private static Map<String, Item> _mapOfItems = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    private static PlayerStatus _player;
+    private static JsonDataObjList singletonInstance = null;
+
+    //constructor
+    public JsonDataObjList() {
+        //load the list of json objects into public fields for rest of the program to work with
+
+        //rooms
+        List<Room> _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}.getType(), GlobalReference.ROOM_JSON_FILE_LOCATION);
+        for (Room r: _listOfRooms) {
+            _mapOfRooms.put(r.getRoomName().toLowerCase(), r);
+        }
+
+        //items
+        List<Item> _listOfItems = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Item>>(){}.getType(), GlobalReference.ITEM_JSON_FILE_LOCATION);
+        for (Item t: _listOfItems) {
+            _mapOfItems.put(t.getItemName().toLowerCase(), t);
+        }
+
+        //Player status
+        _player = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<PlayerStatus>(){}.getType(), GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+
+    }
+
+    public void Save()
+    {
+        //save the list of rooms
+        //save the list of items
+        //save the player status
+    }
+
+    //map format is: <room_name, room_object>, getSingle will try to match the input with key and return object
+    //returns null if this method fails to find the passed field within dictionary. Case insensitive.
+    public Room getSingleRoom(String roomName){
+        return _mapOfRooms.get(roomName.trim().toLowerCase());
+    }
+
+    //map format is: <item_name, item_object>, getSingle will try to match the input with key and return object
+    //returns null if this method fails to find the passed field within dictionary. Case insensitive.
+    public Item getSingleItem(String itemName){
+        return _mapOfItems.get(itemName.trim().toLowerCase());
+    }
+
+
+    public Map<String, Room> getRoomsHashmap() {
+        //return hashmap
+        return _mapOfRooms;
+    }
+
+    public Map<String, Item> getItemsHashmap()
+    {
+        //return hashmap
+        return _mapOfItems;
+    }
+
+    public PlayerStatus getPlayerStatus(){ return _player;}
+
+
+    public static JsonDataObjList getInstance()
+    {
+        if (singletonInstance == null){
+            singletonInstance = new JsonDataObjList();
+        }
+        return singletonInstance;
+    }
+}

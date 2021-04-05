@@ -3,55 +3,48 @@
     "itemName": "Knife",
     "itemDescription": "A dull blade dropped by a missing chef.",
     "isWeapon": true,
-    "Edible": false
+    "edible": false
   },
   {
-    "Key": {
-      "itemDescription": "This key belongs to a Lady Capulet. Used to open her secret dia- *ahem* journal.",
-      "isWeapon": false,
-      "Edible": false
-    }
+    "itemName": "Key",
+    "itemDescription": "This key belongs to a Lady Capulet. Used to open her secret dia- *ahem* journal.",
+    "isWeapon": false,
+    "edible": false
   },
   {
-    "Journal": {
-      "itemDescription": "The inscription reads \"This diary belongs to Lady Capulet of the Capulet family. Any trespassing eyes will be beheaded.\"",
-      "isWeapon": false,
-      "Edible": false
-    }
+    "itemName": "Journal",
+    "itemDescription": "The inscription reads \"This diary belongs to Lady Capulet of the Capulet family. Any trespassing eyes will be beheaded.\"",
+    "isWeapon": false,
+    "edible": false
   },
   {
-    "Bread": {
-      "itemDescription": "Stale bread bought by the cook at a cheap price. Don't expect better for dinner.",
-      "isWeapon": false,
-      "Edible": true
-    }
+    "itemName": "Bread",
+    "itemDescription": "Stale bread bought by the cook at a cheap price. Don't expect better for dinner.",
+    "isWeapon": false,
+    "edible": true
   },
   {
-    "Gemstone": {
-      "itemDescription": "A mythical and luminous gem that holds powers to unlock a gate of some sort. ",
-      "isWeapon": false,
-      "Edible": false
-    }
+    "itemName": "Gemstone",
+    "itemDescription": "A mythical and luminous gem that holds powers to unlock a gate of some sort. ",
+    "isWeapon": false,
+    "edible": false
   },
   {
-    "Hammer": {
-      "itemDescription": "A newly bought tool by the groundskeeper. Make sure he doesn't find out you have it.",
-      "isWeapon": true,
-      "Edible": false
-    }
+    "itemName": "Hammer",
+    "itemDescription": "A newly bought tool by the groundskeeper. Make sure he doesn't find out you have it.",
+    "isWeapon": true,
+    "edible": false
   },
   {
-    "Shotgun": {
-      "itemDescription": "A gun with a few bullets. Every shot is fatal. You've been warned.",
-      "isWeapon": true,
-      "Edible": false
-    }
+    "itemName": "Shotgun",
+    "itemDescription": "A gun with a few bullets. Every shot is fatal. You've been warned.",
+    "isWeapon": true,
+    "edible": false
   },
   {
-    "Burrito": {
-      "itemDescription": "A handheld wrap with carne asada, black beans, brown rice and vegetables.",
-      "isWeapon": false,
-      "Edible": true
-    }
+    "itemName": "Burrito",
+    "itemDescription": "A handheld wrap with carne asada, black beans, brown rice and vegetables.",
+    "isWeapon": false,
+    "edible": true
   }
 ]

@@ -7,15 +7,6 @@ public class PlayerStatus {
     private String weaponEquipped;
     private int weaponValue;
 
-    public PlayerStatus(int currentHP, int maxHP, String currentPosition, String[] playerInventory, String weaponEquipped, int weaponValue) {
-        this.currentHP = currentHP;
-        this.maxHP = maxHP;
-        this.currentPosition = currentPosition;
-        this.playerInventory = playerInventory;
-        this.weaponEquipped = weaponEquipped;
-        this.weaponValue = weaponValue;
-    }
-
     //region getters
     public int getCurrentHP() {
         return currentHP;

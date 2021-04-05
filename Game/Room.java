@@ -7,16 +7,6 @@ public class Room {
     private String[] roomsConnected;
     private String[] roomInventory;
 
-    //public constructor, do not recommend using
-    public Room(String roomName, String shortDescription, String longDescription, boolean visited, String[] roomsConnected, String[] roomInventory) {
-        this.roomName = roomName;
-        this.shortDescription = shortDescription;
-        this.longDescription = longDescription;
-        this.visited = visited;
-        this.roomsConnected = roomsConnected;
-        this.roomInventory = roomInventory;
-    }
-
     //region getters
     //indicates whether a room has been visited or NOT
     public boolean isVisited(){ return visited; }
@@ -31,7 +21,7 @@ public class Room {
 
     public String[] getRoomInventory() { return roomInventory; }
 
-    public String[] getConnectedRooms(){ return roomsConnected; }
+    public String[] getRoomsConnected() { return roomsConnected; }
     //endregion
 
     //region setters

@@ -1,115 +1,135 @@
 [
   {
-      "roomName": "Library",
-      "longDescription": "Large shelves of books standing tall like guardians of knowledge. Within this room contains boundless knowledge and tables to sit upon.",
-      "shortDescription": "A room filled with books and places to read.",
-      "visited": false,
-      "roomConnected": [ "Hallway3" ],
-      "roomInventory": [
-        "Journal"
-      ]
-    },
-  {
-      "roomName": "Hallway 3",
-      "longDescription": "The furthest hallway connected to the library and bedroom of Lady Capulet. At night steps can be heard coming from this hallway but many have failed at identifying the source.",
-      "shortDescription": "An eerie hallway connecting to Lady Capulet's bedroom and the library.",
-      "visited": false,
-      "roomConnected": ["Bedroom", "Library", "Hallway 2"],
-      "roomInventory": [
-      ]
-    },
-  {
-      "roomName": "Dining Room",
-      "longDescription": "A sizable room adorned with priceless vases and paintings. This room has stood the test of time and entertained more guests than the years it has stood. This room is connected to the kitchen through a hidden door.",
-      "shortDescription": "A glamorous room containing a dining table and connected to the kitchen.",
-      "visited": false,
-      "roomConnected": ["Kitchen", "Hallway 1"],
-      "roomInventory": [
-        "Burrito"
-      ]
-    },
-  {
-      "roomName": "Hallway 2",
-      "longDescription": "A short hallway connecting the two major hallways together. Though there are no rooms connected this sizeable area is decorated with the portraits of the Lady and Lord of the Manor. Some say their eyes follow them as they walk. Maybe the walls have eyes and ears.",
-      "shortDescription": "An eerie hallway connecting Hallway 1 and Hallway 2",
-      "visited": false,
-      "roomConnected": ["Hallway 1", "Hallway 2"],
-      "roomInventory": [
-        "Hammer"
-      ]
-    },
-  {
-      "roomName": "Washroom",
-      "longDescription": "Practically a historical monument for surviving this long without water damage. Give the person maintaining this room a gold medal. This washroom belonged to Lady Capulet before her marriage and has been unoccupied since.",
-      "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
-      "visited": false,
-      "roomConnected": ["Bedroom"],
-      "roomInventory": [
-      ]
-   },
-  {
-      "roomName": "Supplies Closet",
-      "longDescription": "Recently developed dark closet to house strong checmicals, cleaning supplies and handy tools for use of the groundskeeper. Tread carefully.",
-      "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
-      "visited": false,
-      "roomConnected": ["Bedroom"],
-      "roomInventory": [
-      ]
+    "roomName": "Library",
+    "longDescription": "Large shelves of books standing tall like guardians of knowledge. Within this room contains boundless knowledge and tables to sit upon.",
+    "shortDescription": "A room filled with books and places to read.",
+    "visited": false,
+    "roomsConnected": [
+      "Hallway 3"
+    ],
+    "roomInventory": [
+      "Journal"
+    ]
   },
   {
-      "roomName": "Powder Room",
-      "longDescription": "A simple yet elegant room used by guests for to brush up on their makeup. There have been reports of ghost sightings in the reflection of the mirror.",
-      "shortDescription": "A guest washroom with basic toiletries.",
-      "visited": false,
-      "roomConnected": ["Bedroom"],
-      "roomInventory": [
-      ]
-    },
-
-  {
-      "roomName": "Kitchen",
-      "longDescription": "A simple kitchen with heritage cabinets and updated appliances. The kitchen is usually a few degrees hotter than the rest of the house and smells delectable at all hours.",
-      "shortDescription": "A simple looking kitchen with the latest appliances. Managed by the cook.",
-      "visited": false,
-      "roomConnected": ["Dining Room"],
-      "roomInventory": [
-        "Bread",
-        "Knife"
-      ]
-    },
-
-  {
-      "roomName": "Bedroom",
-      "longDescription": "This Swedish Gustavian style room was built by hand by the previous owner for his daughter, Lady Capulet, and has remained empty since her marriage.",
-      "shortDescription": "Your room. This room once belonged to Lady Capulet.",
-      "visited": false,
-      "roomConnected": ["Washroom", "Hallway 3"],
-      "roomInventory": [
-        "Key"
-
-      ]
+    "roomName": "Hallway 3",
+    "longDescription": "The furthest hallway connected to the library and bedroom of Lady Capulet. At night steps can be heard coming from this hallway but many have failed at identifying the source.",
+    "shortDescription": "An eerie hallway connecting to Lady Capulet's bedroom and the library.",
+    "visited": false,
+    "roomsConnected": [
+      "Bedroom",
+      "Library",
+      "Hallway 2"
+    ],
+    "roomInventory": []
   },
-
   {
-      "roomName": "Hallway 1",
-      "longDescription": "The main hallway leading from the foyer steps connecting to the Storage Closet, Office, Powder Room, Dining Room and Hallway 2. This long hallway is endorned simply compared to the interior of other rooms.",
-      "shortDescription": "A long hallway connecting the main parts of the mansion.",
-      "visited": false,
-      "roomConnected": ["Storage Closet","Powder Room", "Office", "Dining Room", "Hallway 2"],
-      "roomInventory": [
-      ]
+    "roomName": "Dining Room",
+    "longDescription": "A sizable room adorned with priceless vases and paintings. This room has stood the test of time and entertained more guests than the years it has stood. This room is connected to the kitchen through a hidden door.",
+    "shortDescription": "A glamorous room containing a dining table and connected to the kitchen.",
+    "visited": false,
+    "roomsConnected": [
+      "Kitchen",
+      "Hallway 1"
+    ],
+    "roomInventory": [
+      "Burrito"
+    ]
   },
-
-    {
-      "roomName": "Office",
-      "longDescription": "Bookshelves filled with knowledge, trophies and pictures against the wall. An office table in the middle of the room with locked drawers to hide confidentail documents.",
-      "shortDescription": "An office with bookshelves and an office desk with locked drawers.",
-      "visited": false,
-      "roomConnected": ["Hallway 1"],
-      "roomInventory": [
-        "Shotgun",
-        "Gemstone"
-      ]
-    }
-
+  {
+    "roomName": "Hallway 2",
+    "longDescription": "A short hallway connecting the two major hallways together. Though there are no rooms connected this sizeable area is decorated with the portraits of the Lady and Lord of the Manor. Some say their eyes follow them as they walk. Maybe the walls have eyes and ears.",
+    "shortDescription": "An eerie hallway connecting Hallway 1 and Hallway 2",
+    "visited": false,
+    "roomsConnected": [
+      "Hallway 1",
+      "Hallway 2"
+    ],
+    "roomInventory": [
+      "Hammer"
+    ]
+  },
+  {
+    "roomName": "Washroom",
+    "longDescription": "Practically a historical monument for surviving this long without water damage. Give the person maintaining this room a gold medal. This washroom belonged to Lady Capulet before her marriage and has been unoccupied since.",
+    "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
+    "visited": false,
+    "roomsConnected": [
+      "Bedroom"
+    ],
+    "roomInventory": []
+  },
+  {
+    "roomName": "Supplies Closet",
+    "longDescription": "Recently developed dark closet to house strong checmicals, cleaning supplies and handy tools for use of the groundskeeper. Tread carefully.",
+    "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
+    "visited": false,
+    "roomsConnected": [
+      "Bedroom"
+    ],
+    "roomInventory": []
+  },
+  {
+    "roomName": "Powder Room",
+    "longDescription": "A simple yet elegant room used by guests for to brush up on their makeup. There have been reports of ghost sightings in the reflection of the mirror.",
+    "shortDescription": "A guest washroom with basic toiletries.",
+    "visited": false,
+    "roomsConnected": [
+      "Bedroom"
+    ],
+    "roomInventory": []
+  },
+  {
+    "roomName": "Kitchen",
+    "longDescription": "A simple kitchen with heritage cabinets and updated appliances. The kitchen is usually a few degrees hotter than the rest of the house and smells delectable at all hours.",
+    "shortDescription": "A simple looking kitchen with the latest appliances. Managed by the cook.",
+    "visited": false,
+    "roomsConnected": [
+      "Dining Room"
+    ],
+    "roomInventory": [
+      "Bread",
+      "Knife"
+    ]
+  },
+  {
+    "roomName": "Bedroom",
+    "longDescription": "This Swedish Gustavian style room was built by hand by the previous owner for his daughter, Lady Capulet, and has remained empty since her marriage.",
+    "shortDescription": "Your room. This room once belonged to Lady Capulet.",
+    "visited": false,
+    "roomsConnected": [
+      "Washroom",
+      "Hallway 3"
+    ],
+    "roomInventory": [
+      "Key"
+    ]
+  },
+  {
+    "roomName": "Hallway 1",
+    "longDescription": "The main hallway leading from the foyer steps connecting to the Storage Closet, Office, Powder Room, Dining Room and Hallway 2. This long hallway is endorned simply compared to the interior of other rooms.",
+    "shortDescription": "A long hallway connecting the main parts of the mansion.",
+    "visited": false,
+    "roomsConnected": [
+      "Storage Closet",
+      "Powder Room",
+      "Office",
+      "Dining Room",
+      "Hallway 2"
+    ],
+    "roomInventory": []
+  },
+  {
+    "roomName": "Office",
+    "longDescription": "Bookshelves filled with knowledge, trophies and pictures against the wall. An office table in the middle of the room with locked drawers to hide confidentail documents.",
+    "shortDescription": "An office with bookshelves and an office desk with locked drawers.",
+    "visited": false,
+    "roomsConnected": [
+      "Hallway 1"
+    ],
+    "roomInventory": [
+      "Shotgun",
+      "Gemstone"
+    ]
+  }
 ]

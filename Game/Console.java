@@ -5,10 +5,9 @@ import org.json.simple.JSONArray;
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 import java.util.List;
 import javax.swing.*;
 
@@ -216,12 +215,28 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 //        }
 //
 
-        List<Room> list = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}, GlobalReference.ROOM_JSON_FILE_LOCATION);
-        System.out.println(list.size());
+//        List<Room> list = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}, GlobalReference.ROOM_JSON_FILE_LOCATION);
+//        System.out.println(list.size());
+//
+//        for (Room o : list) {
+//            System.out.println(o.getRoomsConnected().length);
+//            System.out.println(Arrays.toString(o.getRoomsConnected()));
+//        }
+//
+//        List<Item> list2 = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Item>>(){}, GlobalReference.ITEM_JSON_FILE_LOCATION);
+//        System.out.println(list2.size());
+//
+//        for (Item k : list2) {
+//            System.out.println(k.isEdible());
+//            System.out.println(k.getItemDescription());
+//        }
 
-        for (Room o : list) { System.out.println(Arrays.toString(o.getRoomInventory()));}
+//        Map<String, Room> map = JsonDataObjList.getInstance().getRoomsHashmap();
+//        for (Map.Entry<String, Room> entry : map.entrySet()) {
+//            System.out.println(entry.getKey() + ":" + Arrays.toString(entry.getValue().getRoomInventory()));
+//        }
 
-
+        System.out.println(JsonDataObjList.getInstance().getSingleRoom("BEdroom").getLongDescription());
     }
 
     //region keyboard trigger events
