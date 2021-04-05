@@ -35,13 +35,13 @@ public class Verbs {
             item = JsonDataObjList.getInstance().getSingleItem(s);
         }
         //will execute different actions depending on the verb
-            switch (act) {
-                case 0 -> {
-                    Console.textArea.setText("Cannot resolve \"" + split[0] + "\". Try one of the following: \n");
-                    for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
-                        Console.textArea.append("  - " + entry.getKey());
-                    }
+        switch (act) {
+            case 0 -> {
+                Console.textArea.setText("Cannot resolve \"" + split[0] + "\". Try one of the following: \n");
+                for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
+                    Console.textArea.append("  - " + entry.getKey());
                 }
+            }
             case 1 -> {
                 if (direction != null) {
                     Console.textArea.setText("You are headed to the " + direction.getRoomName() + ".\n");
@@ -55,20 +55,20 @@ public class Verbs {
                     }
                 }
             }
-                case 2 -> {
+            case 2 -> {
                 if(item != null){
-                   Console.textArea.setText("Congratulations. You have finally obtained " + item.getItemName() + ".");
-                   inventory.add(item.getItemName());
-                   JsonDataObjList.getInstance().getPlayerStatus().setPlayerInventory(inventory.toArray(String[]::new));
+                    Console.textArea.setText("Congratulations. You have finally obtained " + item.getItemName() + ".");
+                    inventory.add(item.getItemName());
+                    JsonDataObjList.getInstance().getPlayerStatus().setPlayerInventory(inventory.toArray(String[]::new));
                 }else{
                     Console.textArea.setText("How dare you try to take this. This is not yours for the taking.");
                 }
             }
             case 3 ->{
-                    Console.textArea.setText("Within your inventory are the following items: \n" + item);
-                    for (String s : inventory) {
-                        Console.textArea.append("  - " + s + ".\n");
-                    }
+                Console.textArea.setText("Within your inventory are the following items: \n" + item);
+                for (String s : inventory) {
+                    Console.textArea.append("  - " + s + ".\n");
+                }
             }
             case 4 -> Console.textArea.setText("You have used " + item + "  to attack.");
             case 5 -> {
