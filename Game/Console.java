@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import javax.swing.*;
@@ -90,7 +91,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         // you may omit this part for your application
         //
         System.out.println("All fonts available to Graphic2D:\n");
-        System.out.println("KKW");
 //        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 //        String[] fontNames=ge.getAvailableFontFamilyNames();
 //        for (String fontName : fontNames) System.out.println(fontName);
@@ -185,20 +185,23 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     {
         //new Console(); // create console with no reference
 
-        Gson gson = new Gson();
-//        Test t1 = new Test();
-//        Test t2 = new Test();
+//        Gson gson = new Gson();
+//        String[] connected1 = {"connectedRoom1", "urdad"};
+//        String[] item1 = {"item1", "item2"};
+//        String[] connected2 = {"connectedRoom2", "urmom"};
+//        String[] item2 = {"item3", "item4"};
+//
+//        Room r1 = new Room("haha", "kekw1", "haha", true, connected1, item1);
+//        Room r2 = new Room("haha1", "kekw2", "haha", true, connected2, item2);
 //        //test out json item read/write class
 //
-//        t1.level1 = "HAHAHA";
-//        t2.level1 = "KKKKWWWEEE";
+//        List<Room> testList = new ArrayList<Room>();
 //
-//        List<Test> l = new ArrayList<Test>();
-//        l.add(t1);
-//        l.add(t2);
+//        testList.add(r1);
+//        testList.add(r2);
 //
 //        try (FileWriter writer = new FileWriter(GlobalReference.TEST_LOCATION)) {
-//            gson.toJson(l, writer);
+//            gson.toJson(testList, writer);
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
@@ -213,10 +216,10 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 //        }
 //
 
-//        List<Test> list = JsonDataFileIO.getInstance().ReadFile(new TypeToken<List<Test>>(){}, "Data/test.json");
-//        System.out.println(list.size());
-//
-//        for (Test o : list) { System.out.println(o.level1);}
+        List<Room> list = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}, GlobalReference.ROOM_JSON_FILE_LOCATION);
+        System.out.println(list.size());
+
+        for (Room o : list) { System.out.println(Arrays.deepToString( o.getConnectedRooms()));}
 
 
     }
