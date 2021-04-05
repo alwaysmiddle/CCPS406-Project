@@ -22,6 +22,8 @@ public class Verbs {
         PlayerStatus player = null;
         Room direction = null;
         Item item = null;
+        //Peter's notes here
+        //String[] ListofConnectedRoomsForHallway1 = JsonDataObjList.getInstance().getSingleRoom("hallway 1").getRoomsConnected();
         List<String> ListofConnectedRooms = Arrays.asList(JsonDataObjList.getInstance().getSingleRoom(JsonDataObjList.getInstance().getPlayerStatus().getCurrentPosition()).getRoomsConnected());
 
         //after splitting the input compare the input with the verbs and get direction
@@ -43,6 +45,8 @@ public class Verbs {
                     }
                 }
             case 1 -> {
+                    //Peter Note:
+                    //Go.playerMoveCommand("NewRoomName");
                 if (direction != null) {
                     Console.textArea.setText("You are headed to the " + direction.getRoomName() + ".\n");
                     Console.textArea.append(direction.loadDescription());
