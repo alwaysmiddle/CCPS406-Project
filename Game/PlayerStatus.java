@@ -6,6 +6,7 @@ public class PlayerStatus {
 
     private String weaponEquipped;
     private int weaponValue;
+    private boolean isUnderworld;
 
     //region getters
     public int getCurrentHP() {
@@ -31,6 +32,8 @@ public class PlayerStatus {
     public int getWeaponValue() {
         return weaponValue;
     }
+
+    public boolean isUnderworld() { return isUnderworld; }
     //endregion
 
     //region setters
@@ -57,5 +60,7 @@ public class PlayerStatus {
     public void setWeaponValue(int weaponValue) {
         this.weaponValue = weaponValue;
     }
+
+    public void setUnderworld(boolean underworld) { isUnderworld = underworld; }
     //endregion
 }

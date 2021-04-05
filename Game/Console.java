@@ -231,12 +231,15 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 //            System.out.println(k.getItemDescription());
 //        }
 
-//        Map<String, Room> map = JsonDataObjList.getInstance().getRoomsHashmap();
-//        for (Map.Entry<String, Room> entry : map.entrySet()) {
-//            System.out.println(entry.getKey() + ":" + Arrays.toString(entry.getValue().getRoomInventory()));
-//        }
+        Map<String, Room> map = JsonDataObjList.getInstance().getRoomsHashmap();
+        for (Map.Entry<String, Room> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + ":" + Arrays.toString(entry.getValue().getRoomInventory()));
+        }
 
+        System.out.println();
         System.out.println(JsonDataObjList.getInstance().getSingleRoom("BEdroom").getLongDescription());
+        System.out.println(JsonDataObjList.getInstance().getPlayerStatus().getCurrentPosition());
+        System.out.println(JsonDataObjList.getInstance().getSingleItem("kNiFe").getItemDescription() );
     }
 
     //region keyboard trigger events

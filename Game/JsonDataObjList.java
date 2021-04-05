@@ -5,7 +5,7 @@ public class JsonDataObjList {
     //private fields
     private static Map<String, Room> _mapOfRooms = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     private static Map<String, Item> _mapOfItems = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-    private static PlayerStatus _player;
+    private static PlayerStatus _player = new PlayerStatus();
     private static JsonDataObjList singletonInstance = null;
 
     //constructor
@@ -25,7 +25,8 @@ public class JsonDataObjList {
         }
 
         //Player status
-        //_player = JsonDataFileIO.getInstance().readJsonFile(PlayerStatus.class, GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+        List<PlayerStatus> _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+        _player = _players.get(0);
 
     }
 
@@ -60,7 +61,10 @@ public class JsonDataObjList {
         return _mapOfItems;
     }
 
-    public PlayerStatus getPlayerStatus(){ return _player;}
+    public PlayerStatus getPlayerStatus()
+    {
+        return _player;
+    }
 
 
     public static JsonDataObjList getInstance()
