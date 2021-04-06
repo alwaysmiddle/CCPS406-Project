@@ -13,6 +13,7 @@ public class Verbs {
         verbs.put("use", 5);
         verbs.put("eat", 5);
         verbs.put("look", 6);
+        verbs.put("where", 7);
         IdentifyInput();
     }
 
@@ -41,7 +42,7 @@ public class Verbs {
                 case 0 -> {
                     Console.textArea.setText("Cannot resolve \"" + split[0] + "\". Try one of the following: \n");
                     for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
-                        Console.textArea.append("  - " + entry.getKey());
+                        Console.textArea.append("  - " + entry.getKey() + "\n");
                     }
                 }
             case 1 -> {
@@ -104,6 +105,9 @@ public class Verbs {
                             System.out.println("  - " +r + ".\n");
                         }
                     }
+            }
+            case 7 -> {
+                    System.out.println("You are at the " + player.getCurrentPosition());
             }
         }
     }
