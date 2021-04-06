@@ -10,30 +10,30 @@ public class PlayerStatus {
 
     //region getters
     public int getCurrentHP() {
-        return currentHP;
+        return this.currentHP;
     }
 
     public int getMaxHP() {
-        return maxHP;
+        return this.maxHP;
     }
 
     public String getCurrentPosition() {
-        return currentPosition;
+        return this.currentPosition;
     }
 
     public String[] getPlayerInventory() {
-        return playerInventory;
+        return this.playerInventory;
     }
 
     public String getWeaponEquipped() {
-        return weaponEquipped;
+        return this.weaponEquipped;
     }
 
     public int getWeaponValue() {
-        return weaponValue;
+        return this.weaponValue;
     }
 
-    public boolean isUnderworld() { return isUnderworld; }
+    public boolean isUnderworld() { return this.isUnderworld; }
     //endregion
 
     //region setters
@@ -61,6 +61,6 @@ public class PlayerStatus {
         this.weaponValue = weaponValue;
     }
 
-    public void setUnderworld(boolean underworld) { isUnderworld = underworld; }
+    public void setUnderworld(boolean underworld) { this.isUnderworld = underworld; }
     //endregion
 }

@@ -19,7 +19,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     public static String input = "No input yet.";
 
     private final PipedInputStream pin=new PipedInputStream();
-    private final PipedInputStream pin2=new PipedInputStream();
+    //private final PipedInputStream pin2=new PipedInputStream();
 
     Thread errorThrower; // just for testing (Throws an Exception at this Console
 
@@ -58,19 +58,19 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
             textArea.append("Couldn't redirect STDOUT to this console\n"+se.getMessage());
         }
 
-        try
-        {
-            PipedOutputStream pout2=new PipedOutputStream(this.pin2);
-            System.setErr(new PrintStream(pout2,true));
-        }
-        catch (java.io.IOException io)
-        {
-            textArea.append("Couldn't redirect STDERR to this console\n"+io.getMessage());
-        }
-        catch (SecurityException se)
-        {
-            textArea.append("Couldn't redirect STDERR to this console\n"+se.getMessage());
-        }
+//        try
+//        {
+//            PipedOutputStream pout2=new PipedOutputStream(this.pin2);
+//            System.setErr(new PrintStream(pout2,true));
+//        }
+//        catch (java.io.IOException io)
+//        {
+//            textArea.append("Couldn't redirect STDERR to this console\n"+io.getMessage());
+//        }
+//        catch (SecurityException se)
+//        {
+//            textArea.append("Couldn't redirect STDERR to this console\n"+se.getMessage());
+//        }
 
         quit=false; // signals the Threads that they should exit
 
@@ -224,16 +224,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 //            System.out.println(k.isEdible());
 //            System.out.println(k.getItemDescription());
 //        }
-
-        Map<String, Room> map = JsonDataObjList.getInstance().getRoomsHashmap();
-        for (Map.Entry<String, Room> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ":" + Arrays.toString(entry.getValue().getRoomInventory()));
-        }
-
-        System.out.println();
-        System.out.println(JsonDataObjList.getInstance().getSingleRoom("BEdroom").getLongDescription());
-        System.out.println(JsonDataObjList.getInstance().getPlayerStatus().getCurrentPosition());
-        System.out.println(JsonDataObjList.getInstance().getSingleItem("kNiFe").getItemDescription() );
     }
 
     //region keyboard trigger events

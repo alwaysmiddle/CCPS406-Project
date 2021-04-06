@@ -24,7 +24,6 @@ public class Verbs {
         Item item = null;
         //Peter's notes here
         //String[] ListofConnectedRoomsForHallway1 = JsonDataObjList.getInstance().getSingleRoom("hallway 1").getRoomsConnected();
-        List<String> ListofConnectedRooms = Arrays.asList(JsonDataObjList.getInstance().getSingleRoom(JsonDataObjList.getInstance().getPlayerStatus().getCurrentPosition()).getRoomsConnected());
 
         //after splitting the input compare the input with the verbs and get direction
         //need to add items to this one that has been completed
@@ -52,9 +51,10 @@ public class Verbs {
                     Go.playerMove(direction.getRoomName());
                 } else {
                     Console.textArea.setText("You can head to the following rooms: \n");
-                    for (String listofConnectedRoom : ListofConnectedRooms) {
-                        Console.textArea.append("  - " + listofConnectedRoom + "\n");
-                    }
+                    Go.printConnected(direction.getRoomName());
+//                    for (String listofConnectedRoom : ListofConnectedRooms) {
+//                        Console.textArea.append("  - " + listofConnectedRoom + "\n");
+//                    }
                 }
             }
                 case 2 -> {

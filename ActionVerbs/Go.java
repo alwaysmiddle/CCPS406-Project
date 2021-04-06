@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Go {
     private static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
     public static void playerMove(String selectedRoomName){
@@ -11,5 +13,8 @@ public class Go {
         player.setCurrentPosition(nextRoom.getRoomName());
         player.setCurrentHP((player.getCurrentHP()-1));
         //move to one of the locations
+    }
+    public static void printConnected(String roomName){
+        System.out.println(Arrays.toString(JsonDataObjList.getInstance().getSingleRoom(roomName).getRoomsConnected()));
     }
 }
