@@ -236,11 +236,10 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     public void keyPressed(KeyEvent e) {
         int id = e.getKeyCode() ;
         if(id==10){
-            input = txtArea.getText();
-            textArea.setText("");
+            input = txtArea.getText().trim();
+            String[] splitinput = input.trim().split(" ");
             //textArea.append("Congrats, this somehow works.");
-            Verbs.main();
-
+            Verbs.IdentifyInput(splitinput[0], String.join(" ",Arrays.copyOfRange(splitinput, 1, splitinput.length)));
             try {
                 updateStates(this.txtArea);
             } catch (Exception exception) {
