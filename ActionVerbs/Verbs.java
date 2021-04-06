@@ -57,8 +57,9 @@ public class Verbs {
 //                    }
                 }
             }
-                case 2 -> {
-                if(item != null){
+            case 2 -> {
+                    //put in take method
+                if(item != null  && !inventory.contains(item.getItemName())){
                    Console.textArea.setText("Congratulations. You have finally obtained " + item.getItemName() + ".");
                    inventory.add(item.getItemName());
                    JsonDataObjList.getInstance().getPlayerStatus().setPlayerInventory(inventory.toArray(String[]::new));
@@ -67,27 +68,31 @@ public class Verbs {
                 }
             }
             case 3 ->{
-                    Console.textArea.setText("Within your inventory are the following items: \n");
-                    for (String s : inventory) {
-                        Console.textArea.append("  - " + s + ".\n");
+                    if(inventory.size() < 1){
+                        System.out.println("You're too poor to display anything. Maybe try grabbing some stale bread?");
+                    }else {
+                        //more to inventory class later *************
+                        Console.textArea.setText("Within your inventory are the following items: \n");
+                        for (String s : inventory) {
+                            Console.textArea.append("  - " + s + ".\n");
+                        }
                     }
             }
             case 4 ->{
+                    //create class if have time *****************
                     if (player.getWeaponEquipped() != null){
                         Console.textArea.setText("Congratulations! You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.\n");
-                        Console.textArea.append("Your item has been used. Look for a new one or be cautious. Your fate is in your hands.");
-                        player.setWeaponEquipped(null);
-                        player.setWeaponValue(0);
                     }
             }
             case 5 -> {
+                    //put in useItem method *********************
                 Console.textArea.setText("You have used the item" + item.getItemName() +".");
                 if (item.isEdible()) {
                     Console.textArea.append(" Not the greatest meal, but it'll do. Your health has increased 2 points.");
                     player.setCurrentHP(player.getCurrentHP()+2);
+                    inventory.remove(item.getItemName());
+                    player.setPlayerInventory(inventory.toArray(String[]::new));
                 }
-                inventory.remove(item.getItemName());
-                player.setPlayerInventory(inventory.toArray(String[]::new));
             }
         }
     }

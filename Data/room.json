@@ -5,21 +5,21 @@
     "shortDescription": "A room filled with books and places to read.",
     "visited": false,
     "roomsConnected": [
-      "Hallway 3"
+      "Hallway3"
     ],
     "roomInventory": [
       "Journal"
     ]
   },
   {
-    "roomName": "Hallway 3",
+    "roomName": "Hallway3",
     "longDescription": "The furthest hallway connected to the library and bedroom of Lady Capulet. At night steps can be heard coming from this hallway but many have failed at identifying the source.",
     "shortDescription": "An eerie hallway connecting to Lady Capulet's bedroom and the library.",
     "visited": false,
     "roomsConnected": [
       "Bedroom",
       "Library",
-      "Hallway 2"
+      "Hallway2"
     ],
     "roomInventory": []
   },
@@ -30,20 +30,20 @@
     "visited": false,
     "roomsConnected": [
       "Kitchen",
-      "Hallway 1"
+      "Hallway1"
     ],
     "roomInventory": [
       "Burrito"
     ]
   },
   {
-    "roomName": "Hallway 2",
+    "roomName": "Hallway2",
     "longDescription": "A short hallway connecting the two major hallways together. Though there are no rooms connected this sizeable area is decorated with the portraits of the Lady and Lord of the Manor. Some say their eyes follow them as they walk. Maybe the walls have eyes and ears.",
-    "shortDescription": "An eerie hallway connecting Hallway 1 and Hallway 2",
+    "shortDescription": "An eerie hallway connecting Hallway1 and Hallway2",
     "visited": false,
     "roomsConnected": [
-      "Hallway 1",
-      "Hallway 2"
+      "Hallway1",
+      "Hallway2"
     ],
     "roomInventory": [
       "Hammer"
@@ -99,15 +99,15 @@
     "visited": false,
     "roomsConnected": [
       "Washroom",
-      "Hallway 3"
+      "Hallway3"
     ],
     "roomInventory": [
       "Key"
     ]
   },
   {
-    "roomName": "Hallway 1",
-    "longDescription": "The main hallway leading from the foyer steps connecting to the Storage Closet, Office, Powder Room, Dining Room and Hallway 2. This long hallway is endorned simply compared to the interior of other rooms.",
+    "roomName": "Hallway1",
+    "longDescription": "The main hallway leading from the foyer steps connecting to the Storage Closet, Office, Powder Room, Dining Room and Hallway2. This long hallway is endorned simply compared to the interior of other rooms.",
     "shortDescription": "A long hallway connecting the main parts of the mansion.",
     "visited": false,
     "roomsConnected": [
@@ -115,7 +115,7 @@
       "Powder Room",
       "Office",
       "Dining Room",
-      "Hallway 2"
+      "Hallway2"
     ],
     "roomInventory": []
   },
@@ -125,7 +125,7 @@
     "shortDescription": "An office with bookshelves and an office desk with locked drawers.",
     "visited": false,
     "roomsConnected": [
-      "Hallway 1"
+      "Hallway1"
     ],
     "roomInventory": [
       "Shotgun",
