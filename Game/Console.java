@@ -5,8 +5,6 @@ import org.json.simple.JSONArray;
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
 import java.util.*;
 import java.util.List;
 import javax.swing.*;
@@ -95,9 +93,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 //        for (String fontName : fontNames) System.out.println(fontName);
         // Testing part: simple an error thrown anywhere in this JVM will be printed on the Console
         // We do it with a separate Thread because we can't break a Thread used by the Console.
-        errorThrower=new Thread(this);
-        errorThrower.setDaemon(true);
-        errorThrower.start();
     }
 
 
