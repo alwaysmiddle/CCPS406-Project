@@ -15,6 +15,9 @@ public class Go {
         //move to one of the locations
     }
     public static void printConnected(String roomName){
-        System.out.println(Arrays.toString(JsonDataObjList.getInstance().getSingleRoom(roomName).getRoomsConnected()));
+        String[] allNames = JsonDataObjList.getInstance().getSingleRoom(roomName).getRoomsConnected();
+        for (String nm : allNames){
+            System.out.println("  - " + nm + "\n");
+        }
     }
 }

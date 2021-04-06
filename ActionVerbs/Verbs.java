@@ -12,6 +12,7 @@ public class Verbs {
         verbs.put("attack", 4);
         verbs.put("use", 5);
         verbs.put("eat", 5);
+        verbs.put("look", 6);
         IdentifyInput();
     }
 
@@ -61,8 +62,9 @@ public class Verbs {
                     //put in take method
                 if(item != null  && !inventory.contains(item.getItemName())){
                    Console.textArea.setText("Congratulations. You have finally obtained " + item.getItemName() + ".");
-                   inventory.add(item.getItemName());
-                   JsonDataObjList.getInstance().getPlayerStatus().setPlayerInventory(inventory.toArray(String[]::new));
+                   //MAKE STRING[] AND ADD INVENTORY
+                   inventory.add(item.getItemName());//wtf
+                   player.setPlayerInventory(inventory.toArray(String[]::new));
                 }else{
                     Console.textArea.setText("How dare you try to take this. This is not yours for the taking.");
                 }
@@ -93,6 +95,15 @@ public class Verbs {
                     inventory.remove(item.getItemName());
                     player.setPlayerInventory(inventory.toArray(String[]::new));
                 }
+            }
+            case 6 -> {
+                    System.out.println("Here are the items that you can take: \n");
+                    String[] roomInventory = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomInventory();
+                    for (String r : roomInventory){
+                        if(!inventory.contains(r)){
+                            System.out.println("  - " +r + ".\n");
+                        }
+                    }
             }
         }
     }
