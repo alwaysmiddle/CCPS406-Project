@@ -51,7 +51,7 @@ public class Verbs {
                     Go.playerMove(direction.getRoomName());
                 } else {
                     Console.textArea.setText("You can head to the following rooms: \n");
-                    Go.printConnected(direction.getRoomName());
+                    Go.printConnected(player.getCurrentPosition());
 //                    for (String listofConnectedRoom : ListofConnectedRooms) {
 //                        Console.textArea.append("  - " + listofConnectedRoom + "\n");
 //                    }

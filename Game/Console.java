@@ -238,7 +238,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         if(id==10){
             input = txtArea.getText();
             textArea.setText("");
-            textArea.append("Congrats, this somehow works.");
+            //textArea.append("Congrats, this somehow works.");
             Verbs.main();
 
             try {
