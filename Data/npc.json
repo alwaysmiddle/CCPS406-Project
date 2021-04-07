@@ -1,20 +1,24 @@
 [
   {
-    "currentHP": 4,
-    "maxHP": 8,
-    "currentPosition": "Library",
-    "playerInventory" : ["Bread"],
-    "weaponEquipped" : "",
+    "npcName": "Gardiner",
+    "currentHP": 10,
+    "maxHP": 10,
+    "currentPosition": "Closet",
+    "npcInventory" : ["Bread"],
+    "weaponEquipped" : "shovel",
     "weaponValue" : null,
-    "isUnderworld": false
+    "isUnderworld": false,
+    "aggressive": false
   },
   {
-    "currentHP": 4,
-    "maxHP": 8,
+    "npcName": "Butler",
+    "currentHP": 10,
+    "maxHP": 10,
     "currentPosition": "Library",
-    "playerInventory" : ["Bread"],
-    "weaponEquipped" : "",
+    "npcInventory" : ["Bread"],
+    "weaponEquipped" : "knife",
     "weaponValue" : null,
-    "isUnderworld": false
+    "isUnderworld": false,
+    "aggressive": false
   }
 ]
