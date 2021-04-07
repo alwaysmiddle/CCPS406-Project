@@ -5,7 +5,7 @@ public class NPC {
     private String longDescription;
     private boolean underworld;
     private boolean previouslyMet;
-    private String[] npcInventory;
+    private String[] npcStatus;
 
 
     //NPC getters
@@ -20,11 +20,13 @@ public class NPC {
     //provides long description of NPC
     public String getLongDescription(){ return longDescription; }
 
+    public String[] getNpcStatus() { return npcStatus; }
+
     //NPC setters
 
     //set NPC status
-    public void setRoomsConnected(String[] npcInventory) {
-        this.npcInventory = npcInventory;
+    public void setNpcStatus(String[] npcStatus) {
+        this.npcStatus = npcStatus;
     }
 
     //set NPC aggression

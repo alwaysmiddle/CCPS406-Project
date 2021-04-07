@@ -1,0 +1,20 @@
+[
+  {
+    "currentHP": 4,
+    "maxHP": 8,
+    "currentPosition": "Library",
+    "playerInventory" : ["Bread"],
+    "weaponEquipped" : "",
+    "weaponValue" : null,
+    "isUnderworld": false
+  },
+  {
+    "currentHP": 4,
+    "maxHP": 8,
+    "currentPosition": "Library",
+    "playerInventory" : ["Bread"],
+    "weaponEquipped" : "",
+    "weaponValue" : null,
+    "isUnderworld": false
+  }
+]
