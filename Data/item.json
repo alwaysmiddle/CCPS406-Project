@@ -2,48 +2,56 @@
   {
     "itemName": "Knife",
     "itemDescription": "A dull blade dropped by a missing chef.",
+    "progressRequirement" : "",
     "isWeapon": true,
     "edible": false
   },
   {
     "itemName": "Key",
     "itemDescription": "This key belongs to a Lady Capulet. Used to open her secret dia- *ahem* journal.",
+    "progressRequirement" : "",
     "isWeapon": false,
     "edible": false
   },
   {
     "itemName": "Journal",
     "itemDescription": "The inscription reads \"This diary belongs to Lady Capulet of the Capulet family. Any trespassing eyes will be beheaded.\"",
+    "progressRequirement" : "Key",
     "isWeapon": false,
     "edible": false
   },
   {
     "itemName": "Bread",
     "itemDescription": "Stale bread bought by the cook at a cheap price. Don't expect better for dinner.",
+    "progressRequirement" : "",
     "isWeapon": false,
     "edible": true
   },
   {
     "itemName": "Gemstone",
     "itemDescription": "A mythical and luminous gem that holds powers to unlock a gate of some sort. ",
+    "progressRequirement" : "Gemstone",
     "isWeapon": false,
     "edible": false
   },
   {
     "itemName": "Hammer",
     "itemDescription": "A newly bought tool by the groundskeeper. Make sure he doesn't find out you have it.",
+    "progressRequirement" : "",
     "isWeapon": true,
     "edible": false
   },
   {
     "itemName": "Shotgun",
     "itemDescription": "A gun with a few bullets. Every shot is fatal. You've been warned.",
+    "progressRequirement" : "",
     "isWeapon": true,
     "edible": false
   },
   {
     "itemName": "Burrito",
     "itemDescription": "A handheld wrap with carne asada, black beans, brown rice and vegetables.",
+    "progressRequirement" : "",
     "isWeapon": false,
     "edible": true
   }

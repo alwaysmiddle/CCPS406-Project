@@ -3,7 +3,7 @@ public class PlayerStatus {
     private int maxHP;
     private String currentPosition;
     private String[] playerInventory;
-
+    private String currentStage;
     private String weaponEquipped;
     private int weaponValue;
     private boolean isUnderworld;
@@ -24,6 +24,8 @@ public class PlayerStatus {
     public String[] getPlayerInventory() {
         return this.playerInventory;
     }
+
+    public String getCurrentStage() {return this.currentStage;}
 
     public String getWeaponEquipped() {
         return this.weaponEquipped;
@@ -52,6 +54,8 @@ public class PlayerStatus {
     public void setPlayerInventory(String[] playerInventory) {
         this.playerInventory = playerInventory;
     }
+
+    public void setCurrentStage(String currentStage) {this.currentStage = currentStage;}
 
     public void setWeaponEquipped(String weaponEquipped) {
         this.weaponEquipped = weaponEquipped;

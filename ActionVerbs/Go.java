@@ -7,9 +7,9 @@ public class Go {
         String currentRoomName = JsonDataObjList.getInstance ().getPlayerStatus().getCurrentPosition();
         Room nextRoom = JsonDataObjList.getInstance().getSingleRoom(selectedRoomName);
 
-        Console.textArea.setText("You are currently at " + currentRoomName + ".\n");
-        Console.textArea.append("You have moved to the " + nextRoom.getRoomName() + ".\n\n");
-        Console.textArea.append(nextRoom.loadDescription());
+        System.out.println("You are currently at " + currentRoomName + ".\n");
+        System.out.println("You have moved to the " + nextRoom.getRoomName() + ".\n\n");
+        System.out.println(nextRoom.loadDescription());
         player.setCurrentPosition(nextRoom.getRoomName());
         player.setCurrentHP((player.getCurrentHP()-1));
         //move to one of the locations
