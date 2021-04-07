@@ -177,6 +177,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     public static void main(String[] arg)
     {
         new Console(); // create console with no reference
+        Verbs.init();
 
 //        Gson gson = new Gson();
 //        String[] connected1 = {"connectedRoom1", "urdad"};
@@ -234,13 +235,13 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 
     @Override
     public void keyPressed(KeyEvent e) {
-        int id = e.getKeyCode() ;
+        int id = e.getKeyCode();
         if(id==10){
-            input = txtArea.getText();
-            textArea.setText("");
+            input = txtArea.getText().trim();
+            String[] splitinput = input.trim().split(" ");
+            Console.textArea.setText("");
             //textArea.append("Congrats, this somehow works.");
-            Verbs.main();
-
+            Verbs.IdentifyInput(splitinput[0], String.join(" ",Arrays.copyOfRange(splitinput, 1, splitinput.length)));
             try {
                 updateStates(this.txtArea);
             } catch (Exception exception) {

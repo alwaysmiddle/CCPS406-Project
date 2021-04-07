@@ -60,12 +60,12 @@
     "roomInventory": []
   },
   {
-    "roomName": "Supplies Closet",
+    "roomName": "Storage",
     "longDescription": "Recently developed dark closet to house strong checmicals, cleaning supplies and handy tools for use of the groundskeeper. Tread carefully.",
     "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
     "visited": false,
     "roomsConnected": [
-      "Bedroom"
+      "Hallway1"
     ],
     "roomInventory": []
   },
@@ -111,7 +111,7 @@
     "shortDescription": "A long hallway connecting the main parts of the mansion.",
     "visited": false,
     "roomsConnected": [
-      "Storage Closet",
+      "Storage",
       "Powder Room",
       "Office",
       "Dining Room",
