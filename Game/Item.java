@@ -1,67 +1,44 @@
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import java.io.FileReader;
-import java.io.IOException;
-
 public class Item {
+    private String itemName;
+    private String itemDescription;
+    private boolean isWeapon;
+    private boolean edible;
 
-    public static void main(String[] arg)
-    {
-        new Item();
+    //region getters
+    public String getItemName() {
+        return itemName;
     }
 
-    public Item(){
-        JSONParser jsonParser = new JSONParser();
-
-        try (FileReader reader = new FileReader("Game/item.json"))
-        {
-            //read JSON file into JSON array
-
-            Object obj = jsonParser.parse(reader);
-
-            JSONArray itemList = (JSONArray) obj;
-
-            itemList.forEach( emp -> parseItemObject ((JSONObject) emp ));
-
-        } catch (ParseException | IOException e) {
-            e.printStackTrace();
-        }
+    public String getItemDescription() {
+        return itemDescription;
     }
 
-    private static void parseItemObject(JSONObject item)
-    {
-        //Get employee object within list
-        JSONObject itemObject = (JSONObject) item.get("item");
-
-        //Get item name
-        String name = (String) itemObject.get("itemName");
-        System.out.println(name);
-
-        //Get item description
-        String itemDes = (String) itemObject.get("itemDescription");
-        System.out.println(itemDes);
-
-        //Get item location
-        String itemLoc = (String) itemObject.get("itemLocation");
-        System.out.println(itemLoc);
+    public boolean isWeapon() {
+        return isWeapon;
     }
 
-    //provides item Name
-    public void itemName(){
-        System.out.print("itemName");
+    public boolean isEdible() {
+        return edible;
     }
 
-    //provides item location
-    public void itemLocation(){
-        System.out.print("itemLocation");
+    //endregion
+
+    //region setters
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
-    //provides item description
-    public void itemDescription(){
-        System.out.print("itemDescription");
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
     }
 
+    public void setWeapon(boolean weapon) {
+        isWeapon = weapon;
+    }
+
+    public void setEdible(boolean edible) {
+        this.edible = edible;
+    }
+
+    //endregion
 }
