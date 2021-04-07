@@ -4,11 +4,13 @@ public class NPC {
     private String shortDescription;
     private String longDescription;
     private boolean underworld;
+    private boolean previouslyMet;
+    private String[] npcInventory;
 
 
-    //region getters
+    //NPC getters
     //indicates whether a room has been visited or NOT
-    public boolean isVisited(){ return visited; }
+    public boolean npcMeeting(){ return previouslyMet; }
 
     public String getNpcName(){ return npcName;}
 
@@ -18,15 +20,21 @@ public class NPC {
     //provides long description of NPC
     public String getLongDescription(){ return longDescription; }
 
+    //NPC setters
 
-    //aggression setter
+    //set NPC status
+    public void setRoomsConnected(String[] npcInventory) {
+        this.npcInventory = npcInventory;
+    }
+
+    //set NPC aggression
     public void setAggression(boolean underworld) {
         this.underworld = underworld;
     }
 
-    //determine which description to load
+    //determine which NPC description to load
     public String loadDescription() {
-        if (!visited) {
+        if (!previouslyMet) {
             return longDescription;
         } else {
             return shortDescription;
