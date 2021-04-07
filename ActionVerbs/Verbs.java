@@ -3,9 +3,9 @@ import java.util.*;
 public class Verbs {
     //action verbs and the nextPositions the player can move, item names "borrowed"
     public static final HashMap<String, Integer> verbs = new HashMap<>();
-    public static List<String> inventory = Arrays.asList(JsonDataObjList.getInstance().getPlayerStatus().getPlayerInventory());
+    public static List<String> inventory = new ArrayList<>(Arrays.asList(JsonDataObjList.getInstance().getPlayerStatus().getPlayerInventory()));
 
-    public static void main(String... args){
+    public static void init(String... args){
         verbs.put("go", 1);
         verbs.put("take", 2);
         verbs.put("inventory", 3);
@@ -33,9 +33,9 @@ public class Verbs {
         //will execute different actions depending on the verb
             switch (act) {
                 case 0 -> {
-                    System.out.println("Cannot resolve \"" + actionVerb + "\". Try one of the following: \n");
+                    System.out.println("Cannot resolve \"" + actionVerb + "\". Try one of the following: ");
                     for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
-                        Console.textArea.append("  - " + entry.getKey() + "\n");
+                        System.out.println("  - " + entry.getKey());
                     }
                 }
             //going somewhere
@@ -46,10 +46,12 @@ public class Verbs {
                         System.out.println("Your HP is very low. Consider repleneshing health with some food.");
                     }
                     Go.playerMove(nextPosition.getRoomName());
-                } else {
-                    System.out.println("Sorry didn't quite get where \"" + trailingAction + "\" is . You can try heading to the following rooms: \n");
-                    Go.printConnected(player.getCurrentPosition());
+                    break;
+                } else if(!trailingAction.equals("")){
+                    System.out.println("Sorry didn't quite get where \"" + trailingAction + "\" is.");
                 }
+                    System.out.println(" You can try heading to the following rooms: ");
+                    Go.printConnected(player.getCurrentPosition());
             }
             //take the item and put in inventory
             case 2 -> {
@@ -57,7 +59,7 @@ public class Verbs {
                 if(item != null  && !inventory.contains(item.getItemName())){
                     System.out.println("Congratulations. You have finally obtained " + item.getItemName() + ".");
                    //MAKE STRING[] AND ADD INVENTORY
-                   inventory.add(item.getItemName());//wtf
+                   inventory.add(item.getItemName());
                    player.setPlayerInventory(inventory.toArray(String[]::new));
                 }else{
                     System.out.println("How dare you try to take this. This is not yours for the taking.");

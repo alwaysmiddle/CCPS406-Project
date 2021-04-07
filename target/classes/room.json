@@ -65,7 +65,7 @@
     "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
     "visited": false,
     "roomsConnected": [
-      "Bedroom"
+      "Hallway1"
     ],
     "roomInventory": []
   },
@@ -111,7 +111,7 @@
     "shortDescription": "A long hallway connecting the main parts of the mansion.",
     "visited": false,
     "roomsConnected": [
-      "Storage Closet",
+      "Storage",
       "Powder Room",
       "Office",
       "Dining Room",
