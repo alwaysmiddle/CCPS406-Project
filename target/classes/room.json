@@ -1,0 +1,74 @@
+[
+  {
+    "room": {
+      "id": "0",
+      "name": "Hallway",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
+  },
+  {
+    "room": {
+      "id": "1",
+      "name": "Closet",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
+  },
+  {
+    "room": {
+      "id": "2",
+      "name": "Dining Room",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
+  },
+  {
+    "room": {
+      "id": "3",
+      "name": "Library",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
+  },
+  {
+    "room": {
+      "id": "4",
+      "name": "Kitchen",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
+  },
+  {
+    "room": {
+      "id": "5",
+      "name": "Bedroom",
+      "visited": "no",
+      "longDescription": "This is the long description",
+      "shortDescription": "This is the short description",
+      "feature_1": "",
+      "feature_2": "",
+      "feature_3": ""
+    }
+  }
+]
