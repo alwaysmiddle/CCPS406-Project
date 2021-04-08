@@ -12,11 +12,11 @@ public class Progress {
 
     //we update the npc status to aggressive when we enter underworld
 
-    public GameProgressionData getNextProgress(){
+    public static GameProgressionData getNextProgress(){
         return getProgressStage(JsonDataObjList.getInstance().getPlayerStatus().getCurrentStage() + 1);
     }
 
-    public GameProgressionData getProgressStage(int progressToLoad){
+    public static GameProgressionData getProgressStage(int progressToLoad){
         List<GameProgressionData> progress = JsonDataObjList.getInstance().getListOfProgressionData();
         return progress.get(progressToLoad - 1);
     }
