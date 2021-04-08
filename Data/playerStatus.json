@@ -1,12 +1,15 @@
 [
   {
-  "currentHP": 4,
-  "maxHP": 8,
-  "currentPosition": "Library",
-  "playerInventory" : ["Bread"],
-  "currentStage" : "Stage 1",
-  "weaponEquipped" : "",
-  "weaponValue" : null,
-  "isUnderworld": false
+    "currentHP": 4,
+    "maxHP": 8,
+    "currentPosition": "Library",
+    "playerInventory" : ["Bread"],
+    "currentStage" : 1,
+    "weaponEquipped" : "",
+    "weaponValue" : null,
+    "isUnderworld": false,
+    "roomsVisited" : [
+      "Library"
+    ]
   }
 ]

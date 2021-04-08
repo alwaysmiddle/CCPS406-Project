@@ -1,46 +1,72 @@
 public class NPC {
     //private fields
     private String npcName;
-    private String shortDescription;
-    private String longDescription;
-    private boolean underworld;
-    private boolean previouslyMet;
-    private String[] npcStatus;
+    private int currentHP;
+    private int maxHP;
+    private String currentPosition;
+    private String[] npcInventory;
+    private int weaponValue;
+    private boolean isAggressive;
 
-
-    //NPC getters
-    //indicates whether a room has been visited or NOT
-    public boolean npcMeeting(){ return previouslyMet; }
-
-    public String getNpcName(){ return npcName;}
-
-    //provides short description of NPC
-    public String getShortDescription(){ return shortDescription;}
-
-    //provides long description of NPC
-    public String getLongDescription(){ return longDescription; }
-
-    public String[] getNpcStatus() { return npcStatus; }
-
-    //NPC setters
-
-    //set NPC status
-    public void setNpcStatus(String[] npcStatus) {
-        this.npcStatus = npcStatus;
+    //region getters
+    public String getNpcName() {
+        return npcName;
     }
 
-    //set NPC aggression
-    public void setAggression(boolean underworld) {
-        this.underworld = underworld;
+    public int getCurrentHP() {
+        return currentHP;
     }
 
-    //determine which NPC description to load
-    public String loadDescription() {
-        if (!previouslyMet) {
-            return longDescription;
-        } else {
-            return shortDescription;
-        }
+    public int getMaxHP() {
+        return maxHP;
     }
 
+    public String getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public String[] getNpcInventory() {
+        return npcInventory;
+    }
+
+    public int getWeaponValue() {
+        return weaponValue;
+    }
+
+    public boolean isAggressive() {
+        return isAggressive;
+    }
+    //endregion
+
+    //region setters
+
+    public void setNpcName(String npcName) {
+        this.npcName = npcName;
+    }
+
+    public void setCurrentHP(int currentHP) {
+        this.currentHP = currentHP;
+    }
+
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
+    }
+
+    public void setCurrentPosition(String currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
+    public void setNpcInventory(String[] npcInventory) {
+        this.npcInventory = npcInventory;
+    }
+
+    public void setWeaponValue(int weaponValue) {
+        this.weaponValue = weaponValue;
+    }
+
+    public void setAggressive(boolean aggressive) {
+        isAggressive = aggressive;
+    }
+
+    //endregion
 }

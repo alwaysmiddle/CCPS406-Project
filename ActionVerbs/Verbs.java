@@ -113,7 +113,9 @@ public class Verbs {
                         System.out.println("[You are in the Underworld. Be careful since all NPCs are aggressive.]");
                     }
             }
+            //start actionVerb
             case 8 -> {
+                    //TODO: call first stage world annoucement
                     //System.out.println(); add in the JsonDataObjList.getInstance().getStage("Stage 1");
             }
         }

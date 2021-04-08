@@ -3,10 +3,11 @@ public class PlayerStatus {
     private int maxHP;
     private String currentPosition;
     private String[] playerInventory;
-    private String currentStage;
+    private int currentStage;
     private String weaponEquipped;
     private int weaponValue;
     private boolean isUnderworld;
+    private String[] roomsVisited;
 
     //region getters
     public int getCurrentHP() {
@@ -25,7 +26,7 @@ public class PlayerStatus {
         return this.playerInventory;
     }
 
-    public String getCurrentStage() {return this.currentStage;}
+    public int getCurrentStage() {return this.currentStage;}
 
     public String getWeaponEquipped() {
         return this.weaponEquipped;
@@ -36,6 +37,10 @@ public class PlayerStatus {
     }
 
     public boolean isUnderworld() { return this.isUnderworld; }
+
+    public String[] getRoomsVisited() {
+        return roomsVisited;
+    }
     //endregion
 
     //region setters
@@ -55,7 +60,7 @@ public class PlayerStatus {
         this.playerInventory = playerInventory;
     }
 
-    public void setCurrentStage(String currentStage) {this.currentStage = currentStage;}
+    public void setCurrentStage (int currentStage) {this.currentStage = currentStage;}
 
     public void setWeaponEquipped(String weaponEquipped) {
         this.weaponEquipped = weaponEquipped;
@@ -66,5 +71,10 @@ public class PlayerStatus {
     }
 
     public void setUnderworld(boolean underworld) { this.isUnderworld = underworld; }
+
+    public void setRoomsVisited(String[] roomsVisited) {
+        this.roomsVisited = roomsVisited;
+    }
+
     //endregion
 }

@@ -1,0 +1,53 @@
+[
+  {
+    "stageNum": 1,
+    "requirementCategory": "item",
+    "stageRequirement": "journal",
+    "worldAnnoucement" : "This year the Artisan family took a summer vacation for two weeks to the manor they purchased which came with employees. With their bags packed and groceries stocked for the coming weeks the family optimistically ventured on.\n \nUpon arrival at the estate, Madelyn was in awe of the size of the ‘vacation’ home her parents purchased. When she entered the gates waiting at the door was the butler her parents introduced as Alfred Montague, who introduced Guillaume Martin, the groundskeeper, and Mildred Dubois the cook. Madelyn was wary of the groundskeeper with his terrifying visage despite his short stature. However, Madelyn didn’t have time to think about the scary looking groundskeeper when she started worrying about her father. Her father had started almost sleepwalking in the middle of the night, eating practically rare steaks and at times his stare was piercing and frightening. To avoid her father who seemed to be around every corner Madelyn hid in the library. Explore the Library and the rest of the mansion to uncover the secret.",
+    "stageDialogue": "",
+    "tip" : "Have you tried looking in the Library?\n"
+  },
+  {
+    "stageNum": 2,
+    "requirementCategory": "item",
+    "stageRequirement": "key",
+    "worldAnnoucement" : "[You've found a Journal. The entry in this Jounral is not yet available to you.]\n",
+    "stageDialogue": "This diary once belonged to a Lady Capulet that held the secrets she uncovered before her marriage. The Lady is the only surviving member of the family and soon after her departure the entire family perished. Find the key to the journal to find out more.\n ",
+    "tip" : "Have you tried looking in the bedroom?\n"
+  },
+  {
+    "stageNum": 3,
+    "requirementCategory": "npc",
+    "stageRequirement": "Gardener",
+    "worldAnnoucement" : "[You've found the key. The entry in this Jounral is now available to you.]",
+    "stageDialogue": "January 1st, 1860\nI’m afraid. One by one the family is becoming scarier. At first the doctors couldn’t help Mother anymore. Now brother and all the servants have become weird. I seem to be the only one left behind. I think they’ve become cursed. Father used to tell me to keep away from the secret door because I could let something evil out. I thought it was a simple fairy tale meant to keep me from causing trouble, but it seems it's true. I recall Father saying that once the evil escapes it drags you down to the underworld and takes your place. Today may be the end for me.\n ",
+    "tip" : ""
+  },
+  {
+    "stageNum": 4,
+    "requirementCategory": "item",
+    "stageRequirement": "key",
+    "worldAnnoucement" : "[You've unlocked the Journal. The entry in this Jounral is now available to you.]",
+    "stageDialogue": "January 1st, 1860\nI’m afraid. One by one the family is becoming scarier. At first the doctors couldn’t help Mother anymore. Now brother and all the servants have become weird. I seem to be the only one left behind. I think they’ve become cursed. Father used to tell me to keep away from the secret door because I could let something evil out. I thought it was a simple fairy tale meant to keep me from causing trouble, but it seems it's true. I recall Father saying that once the evil escapes it drags you down to the underworld and takes your place. Today may be the end for me.\n ",
+    "tip" : ""
+  },
+  {
+    "stageNum": 5,
+    "Text": "[You've unlocked the Secrets of the Gate Key. Read carefully to find the Key]\n\nYour father has been captured by an underworld demon and now it poses as your father. The other underworld demons will keep your father locked up and torture him till the end of his life. In order to save your father, you’ll have to enter the belly of the beast and bring him back.\nThe key is not a key but a stone shinning brighter than the most polished diamond. It is located where knowledge and pen write the fate of the Manor."
+
+  },
+  {
+    "stageNum": 6,
+    "Text": "[You've unlocked the Secrets of the Gate. With the key the Gate is available to you and now available for the taking.]\n\nThe sun can only be masked by the moon but look directly and sight becomes a memory. Find the door hidden in the room of boundless knowledge. Using the key to unlock the gate will take you to where the sun does not shine anymore. Critters and creatures of the dark reside here with appearances to fool even the sharpest human. Beware of whom you meet and pray you never meet the Devil."
+
+  },
+  {
+    "stageNum": 5,
+    "Text": "Maddie! Why did you come all the way here?! Either way you've done a good job. I'm heavily injured on my legs and arms so you'll have to lead us out.\n\n[Safely exit the underworld to save you and your father.]"
+
+  },
+  {
+    "stageNum": 6,
+      "Text": "Congratulations, you've returned to the human world safely! You've completed the game! To restart the game type \"Start\" and press Enter."
+  }
+]

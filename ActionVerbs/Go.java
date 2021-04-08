@@ -10,6 +10,7 @@ public class Go {
         System.out.println("You are currently at " + currentRoomName + ".\n");
         System.out.println("You have moved to the " + nextRoom.getRoomName() + ".\n\n");
         System.out.println(nextRoom.loadDescription());
+        nextRoom.setVisited(true);
         player.setCurrentPosition(nextRoom.getRoomName());
         player.setCurrentHP((player.getCurrentHP()-1));
         //move to one of the locations
