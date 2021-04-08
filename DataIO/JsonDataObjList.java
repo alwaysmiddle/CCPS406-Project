@@ -11,13 +11,17 @@ public class JsonDataObjList {
     private List<Room> _listOfRooms;
     private List<Item> _listOfItems;
     private List<PlayerStatus> _players;
-    private List<NPC> _listofNPCs;
+    private List<NPC> _listOfNPCs;
+    private List<GameProgressionData> _listOfProgressData;
 
     private static JsonDataObjList singletonInstance = null;
 
     //constructor
     public JsonDataObjList() {
         //load the list of json objects into public fields for rest of the program to work with
+
+        //Player status
+        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_FILE_LOCATION);
 
         //rooms
         _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}.getType(), GlobalReference.ROOM_JSON_FILE_LOCATION);
@@ -32,10 +36,10 @@ public class JsonDataObjList {
         }
 
         //NPCs
-        _listofNPCs = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+        _listOfNPCs = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<NPC>>(){}.getType(), GlobalReference.NPC_FILE_LOCATION);
 
-        //Player status
-        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+        //Progression data
+        _listOfProgressData = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<GameProgressionData>>(){}.getType(), GlobalReference.PROGRESSION_FILE_LOCATION);
     }
 
     public void Save()
@@ -79,6 +83,9 @@ public class JsonDataObjList {
         return _players.get(0);
     }
 
+    public List<GameProgressionData> getListOfProgressionData(){
+        return _listOfProgressData;
+    }
 
     public static JsonDataObjList getInstance()
     {

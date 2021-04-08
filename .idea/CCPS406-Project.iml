@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Data" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/ActionVerbs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DataIO" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Saves" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

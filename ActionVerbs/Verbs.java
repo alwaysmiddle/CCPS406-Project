@@ -77,6 +77,10 @@ public class Verbs {
             //checking if weapon equipped, if so then attack
             //TODO: needs to be improved upon to handle npc
             case 4 ->{
+                    //if, then you tell them no
+                    //check if npc is in the room first
+                    //if npc is in the room, then do combat
+
                     //create class if have time *****************
                     if (player.getWeaponEquipped() != null){
                         System.out.println("[Congratulations! You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.]\n");
