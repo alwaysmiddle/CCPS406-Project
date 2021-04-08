@@ -4,7 +4,7 @@ public class Verbs {
     //action verbs and the nextPositions the player can move, item names "borrowed"
     public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static List<String> inventory = new ArrayList<>(Arrays.asList(JsonDataObjList.getInstance().getPlayerStatus().getPlayerInventory()));
-
+    public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
     public static void init(String... args){
         verbs.put("go", 1);
         verbs.put("take", 2);
@@ -20,7 +20,6 @@ public class Verbs {
     //compare user input with verbs and compare nextPosition for output
     public static void IdentifyInput(String actionVerb, String trailingAction){
         Integer act = 0;
-        PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
         Item item = JsonDataObjList.getInstance().getSingleItem(trailingAction);
         //Peter's notes here
         //String[] ListofConnectedRoomsForHallway1 = JsonDataObjList.getInstance().getSingleRoom("hallway 1").getRoomsConnected();
@@ -70,7 +69,7 @@ public class Verbs {
                         //more to inventory class later *************
                         System.out.println("Within your inventory are the following items: ");
                         for (String s : inventory) {
-                            Console.textArea.append("  - " + s + ".");
+                            System.out.println("  - " + s + ".");
                         }
                     }
             }
@@ -83,7 +82,7 @@ public class Verbs {
 
                     //create class if have time *****************
                     if (player.getWeaponEquipped() != null){
-                        System.out.println("[Congratulations! You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.]\n");
+                        System.out.println("[You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.]\n");
                     }
             }
             //Using the item, if edible then remove from inventory
@@ -92,21 +91,21 @@ public class Verbs {
                 System.out.println(item.getItemDescription() + "\n");
                 if (item.isEdible()) {
                     UseItem.consume(item);
-//                    System.out.println("You have used the " + item.getItemName() + "Not the greatest meal, but it'll do. Your health has increased 2 points.");
-//                    player.setCurrentHP(player.getCurrentHP()+2);
-//                    inventory.remove(item.getItemName());
-//                    player.setPlayerInventory(inventory.toArray(String[]::new));
                 }
             }
             //This looks around the room inventory for items the user can take, if in inventory cannot take
             case 6 -> {
-                    System.out.println("Here are the items that you can take: \n");
-                    String[] roomInventory = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomInventory();
-                    for (String r : roomInventory){
-                        if(!inventory.contains(r)){
-                            System.out.println("  - " +r + ".\n");
+                String[] roomInventory = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomInventory();
+                if (roomInventory!=null) {
+                        System.out.println("Here are the items that you can take: \n");
+                        for (String r : roomInventory) {
+                            if (!inventory.contains(r)) {
+                                System.out.println("  - " + r + ".\n");
+                            }
                         }
-                    }
+                    }else{
+                    System.out.println("Nothing to see here, carry on...");
+                }
             }
             //tells the user where they are
             case 7 -> {
@@ -120,7 +119,7 @@ public class Verbs {
             //start actionVerb
             case 8 -> {
                     //TODO: call first stage world annoucement
-                    //System.out.println(); add in the JsonDataObjList.getInstance().getStage("Stage 1");
+                    //System.out.println(player.getCurrentStage());
             }
         }
     }

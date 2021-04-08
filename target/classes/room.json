@@ -4,20 +4,20 @@
     "longDescription": "Large shelves of books standing tall like guardians of knowledge. Within this room contains boundless knowledge and tables to sit upon.",
     "shortDescription": "A room filled with books and places to read.",
     "roomsConnected": [
-      "Hallway3"
+      "Hallway 3"
     ],
     "roomInventory": [
       "Journal"
     ]
   },
   {
-    "roomName": "Hallway3",
+    "roomName": "Hallway 3",
     "longDescription": "The furthest hallway connected to the library and bedroom of Lady Capulet. At night steps can be heard coming from this hallway but many have failed at identifying the source.",
     "shortDescription": "An eerie hallway connecting to Lady Capulet's bedroom and the library.",
     "roomsConnected": [
       "Bedroom",
       "Library",
-      "Hallway2"
+      "Hallway 2"
     ],
     "roomInventory": []
   },
@@ -27,19 +27,19 @@
     "shortDescription": "A glamorous room containing a dining table and connected to the kitchen.",
     "roomsConnected": [
       "Kitchen",
-      "Hallway1"
+      "Hallway 1"
     ],
     "roomInventory": [
       "Burrito"
     ]
   },
   {
-    "roomName": "Hallway2",
+    "roomName": "Hallway 2",
     "longDescription": "A short hallway connecting the two major hallways together. Though there are no rooms connected this sizeable area is decorated with the portraits of the Lady and Lord of the Manor. Some say their eyes follow them as they walk. Maybe the walls have eyes and ears.",
-    "shortDescription": "An eerie hallway connecting Hallway1 and Hallway2",
+    "shortDescription": "An eerie hallway connecting Hallway 1 and Hallway 2",
     "roomsConnected": [
-      "Hallway1",
-      "Hallway2"
+      "Hallway 1",
+      "Hallway 2"
     ],
     "roomInventory": [
       "Hammer"
@@ -59,7 +59,7 @@
     "longDescription": "Recently developed dark closet to house strong checmicals, cleaning supplies and handy tools for use of the groundskeeper. Tread carefully.",
     "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
     "roomsConnected": [
-      "Hallway1"
+      "Hallway 1"
     ],
     "roomInventory": []
   },
@@ -90,22 +90,22 @@
     "shortDescription": "Your room. This room once belonged to Lady Capulet.",
     "roomsConnected": [
       "Washroom",
-      "Hallway3"
+      "Hallway 3"
     ],
     "roomInventory": [
       "Key"
     ]
   },
   {
-    "roomName": "Hallway1",
-    "longDescription": "The main hallway leading from the foyer steps connecting to the Storage Closet, Office, Powder Room, Dining Room and Hallway2. This long hallway is endorned simply compared to the interior of other rooms.",
+    "roomName": "Hallway 1",
+    "longDescription": "The main hallway leading from the foyer steps connecting to the Storage Closet, Office, Powder Room, Dining Room and Hallway 2. This long hallway is endorned simply compared to the interior of other rooms.",
     "shortDescription": "A long hallway connecting the main parts of the mansion.",
     "roomsConnected": [
       "Storage",
       "Powder Room",
       "Office",
       "Dining Room",
-      "Hallway2"
+      "Hallway 2"
     ],
     "roomInventory": []
   },
@@ -114,7 +114,7 @@
     "longDescription": "Bookshelves filled with knowledge, trophies and pictures against the wall. An office table in the middle of the room with locked drawers to hide confidentail documents.",
     "shortDescription": "An office with bookshelves and an office desk with locked drawers.",
     "roomsConnected": [
-      "Hallway1"
+      "Hallway 1"
     ],
     "roomInventory": [
       "Shotgun",

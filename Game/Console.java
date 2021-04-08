@@ -8,6 +8,7 @@ import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 import javax.swing.*;
+import javax.swing.text.SimpleAttributeSet;
 
 public class Console extends WindowAdapter implements WindowListener, Runnable, KeyListener {
     private final JFrame frame;
@@ -43,7 +44,13 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 
         frame.addWindowListener(this);
         txtArea.addKeyListener(this);
+        textArea.requestFocus();
         textArea.setLineWrap(true);
+        textArea.setBorder(BorderFactory.createCompoundBorder(
+                textArea.getBorder(),
+                BorderFactory.createEmptyBorder(10,5,15,10)
+        ));
+        textArea.setFont(textArea.getFont().deriveFont(13f));
 
         try
         {
@@ -130,7 +137,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
                 }
                 if (quit) return;
             }
-
 //            while (Thread.currentThread()==reader2)
 //            {
 //                try { this.wait(100);}catch(InterruptedException ie) {}
