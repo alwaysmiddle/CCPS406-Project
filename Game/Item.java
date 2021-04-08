@@ -1,24 +1,27 @@
 public class Item {
     private String itemName;
     private String itemDescription;
+    private String progressRequirement;
     private boolean isWeapon;
     private boolean edible;
 
     //region getters
     public String getItemName() {
-        return itemName;
+        return this.itemName;
     }
 
     public String getItemDescription() {
-        return itemDescription;
+        return this.itemDescription;
     }
 
+    public String getProgressRequirement(){ return this.progressRequirement;}
+
     public boolean isWeapon() {
-        return isWeapon;
+        return this.isWeapon;
     }
 
     public boolean isEdible() {
-        return edible;
+        return this.edible;
     }
 
     //endregion
@@ -31,6 +34,8 @@ public class Item {
     public void setItemDescription(String itemDescription) {
         this.itemDescription = itemDescription;
     }
+
+    public void setProgressRequirement(String progressRequirement) { this.progressRequirement = progressRequirement;}
 
     public void setWeapon(boolean weapon) {
         isWeapon = weapon;

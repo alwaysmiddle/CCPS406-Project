@@ -4,6 +4,7 @@
   "maxHP": 8,
   "currentPosition": "Library",
   "playerInventory" : ["Bread"],
+  "currentStage" : "Stage 1",
   "weaponEquipped" : "",
   "weaponValue" : null,
   "isUnderworld": false

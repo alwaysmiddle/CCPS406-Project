@@ -14,6 +14,7 @@ public class Verbs {
         verbs.put("eat", 5);
         verbs.put("look", 6);
         verbs.put("status", 7);
+        verbs.put("start", 8);
     }
 
     //compare user input with verbs and compare nextPosition for output
@@ -43,7 +44,7 @@ public class Verbs {
                 Room nextPosition = JsonDataObjList.getInstance().getSingleRoom(trailingAction);
                 if (nextPosition != null) {
                     if (player.getCurrentHP() < 3){
-                        System.out.println("Your HP is very low. Consider repleneshing health with some food.");
+                        System.out.println("[Your HP is very low. Consider repleneshing health with some food.]\n");
                     }
                     Go.playerMove(nextPosition.getRoomName());
                     break;
@@ -55,25 +56,21 @@ public class Verbs {
             }
             //take the item and put in inventory
             case 2 -> {
-                    //put in take method
                 if(item != null  && !inventory.contains(item.getItemName())){
-                    System.out.println("Congratulations. You have finally obtained " + item.getItemName() + ".");
-                   //MAKE STRING[] AND ADD INVENTORY
-                   inventory.add(item.getItemName());
-                   player.setPlayerInventory(inventory.toArray(String[]::new));
+                   inventory.add(Take.takeItem(item.getItemName()));
                 }else{
-                    System.out.println("How dare you try to take this. This is not yours for the taking.");
+                    System.out.println("[How dare you try to take this. This is not yours for the taking.]");
                 }
             }
             //This is displaying the inventory
             case 3 ->{
                     if(inventory.size() < 1){
-                        System.out.println("You're too poor to display anything. Maybe try grabbing some stale bread?");
+                        System.out.println("[You're too poor to display anything. Maybe try grabbing some stale bread?]");
                     }else {
                         //more to inventory class later *************
-                        System.out.println("Within your inventory are the following items: \n");
+                        System.out.println("Within your inventory are the following items: ");
                         for (String s : inventory) {
-                            Console.textArea.append("  - " + s + ".\n");
+                            Console.textArea.append("  - " + s + ".");
                         }
                     }
             }
@@ -82,7 +79,7 @@ public class Verbs {
             case 4 ->{
                     //create class if have time *****************
                     if (player.getWeaponEquipped() != null){
-                        System.out.println("Congratulations! You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.\n");
+                        System.out.println("[Congratulations! You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.]\n");
                     }
             }
             //Using the item, if edible then remove from inventory
@@ -90,10 +87,11 @@ public class Verbs {
                     //put in useItem method *********************
                 System.out.println(item.getItemDescription() + "\n");
                 if (item.isEdible()) {
-                    Console.textArea.append("You have used the " + item.getItemName() + "Not the greatest meal, but it'll do. Your health has increased 2 points.");
-                    player.setCurrentHP(player.getCurrentHP()+2);
-                    inventory.remove(item.getItemName());
-                    player.setPlayerInventory(inventory.toArray(String[]::new));
+                    UseItem.consume(item);
+//                    System.out.println("You have used the " + item.getItemName() + "Not the greatest meal, but it'll do. Your health has increased 2 points.");
+//                    player.setCurrentHP(player.getCurrentHP()+2);
+//                    inventory.remove(item.getItemName());
+//                    player.setPlayerInventory(inventory.toArray(String[]::new));
                 }
             }
             //This looks around the room inventory for items the user can take, if in inventory cannot take
@@ -108,12 +106,15 @@ public class Verbs {
             }
             //tells the user where they are
             case 7 -> {
-                    System.out.println("Your HP: " + player.getCurrentHP() +"\n");
-                    System.out.println("Your Weapon: " + player.getWeaponEquipped() +"\n");
-                    System.out.println("You are at the " + player.getCurrentPosition() +"\n");
+                    System.out.println("Your HP: " + player.getCurrentHP());
+                    System.out.println("Your Weapon: " + player.getWeaponEquipped());
+                    System.out.println("You are at the " + player.getCurrentPosition());
                     if(player.isUnderworld()){
-                        System.out.println("You are in the Underworld. Be careful since all NPCs are aggressive.\n");
+                        System.out.println("[You are in the Underworld. Be careful since all NPCs are aggressive.]");
                     }
+            }
+            case 8 -> {
+                    //System.out.println(); add in the JsonDataObjList.getInstance().getStage("Stage 1");
             }
         }
     }

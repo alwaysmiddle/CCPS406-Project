@@ -43,6 +43,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 
         frame.addWindowListener(this);
         txtArea.addKeyListener(this);
+        textArea.setLineWrap(true);
 
         try
         {
@@ -88,6 +89,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         // you may omit this part for your application
         //
         System.out.println("Welcome to Capulet Manor!\n\nShall we begin?!");
+        System.out.println("Type Start to begin the game!");
 //        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 //        String[] fontNames=ge.getAvailableFontFamilyNames();
 //        for (String fontName : fontNames) System.out.println(fontName);
