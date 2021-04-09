@@ -47,7 +47,7 @@ public class Verbs {
                     }
                     Go.playerMove(nextPosition.getRoomName());
                     break;
-                } else if(!trailingAction.equals("")){
+                }else if(!trailingAction.equals("")){
                     System.out.println("Sorry didn't quite get where \"" + trailingAction + "\" is.");
                 }
                     System.out.println(" You can try heading to the following rooms: ");
@@ -119,7 +119,8 @@ public class Verbs {
             //start actionVerb
             case 8 -> {
                     //TODO: call first stage world annoucement
-                    //System.out.println(player.getCurrentStage());
+                    //GameProgressionData current = Progress.getProgressStage(player.getCurrentStage());
+                    //System.out.println();
             }
         }
     }
