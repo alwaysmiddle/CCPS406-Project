@@ -130,12 +130,11 @@ public class Verbs {
             }
             //save actionVerb
             case 8 -> {
-                if(trailingAction == ""){
+                if(trailingAction.equalsIgnoreCase("")){
                     System.out.println("'Save' action must be followed by a number between 1 to 10!");
                     return;
                 }
                 //only allow second input to be 1 to 10 integer
-
                 Integer someInt = 0;
                 try{
                     someInt = Integer.parseInt(trailingAction);
