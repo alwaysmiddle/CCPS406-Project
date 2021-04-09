@@ -52,8 +52,8 @@ public class Progress {
         Room currentRoom = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition());
         NPC nonplayer = JsonDataObjList.getInstance().getSingleNPC(currentRoom.getNpc());
         checkStage(actionVerb, trailing);
-        if (!stageProgressed && currentRoom.getNpc().equalsIgnoreCase(trailing) && nonplayer != null){
-            if (!nonplayer.isAggressive()) {
+        if (!stageProgressed && nonplayer != null && actionVerb.equalsIgnoreCase("talk")){
+            if (!nonplayer.isAggressive() && trailing.equalsIgnoreCase(nonplayer.getNpcName())) {
                 Random rand = new Random();
                 int output = rand.nextInt(4);
                 switch (output) {
@@ -62,6 +62,8 @@ public class Progress {
                     case 3 -> System.out.println("Do be more careful when prouncing around, Madelyn. You're not a child.");
                 }
             }//else battle i guess
+        }else if(!stageProgressed && actionVerb.equalsIgnoreCase("go") && !currentRoom.getNpc().equalsIgnoreCase("")){
+            System.out.println("\n The " + currentRoom.getNpc() + " is currently in the room. ");
         }
         //check npc in the room
         //if not aggressive, then we do:

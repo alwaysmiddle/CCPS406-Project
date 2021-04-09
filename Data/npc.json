@@ -3,7 +3,7 @@
     "npcName": "Gardener",
     "currentHP": 10,
     "maxHP": 10,
-    "currentPosition": "Closet",
+    "currentPosition": "Storage",
     "npcInventory" : ["Bread"],
     "weaponValue" : 1,
     "isAggressive": false
@@ -12,7 +12,7 @@
     "npcName": "Butler",
     "currentHP": 10,
     "maxHP": 10,
-    "currentPosition": "Library",
+    "currentPosition": "Dining Room",
     "npcInventory" : ["Bread"],
     "weaponValue" : 2,
     "isAggressive": false

@@ -44,6 +44,12 @@ public class JsonDataObjList {
         _listOfProgressData = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<GameProgressionData>>(){}.getType(), GlobalReference.PROGRESSION_FILE_LOCATION);
     }
 
+    //Game scirpt or progresion
+    public List<GameProgressionData> getListOfProgressionData(){
+        return _listOfProgressData;
+    }
+
+    //region Save and load
     public void Save()
     {
         _playerState.setSaveFileId(0);
@@ -64,6 +70,8 @@ public class JsonDataObjList {
         _players.set(0, _playerState);
     }
 
+    //endregion
+
     public void resetPlayerStatusToDefault(){
         PlayerStatus defaultPlayerStatus = (PlayerStatus) JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.DEFAULT_PLAYER_STATUS_FILE_LOCATION).get(0);
         _players.set(0, defaultPlayerStatus);
@@ -80,20 +88,15 @@ public class JsonDataObjList {
         return _mapOfRooms.get(roomName.trim().toLowerCase());
     }
 
+    public Map<String, Room> getRoomsHashmap() {
+        //return hashmap
+        return _mapOfRooms;
+    }
+
     //map format is: <item_name, item_object>, getSingle will try to match the input with key and return object
     //returns null if this method fails to find the passed field within dictionary. Case insensitive.
     public Item getSingleItem(String itemName){
         return _mapOfItems.get(itemName.trim().toLowerCase());
-    }
-
-    public NPC getSingleNPC(String npcName) {
-        return this._listOfNPCs.contains(npcName) ? (NPC)this._listOfNPCs.get(this._listOfNPCs.indexOf(npcName)) : null;
-    }
-
-
-    public Map<String, Room> getRoomsHashmap() {
-        //return hashmap
-        return _mapOfRooms;
     }
 
     public Map<String, Item> getItemsHashmap()
@@ -102,8 +105,23 @@ public class JsonDataObjList {
         return _mapOfItems;
     }
 
-    public List<GameProgressionData> getListOfProgressionData(){
-        return _listOfProgressData;
+    //Npc section
+    public NPC getSingleNPC(String npcName) {
+        //return npc when name matches.
+        for (NPC k: _listOfNPCs){
+            if(k.getNpcName().equalsIgnoreCase(npcName)){
+                return k;
+            }
+        }
+
+        return null;
+    }
+
+    public List<NPC> getListOfNPCs(){return _listOfNPCs;}
+
+    //change the default npc json file.
+    public void UpdateNpcJson(){
+        JsonDataFileIO.getInstance().writeJsonFile(_listOfNPCs, GlobalReference.NPC_FILE_LOCATION);
     }
 
     public static JsonDataObjList getInstance()

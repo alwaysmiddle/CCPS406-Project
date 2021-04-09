@@ -52,6 +52,7 @@ public class Verbs {
                         System.out.println("[Your HP is very low. Consider repleneshing health with some food.]\n");
                     }
                     Go.playerMove(nextPosition.getRoomName());
+                    Progress.checkNpcs(actionVerb, trailingAction);
                     break;
                 } else if(!trailingAction.equals("")){
                     System.out.println("Sorry didn't quite get where \"" + trailingAction + "\" is.");
@@ -188,7 +189,11 @@ public class Verbs {
                     JsonDataObjList.getInstance().resetPlayerStatusToDefault();
                     System.out.println(start.worldAnnoucement);
             }
-            case 11 -> Progress.checkNpcs(actionVerb, trailingAction);
+            case 11 -> {
+                    System.out.println("After if: " + trailingAction);
+                    Progress.checkNpcs(actionVerb, trailingAction);
+
+            }
         }
     }
     //will get room inventory and compare it to player inventory

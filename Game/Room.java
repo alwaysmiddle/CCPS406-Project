@@ -1,16 +1,16 @@
 import java.util.Arrays;
+import java.util.List;
 
 public class Room {
     //private fields
     private String roomName;
     private String shortDescription;
     private String longDescription;
-    private String npc;
     private String[] roomsConnected;
     private String[] roomInventory;
 
-    //region getters
-    //indicates whether a room has been visited or NOT
+    //region simple getters
+
     public boolean isVisited(){
         String[] visitedRooms = JsonDataObjList.getInstance().getPlayerStatus().getRoomsVisited();
 
@@ -18,8 +18,6 @@ public class Room {
     }
 
     public String getRoomName(){ return this.roomName;}
-
-    public String getNpc(){return this.npc;}
 
     //provides short description of rooms
     public String getShortDescription(){ return this.shortDescription;}
@@ -32,7 +30,17 @@ public class Room {
     public String[] getRoomsConnected() { return this.roomsConnected; }
     //endregion
 
-    //region setters
+    //region simple setters
+    public void setRoomsConnected(String[] roomsConnected) {
+        this.roomsConnected = roomsConnected;
+    }
+
+    public void setRoomInventory(String[] roomInventory) {
+        this.roomInventory = roomInventory;
+    }
+    //endregion
+
+    //visited status
     public void setVisited(boolean visited) {
         //set to visited
         if(visited) {
@@ -52,21 +60,42 @@ public class Room {
         }
     }
 
-    public void setRoomsConnected(String[] roomsConnected) {
-        this.roomsConnected = roomsConnected;
-    }
-
-    public void setRoomInventory(String[] roomInventory) {
-        this.roomInventory = roomInventory;
-    }
-    //endregion
-
-    //determine which description to load
+    //determine which description to load based on visited
     public String loadDescription() {
         if (!this.isVisited()) {
             return longDescription;
         } else {
             return shortDescription;
         }
+    }
+
+    //=========================== npc loading ===========================
+
+    //find first npc in the room
+    public NPC getNpcInThisRoom(){
+        List<NPC> listOfNpcs= JsonDataObjList.getInstance().getListOfNPCs();
+
+        for(NPC k: listOfNpcs)
+        {
+            if(k.getCurrentPosition().equalsIgnoreCase(this.roomName)){
+                return k;
+            }
+        }
+        return null;
+    }
+
+    //move the npc into this room by chaning default npc.json, only do this when necessary, this will affect npc starting location
+    public void moveNpcToThisRoom(String npcName)
+    {
+        List<NPC> listOfNpcs= JsonDataObjList.getInstance().getListOfNPCs();
+
+        for(NPC k: listOfNpcs)
+        {
+            if(k.getCurrentPosition().equalsIgnoreCase(npcName)){
+                k.setCurrentPosition(this.roomName);
+            }
+        }
+
+        JsonDataObjList.getInstance().UpdateNpcJson();
     }
 }
