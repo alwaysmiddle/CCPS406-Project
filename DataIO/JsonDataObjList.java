@@ -87,7 +87,13 @@ public class JsonDataObjList {
     }
 
     public NPC getSingleNPC(String npcName) {
-        return this._listOfNPCs.contains(npcName) ? (NPC)this._listOfNPCs.get(this._listOfNPCs.indexOf(npcName)) : null;
+        for (NPC k: _listOfNPCs){
+            if(k.getNpcName().equalsIgnoreCase(npcName)){
+                return k;
+            }
+        }
+
+        return null;
     }
 
 
