@@ -46,12 +46,14 @@ public class JsonDataObjList {
 
     public void Save()
     {
+        _playerState.setSaveFileId(0);
         _players.set(0, _playerState);
         JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
     }
 
     public void Save(Integer saveSlot)
     {
+        _playerState.setSaveFileId(saveSlot);
         _players.set(saveSlot, _playerState);
         JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
     }
