@@ -53,17 +53,11 @@ public class Progress {
         if (!stageProgressed && currentRoom.getNpc().equalsIgnoreCase(trailing) && nonplayer != null){
             if (!nonplayer.isAggressive()) {
                 Random rand = new Random();
-                int output = rand.nextInt(3);
+                int output = rand.nextInt(4);
                 switch (output) {
-                    case 1 -> {
-                        System.out.println("Hello Madelyn, how're you doing? Be careful since the building is quite old. The garden is beautiful around this time of year.");
-                    }
-                    case 2 -> {
-                        System.out.println("Oh, Madelyn it's you! I believe I spotted some fresh baked bread in the Kitchen. Try your luck now.");
-                    }
-                    case 3 -> {
-                        System.out.println("Do be more careful when prouncing around, Madelyn. You're not a child.");
-                    }
+                    case 1 -> System.out.println("Hello Madelyn, how're you doing? Be careful since the building is quite old. The garden is beautiful around this time of year.");
+                    case 2 -> System.out.println("Oh, Madelyn it's you! I believe I spotted some fresh baked bread in the Kitchen. Try your luck now.");
+                    case 3 -> System.out.println("Do be more careful when prouncing around, Madelyn. You're not a child.");
                 }
             }//else battle i guess
         }

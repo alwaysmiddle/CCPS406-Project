@@ -5,7 +5,7 @@ public class Verbs {
     public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static List<String> inventory = new ArrayList<>(Arrays.asList(JsonDataObjList.getInstance().getPlayerStatus().getPlayerInventory()));
     public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
-    public static void init(String... args){
+    public static void init(){
         verbs.put("go", 1);
         verbs.put("take", 2);
         verbs.put("inventory", 3);
@@ -153,7 +153,7 @@ public class Verbs {
             //load action verb
             case 9 -> {
                 //when loading the game, only allow second input to be 1 to 10 integer
-                Integer someInt = 0;
+                int someInt = 0;
                 try{
                     someInt = Integer.parseInt(trailingAction);
                     if(someInt < 1 || someInt > 10){
@@ -183,9 +183,7 @@ public class Verbs {
                     JsonDataObjList.getInstance().resetPlayerStatusToDefault();
                     System.out.println(start.worldAnnoucement);
             }
-            case 11 -> {
-                    Progress.checkNpcs(actionVerb, trailingAction);
-            }
+            case 11 -> Progress.checkNpcs(actionVerb, trailingAction);
         }
     }
 }
