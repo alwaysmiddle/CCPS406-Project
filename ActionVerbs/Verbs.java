@@ -120,14 +120,36 @@ public class Verbs {
             }
             //save actionVerb
             case 8 -> {
-                    //only allows 10 save slots
-                    //System.out.println(player.getCurrentStage());
+                //only allows 10 save slots
+                //only allow second input to be 1 to 10 integer
+                //System.out.println(player.getCurrentStage());
+                Integer someInt = 0;
+                try{
+                    someInt = Integer.parseInt(trailingAction);
+                    if(someInt < 1 || someInt > 10){
+                        System.out.println("You are only allowed to Save to a file slot between number 1 to 10");
+                        return;
+                    }
+                }catch(Exception exception) {
+                    exception.printStackTrace();
+                }
+                GameSaveSystem.setCurrentSaveNum(someInt);
+                //successfully saved
             }
 
             //load action verb
             case 9 -> {
+                    Integer someInt = 0;
+                    try{
+                        someInt = Integer.parseInt(trailingAction)
+                    }catch(Exception exception) {
+                        exception.printStackTrace();
+                    }
                 //only allows 10 load slots
-                //System.out.println(player.getCurrentStage());
+                //when loading the game, only allow second input to be 1 to 10 integer
+                GameSaveSystem.setCurrentSaveNum(someInt);
+                //load stage world annoucement
+                //load action description
             }
             //start a new game
             case 10 -> {

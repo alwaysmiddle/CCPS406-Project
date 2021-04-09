@@ -21,7 +21,12 @@ public class JsonDataObjList {
         //load the list of json objects into public fields for rest of the program to work with
 
         //Load Player status of the player's choice of saves
-        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.DEFAULT_PLAYER_STATUS_FILE_LOCATION);
+        if(GameSaveSystem.getCurrentSaveIndex() == 0) {
+            this.resetPlayerStatusToDefault();
+        }else{
+            _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
+        }
+
 
         //rooms
         _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}.getType(), GlobalReference.ROOM_JSON_FILE_LOCATION);
@@ -56,7 +61,7 @@ public class JsonDataObjList {
 //        JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_FILE_LOCATION);
     }
 
-    public void resetToDefault(){
+    public void resetPlayerStatusToDefault(){
         _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.DEFAULT_PLAYER_STATUS_FILE_LOCATION);
     }
 
