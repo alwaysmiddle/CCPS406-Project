@@ -87,6 +87,7 @@ public class JsonDataObjList {
     }
 
     public NPC getSingleNPC(String npcName) {
+        //return npc when name matches.
         for (NPC k: _listOfNPCs){
             if(k.getNpcName().equalsIgnoreCase(npcName)){
                 return k;
