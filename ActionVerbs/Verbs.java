@@ -139,28 +139,35 @@ public class Verbs {
                 }catch(Exception exception) {
                     exception.printStackTrace();
                 }
-                GameSaveSystem.setCurrentSaveNum(someInt);
+
+                JsonDataObjList.getInstance().Save(someInt);
                 //successfully saved
+                System.out.println("You have sucessfully saved!\n");
             }
 
             //load action verb
             case 9 -> {
-                    Integer someInt = 0;
-                    try{
-                        someInt = Integer.parseInt(trailingAction);
-                    }catch(Exception exception) {
-                        exception.printStackTrace();
-                    }
-                //only allows 10 load slots
                 //when loading the game, only allow second input to be 1 to 10 integer
-                GameSaveSystem.setCurrentSaveNum(someInt);
+                Integer someInt = 0;
+                try{
+                    someInt = Integer.parseInt(trailingAction);
+                    if(someInt < 1 || someInt > 10){
+                        System.out.println("You are only allowed to Save to a file slot between number 1 to 10");
+                        return;
+                    }
+                }catch(Exception exception) {
+                    exception.printStackTrace();
+                }
+
+                JsonDataObjList.getInstance().Load(someInt);
                 //load stage world annoucement
-                    System.out.println("[Welcome back to the Capulet Manor!  in your abscence father has gotten heavily injured.]");
-                    System.out.println("\n Here is your status!:");
-                    System.out.println("Your HP: " + player.getCurrentHP());
-                    System.out.println("Your Weapon: " + player.getWeaponEquipped());
-                    System.out.println("You are at the " + player.getCurrentPosition());
+                System.out.println("[Welcome back to the Capulet Manor!  in your abscence father has gotten heavily injured.]");
+                System.out.println("\n Here is your status!:");
+                System.out.println("Your HP: " + player.getCurrentHP());
+                System.out.println("Your Weapon: " + player.getWeaponEquipped());
+                System.out.println("You are at the " + player.getCurrentPosition());
                 //load action description
+                System.out.println(("Load completed!"));
             }
             //start a new game
             case 10 -> {

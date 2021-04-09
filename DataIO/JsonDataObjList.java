@@ -11,6 +11,7 @@ public class JsonDataObjList {
     private List<Room> _listOfRooms;
     private List<Item> _listOfItems;
     private List<PlayerStatus> _players;
+    private PlayerStatus _playerState;
     private List<NPC> _listOfNPCs;
     private List<GameProgressionData> _listOfProgressData;
 
@@ -21,12 +22,8 @@ public class JsonDataObjList {
         //load the list of json objects into public fields for rest of the program to work with
 
         //Load Player status of the player's choice of saves
-        if(GameSaveSystem.getCurrentSaveIndex() == 0) {
-            this.resetPlayerStatusToDefault();
-        }else{
-            _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
-        }
-
+        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
+        _playerState = _players.get(0);
 
         //rooms
         _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}.getType(), GlobalReference.ROOM_JSON_FILE_LOCATION);
@@ -49,31 +46,30 @@ public class JsonDataObjList {
 
     public void Save()
     {
-        //save to the save files loation
+        _players.set(0, _playerState);
+        JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
+    }
 
-//        //save the list of rooms
-//        JsonDataFileIO.writeJsonFile(_listOfRooms, GlobalReference.ROOM_JSON_FILE_LOCATION);
-//
-//        //save the list of items
-//        JsonDataFileIO.writeJsonFile(_listOfItems, GlobalReference.PLAYER_STATUS_FILE_LOCATION);
-//
-//        //save the player status
-//        JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+    public void Save(Integer saveSlot)
+    {
+        _players.set(saveSlot, _playerState);
+        JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
+    }
+
+    public void Load(Integer saveSlot)
+    {
+        _playerState = _players.get(saveSlot);
+        _players.set(0, _playerState);
     }
 
     public void resetPlayerStatusToDefault(){
-        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.DEFAULT_PLAYER_STATUS_FILE_LOCATION);
+        PlayerStatus defaultPlayerStatus = (PlayerStatus) JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.DEFAULT_PLAYER_STATUS_FILE_LOCATION).get(0);
+        _players.set(0, defaultPlayerStatus);
     }
 
     public PlayerStatus getPlayerStatus()
     {
-        //load save file number instead of zero
-        for(PlayerStatus s : _players){
-            if(s.getSaveFileId() == GameSaveSystem.getCurrentSaveIndex())
-            return s;
-        }
-
-        return null;
+        return _playerState;
     }
 
     //map format is: <room_name, room_object>, getSingle will try to match the input with key and return object
