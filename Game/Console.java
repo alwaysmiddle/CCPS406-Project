@@ -45,6 +45,11 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
 
         frame.addWindowListener(this);
         txtArea.addKeyListener(this);
+        txtArea.setBorder(BorderFactory.createCompoundBorder(
+                textArea.getBorder(),
+                BorderFactory.createEmptyBorder(5,5,10,10)
+        ));
+        txtArea.setFont(txtArea.getFont().deriveFont(12f));
         textArea.requestFocus();
         textArea.setLineWrap(true);
         textArea.setBorder(BorderFactory.createCompoundBorder(
