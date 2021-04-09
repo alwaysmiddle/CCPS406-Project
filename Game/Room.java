@@ -84,6 +84,7 @@ public class Room {
         return null;
     }
 
+    //move the npc into this room by chaning default npc.json, only do this when necessary, this will affect npc starting location
     public void moveNpcToThisRoom(String npcName)
     {
         List<NPC> listOfNpcs= JsonDataObjList.getInstance().getListOfNPCs();
