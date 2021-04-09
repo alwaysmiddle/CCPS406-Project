@@ -119,6 +119,7 @@ public class JsonDataObjList {
 
     public List<NPC> getListOfNPCs(){return _listOfNPCs;}
 
+    //change the default npc json file.
     public void UpdateNpcJson(){
         JsonDataFileIO.getInstance().writeJsonFile(_listOfNPCs, GlobalReference.NPC_FILE_LOCATION);
     }
