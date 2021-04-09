@@ -75,6 +75,7 @@ public class JsonDataObjList {
     public void resetPlayerStatusToDefault(){
         PlayerStatus defaultPlayerStatus = (PlayerStatus) JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.DEFAULT_PLAYER_STATUS_FILE_LOCATION).get(0);
         _players.set(0, defaultPlayerStatus);
+        _playerState = _players.get(0);
     }
 
     public PlayerStatus getPlayerStatus()
