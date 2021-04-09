@@ -28,7 +28,7 @@
     "roomName": "Dining Room",
     "longDescription": "A sizable room adorned with priceless vases and paintings. This room has stood the test of time and entertained more guests than the years it has stood. This room is connected to the kitchen through a hidden door.",
     "shortDescription": "A glamorous room containing a dining table and connected to the kitchen.",
-    "npc": "Butlet",
+    "npc": "Butler",
     "roomsConnected": [
       "Kitchen",
       "Hallway 1"

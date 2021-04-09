@@ -54,9 +54,10 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         txtArea.setForeground(Color.white);
         textArea.requestFocus();
         textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
         textArea.setBorder(BorderFactory.createCompoundBorder(
                 textArea.getBorder(),
-                BorderFactory.createEmptyBorder(10,5,15,10)
+                BorderFactory.createEmptyBorder(10,15,15,20)
         ));
         textArea.setBackground(Color.BLACK);
         textArea.setForeground(Color.white);
