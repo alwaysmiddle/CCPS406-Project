@@ -159,7 +159,7 @@ public class Verbs {
             //load action verb
             case 9 -> {
                 if(trailingAction == "") {
-                    System.out.println("Please enter a number between 1 to 10 following 'save' to indicate the save slot.");
+                    System.out.println("Please enter a number between 1 to 10 following 'load' to indicate the save slot.");
                     return;
                 }
 
@@ -169,7 +169,7 @@ public class Verbs {
                     someInt = Integer.parseInt(trailingAction);
 
                     if(someInt < 1 || someInt > 10){
-                        System.out.println("You are only allowed to Save to a file slot between number 1 to 10");
+                        System.out.println("You are only allowed to 'load' to a file slot between number 1 to 10");
                         return;
                     }
                 }catch(Exception exception) {
