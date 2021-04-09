@@ -19,7 +19,7 @@
     "stageNum": 3,
     "requirementCategory": "npc",
     "stageRequirement": "Gardener",
-    "worldAnnoucement" : "[You've found a Journal. You may now read the entry.]",
+    "worldAnnoucement" : "[You've unlocked the Jorunal. You may now read the entry.]",
     "stageDialogue": "\nJanuary 1st, 1860\n\nI’m afraid. One by one the family is becoming scarier. At first the doctors couldn’t help Mother anymore. Now brother and all the servants have become weird. I seem to be the only one left behind. I think they’ve become cursed. Father used to tell me to keep away from the secret door because I could let something evil out. I thought it was a simple fairy tale meant to keep me from causing trouble, but it seems it's true. I recall Father saying that once the evil escapes it drags you down to the underworld and takes your place. Today may be the end for me.\n ",
     "tip" : " A gardener is useless without his tools."
   },

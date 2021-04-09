@@ -11,6 +11,17 @@
     ]
   },
   {
+    "roomName": "Dungeon",
+    "longDescription": "Dark moldy rooms filled with the stench of prisoners feces. This room is covered in dried blood and looks like no one has taken care of it in years. Don't stay here long.",
+    "shortDescription": "A room filled with human cages.",
+    "roomsConnected": [
+      "Kitchen"
+    ],
+    "roomInventory": [
+      ""
+    ]
+  },
+  {
     "roomName": "Hallway 3",
     "longDescription": "The furthest hallway connected to the library and bedroom of Lady Capulet. At night steps can be heard coming from this hallway but many have failed at identifying the source.",
     "shortDescription": "An eerie hallway connecting to Lady Capulet's bedroom and the library.",
@@ -36,7 +47,7 @@
   {
     "roomName": "Hallway 2",
     "longDescription": "A short hallway connecting the two major hallways together. Though there are no rooms connected this sizeable area is decorated with the portraits of the Lady and Lord of the Manor. Some say their eyes follow them as they walk. Maybe the walls have eyes and ears.",
-    "shortDescription": "An eerie hallway connecting Hallway 1 and Hallway 2",
+    "shortDescription": "An eerie hallway connecting Hallway 1 and Hallway 3",
     "roomsConnected": [
       "Hallway 1",
       "Hallway 3"

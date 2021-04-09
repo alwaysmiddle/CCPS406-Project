@@ -16,5 +16,14 @@
     "npcInventory" : ["Bread"],
     "weaponValue" : 2,
     "isAggressive": false
+  },
+  {
+    "npcName": "Father",
+    "currentHP": 5,
+    "maxHP": 10,
+    "currentPosition": "Dungeon",
+    "npcInventory" : ["Knife"],
+    "weaponValue" : 2,
+    "isAggressive": false
   }
 ]

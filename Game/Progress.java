@@ -26,6 +26,7 @@ public class Progress {
     }
 
     public static void checkStage(String actionVerb, String trailing){
+        //TODO: add back enter underworld to gameprogression and handle better
         stageProgressed = false;
         switch (current.requirementCategory){
             //progress only if the requirement category is npc and talking to requirement npc
@@ -38,12 +39,13 @@ public class Progress {
                 }
             }
         }
+
         if (stageProgressed){
             if (current.stageRequirement.equalsIgnoreCase("Gemstone")){
                 player.setUnderworld(true);
                 List<NPC> allNPC = JsonDataObjList.getInstance().getListOfNPCs();
                 for (NPC eachNpc :  allNPC){
-                    eachNpc.setAggressive(true);
+                    if(!eachNpc.getNpcName().equalsIgnoreCase("Father")){eachNpc.setAggressive(true);}
                 }
             }
             current = Progress.getNextProgress();
@@ -60,14 +62,14 @@ public class Progress {
         NPC nonplayer = currentRoom.getNpcInThisRoom();
         checkStage(actionVerb, trailing);
         if (!stageProgressed){
-            if(nonplayer != null && actionVerb.equalsIgnoreCase("talk")){
+            if(nonplayer != null && actionVerb.trim().equalsIgnoreCase("talk".trim())){
                 if (!nonplayer.isAggressive() && trailing.equalsIgnoreCase(nonplayer.getNpcName())) {
                     Random rand = new Random();
-                    int output = rand.nextInt(4);
+                    int output = rand.nextInt(3);
                     switch (output) {
-                        case 1 -> System.out.println("Hello Madelyn, how're you doing? Be careful since the building is quite old. The garden is beautiful around this time of year.");
-                        case 2 -> System.out.println("Oh, Madelyn it's you! I believe I spotted some fresh baked bread in the Kitchen. Try your luck now.");
-                        case 3 -> System.out.println("Do be more careful when prouncing around, Madelyn. You're not a child.");
+                        case 0 -> System.out.println("Hello Madelyn, how're you doing? Be careful since the building is quite old. The garden is beautiful around this time of year.");
+                        case 1 -> System.out.println("Oh, Madelyn it's you! I believe I spotted some fresh baked bread in the Kitchen. Try your luck now.");
+                        case 2 -> System.out.println("Do be more careful when prouncing around, Madelyn. You're not a child.");
                     }
                 }else{
                     System.out.println("You cannot talk to this NPC. They are hostile to you.");
@@ -79,6 +81,7 @@ public class Progress {
             }else if (actionVerb.equalsIgnoreCase("talk")){
                 System.out.println("No one is in the room. Maybe the birds outside will speak to you.");
             }
+            stageProgressed = false;
         }
         //check npc in the room
         //if not aggressive, then we do:
