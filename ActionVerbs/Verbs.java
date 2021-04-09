@@ -5,7 +5,7 @@ public class Verbs {
     public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static List<String> inventory = new ArrayList<>(Arrays.asList(JsonDataObjList.getInstance().getPlayerStatus().getPlayerInventory()));
     public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
-    public static void init(String... args){
+    public static void init(){
         verbs.put("go", 1);
         verbs.put("take", 2);
         verbs.put("inventory", 3);
@@ -17,6 +17,7 @@ public class Verbs {
         verbs.put("save", 8);
         verbs.put("load", 9);
         verbs.put("restart", 10);
+        verbs.put("start", 10);
         verbs.put("talk", 11);
     }
 
@@ -123,8 +124,6 @@ public class Verbs {
             //tells the user where they are
             case 7 -> {
                     System.out.println("Your HP: " + player.getCurrentHP());
-                    //nextline for testing
-                    System.out.println(player.getCurrentStage());
                     System.out.println("Your Weapon: " + player.getWeaponEquipped());
                     System.out.println("You are at the " + player.getCurrentPosition());
                     if(player.isUnderworld()){
@@ -133,13 +132,9 @@ public class Verbs {
             }
             //save actionVerb
             case 8 -> {
-
+                //only allows 10 save slots
                 //only allow second input to be 1 to 10 integer
-                if(trailingAction == "") {
-                    System.out.println("Please enter a number between 1 to 10 following 'save' to indicate the save slot.");
-                    return;
-                }
-
+                //System.out.println(player.getCurrentStage());
                 Integer someInt = 0;
                 try{
                     someInt = Integer.parseInt(trailingAction);
@@ -155,21 +150,14 @@ public class Verbs {
                 //successfully saved
                 System.out.println("You have sucessfully saved!\n");
             }
-
             //load action verb
             case 9 -> {
-                if(trailingAction == "") {
-                    System.out.println("Please enter a number between 1 to 10 following 'load' to indicate the save slot.");
-                    return;
-                }
-
                 //when loading the game, only allow second input to be 1 to 10 integer
-                Integer someInt = 0;
-                try {
+                int someInt = 0;
+                try{
                     someInt = Integer.parseInt(trailingAction);
-
                     if(someInt < 1 || someInt > 10){
-                        System.out.println("You are only allowed to 'load' to a file slot between number 1 to 10");
+                        System.out.println("You are only allowed to Save to a file slot between number 1 to 10");
                         return;
                     }
                 }catch(Exception exception) {
@@ -189,9 +177,13 @@ public class Verbs {
             //start a new game
             case 10 -> {
                     GameProgressionData start = JsonDataObjList.getInstance().getListOfProgressionData().get(0);
+//                    player.setCurrentStage(1);
+//                    player.setCurrentPosition("Library");
+//                    player.setCurrentHP(6);
+                    JsonDataObjList.getInstance().resetPlayerStatusToDefault();
                     System.out.println(start.worldAnnoucement);
             }
-            //TODO: TALK TO NPC - checkProgress
+            case 11 -> Progress.checkNpcs(actionVerb, trailingAction);
         }
     }
 }
