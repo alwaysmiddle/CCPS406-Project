@@ -33,21 +33,12 @@
   },
   {
     "stageNum": 5,
-    "requirementCategory": "item",
-    "stageRequirement": "Gemstone",
-    "worldAnnoucement" : "[You've found The Gem to the Portal. Beyond the portal are demons who must never hold The Gem.]",
-    "stageDialogue": "The sun can only be masked by the moon but look directly and sight becomes a memory. Find the door hidden in the room of boundless knowledge. Using the key to unlock the gate will take you to where the sun does not shine anymore. Critters and creatures of the dark reside here with appearances to fool even the sharpest human. Beware of whom you meet and pray you never meet the Devil.\n ",
-    "tip" : " This time knowledge does not write."
-  },
-  {
-    "stageNum": 5,
     "requirementCategory": "npc",
     "stageRequirement": "Father",
-    "worldAnnoucement" : "[You've unlocked the Portal. Once again, beyond the portal are demons who must never hold The Gem.]",
-    "stageDialogue": "You've entered here at your own risk. This place may look and seem the same but you face dengers here. Do not assume talking will get you out.\n ",
-    "tip" : " Prisoners are hidden where nobles may never venture but decadent smells reside."
+    "worldAnnoucement" : "[You've found The Gem to the Portal. Beyond the portal are demons who must never hold The Gem.]",
+    "stageDialogue": "The sun can only be masked by the moon but look directly and sight becomes a memory. Find the door hidden in the room of boundless knowledge. Using the key to unlock the gate will take you to where the sun does not shine anymore. Critters and creatures of the dark reside here with appearances to fool even the sharpest human. Beware of whom you meet and pray you never meet the Devil.\n ",
+    "tip" : " In the underworld there exists a dungeon connected to a room of decadent smells. Oh the Irony..."
   },
-
   {
     "stageNum": 6,
     "requirementCategory": "item",
