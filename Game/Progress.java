@@ -9,6 +9,7 @@ public class Progress {
     //check item in player inventory (item)
     //check actionVerb == talk and trailing == npcname (Npc)
     //then we display world annoucement upon stagechange
+    private static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
 
     //we update the npc status to aggressive when we enter underworld
 
@@ -20,6 +21,22 @@ public class Progress {
         List<GameProgressionData> progress = JsonDataObjList.getInstance().getListOfProgressionData();
         return progress.get(progressToLoad - 1);
     }
+
+    public static void checkStage(String actionVerb, String trailing){
+        GameProgressionData current = JsonDataObjList.getInstance().getListOfProgressionData().get(player.getCurrentStage());
+        switch (current.requirementCategory){
+            //progress only if the requirement category is npc and talking to requirement npc
+            case "npc" -> {
+                if(actionVerb.equalsIgnoreCase("talk") && trailing.equalsIgnoreCase(current.stageRequirement)){
+                    current = Progress.getNextProgress();
+                    player.setCurrentStage(current.stageNum);
+                    System.out.println(current.worldAnnoucement);
+                    System.out.println(current.stageDialogue);
+                }
+            }
+        }
+    }
+
 
     //check npc status when entering a room
     public void checkNpcs(){

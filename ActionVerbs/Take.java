@@ -8,12 +8,15 @@ public class Take {
     private static ArrayList<String> inventory = new ArrayList<>(Arrays.asList(JsonDataObjList.getInstance().getPlayerStatus().getPlayerInventory()));
     private static Map<String, Item> itemList = JsonDataObjList.getInstance().getItemsHashmap();
 
-    public static String takeItem(String itemName){
-        System.out.println("Congratulations. You have finally obtained " + itemName + ".");
-        inventory.add(itemName);
+    public static String takeItem(Item item){
+        System.out.println("Congratulations. You have finally obtained " + item.getItemName() + ".");
+        inventory.add(item.getItemName());
+        if(item.isWeapon()){
+            player.setWeaponEquipped(item.getItemName());
+        }
         JsonDataObjList.getInstance().getPlayerStatus().setPlayerInventory(inventory.toArray(String[]::new));
-        checkStage(itemName);
-        return itemName;
+        checkStage(item.getItemName());
+        return item.getItemName();
     }
 
     private static void checkStage(String itemName){

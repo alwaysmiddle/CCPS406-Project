@@ -17,6 +17,7 @@ public class Verbs {
         verbs.put("save", 8);
         verbs.put("load", 9);
         verbs.put("restart", 10);
+        verbs.put("talk", 11);
     }
 
     //compare user input with verbs and compare nextPosition for output
@@ -41,6 +42,7 @@ public class Verbs {
                     }
                 }
             //going somewhere
+            //TODO: CHECK PROGRESS
             case 1 -> {
                 Room nextPosition = JsonDataObjList.getInstance().getSingleRoom(trailingAction);
                 if (nextPosition != null) {
@@ -54,18 +56,21 @@ public class Verbs {
                 }
                     System.out.println(" You can try heading to the following rooms: ");
                     Go.printConnected(player.getCurrentPosition());
+                    Progress.checkStage(actionVerb, trailingAction);
             }
             //take the item and put in inventory
+            //TODO: CHECK PROGRESS
             case 2 -> {
                 if(item != null  && !inventory.contains(item.getItemName())){
-                   inventory.add(Take.takeItem(item.getItemName()));
+                   inventory.add(Take.takeItem(item));
                 }else{
                     System.out.println("[How dare you try to take this. This is not yours for the taking.]");
                 }
+                Progress.checkStage(actionVerb, trailingAction);
             }
             //This is displaying the inventory
             case 3 ->{
-                    if(inventory.size() < 1){
+                    if(inventory.size() == 0){
                         System.out.println("[You're too poor to display anything. Maybe try grabbing some stale bread?]");
                     }else {
                         //more to inventory class later *************
@@ -94,6 +99,7 @@ public class Verbs {
                 if (item.isEdible()) {
                     UseItem.consume(item);
                 }
+                Progress.checkStage(actionVerb, trailingAction);
             }
             //This looks around the room inventory for items the user can take, if in inventory cannot take
             case 6 -> {
@@ -141,7 +147,7 @@ public class Verbs {
             case 9 -> {
                     Integer someInt = 0;
                     try{
-                        someInt = Integer.parseInt(trailingAction)
+                        someInt = Integer.parseInt(trailingAction);
                     }catch(Exception exception) {
                         exception.printStackTrace();
                     }
@@ -149,14 +155,19 @@ public class Verbs {
                 //when loading the game, only allow second input to be 1 to 10 integer
                 GameSaveSystem.setCurrentSaveNum(someInt);
                 //load stage world annoucement
+                    System.out.println("[Welcome back to the Capulet Manor!  in your abscence father has gotten heavily injured.]");
+                    System.out.println("\n Here is your status!:");
+                    System.out.println("Your HP: " + player.getCurrentHP());
+                    System.out.println("Your Weapon: " + player.getWeaponEquipped());
+                    System.out.println("You are at the " + player.getCurrentPosition());
                 //load action description
             }
             //start a new game
             case 10 -> {
-
-                //System.out.println(player.getCurrentStage());
+                    GameProgressionData start = JsonDataObjList.getInstance().getListOfProgressionData().get(0);
+                    System.out.println(start.worldAnnoucement);
             }
-
+            //TODO: TALK TO NPC - checkProgress
         }
     }
 }

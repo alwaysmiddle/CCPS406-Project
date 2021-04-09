@@ -41,6 +41,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         frame.getContentPane().add(new JScrollPane(textArea),BorderLayout.CENTER);
         frame.getContentPane().add(txtArea,BorderLayout.SOUTH);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
 
         frame.addWindowListener(this);
         txtArea.addKeyListener(this);
@@ -187,7 +188,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         new Console(); // create console with no reference
         Verbs.init();
 
-        System.out.println(JsonDataObjList.getInstance().getListOfProgressionData().get(1).tip);
     }
 
     //region keyboard trigger events
