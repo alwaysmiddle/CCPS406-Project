@@ -97,10 +97,12 @@ public class Verbs {
             }
             //Using the item, if edible then remove from inventory
             case 5 -> {
+                if(item != null) {
                     //put in useItem method *********************
-                System.out.println(item.getItemDescription() + "\n");
-                if (item.isEdible()) {
-                    UseItem.consume(item);
+                    System.out.println(item.getItemDescription() + "\n");
+                    if (item.isEdible()) {
+                        UseItem.consume(item);
+                    }
                 }
                 Progress.checkStage(actionVerb, trailingAction);
             }
