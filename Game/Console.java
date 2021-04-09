@@ -187,6 +187,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         new Console(); // create console with no reference
         Verbs.init();
 
+        System.out.println(JsonDataObjList.getInstance().getListOfProgressionData().get(1).tip);
     }
 
     //region keyboard trigger events
