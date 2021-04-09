@@ -41,6 +41,10 @@ public class Progress {
         if (stageProgressed){
             if (current.stageRequirement.equalsIgnoreCase("Gemstone")){
                 player.setUnderworld(true);
+                List<NPC> allNPC = JsonDataObjList.getInstance().getListOfNPCs();
+                for (NPC eachNpc :  allNPC){
+                    eachNpc.setAggressive(true);
+                }
             }
             current = Progress.getNextProgress();
             player.setCurrentStage(current.stageNum);
@@ -67,6 +71,8 @@ public class Progress {
                     }
                 }else{
                     System.out.println("You cannot talk to this NPC. They are hostile to you.");
+                    player.setCurrentHP(player.getCurrentHP()-1);
+                    System.out.println("You have lost 1 HP for trying to talk to a demon.");
                 }
             }else if(actionVerb.equalsIgnoreCase("go") && nonplayer != null){
                 System.out.println("\nThe " + nonplayer.getNpcName() + " is currently in the room. ");
