@@ -4,11 +4,21 @@
     "longDescription": "Large shelves of books standing tall like guardians of knowledge. Within this room contains boundless knowledge and tables to sit upon.",
     "shortDescription": "A room filled with books and places to read.",
     "roomsConnected": [
-      "Hallway 3",
-      "Underworld"
+      "Hallway 3"
     ],
     "roomInventory": [
       "Journal"
+    ]
+  },
+  {
+    "roomName": "Dungeon",
+    "longDescription": "Dark moldy rooms filled with the stench of prisoners feces. This room is covered in dried blood and looks like no one has taken care of it in years. Don't stay here long.",
+    "shortDescription": "A room filled with human cages.",
+    "roomsConnected": [
+      "Kitchen"
+    ],
+    "roomInventory": [
+      ""
     ]
   },
   {
@@ -37,7 +47,7 @@
   {
     "roomName": "Hallway 2",
     "longDescription": "A short hallway connecting the two major hallways together. Though there are no rooms connected this sizeable area is decorated with the portraits of the Lady and Lord of the Manor. Some say their eyes follow them as they walk. Maybe the walls have eyes and ears.",
-    "shortDescription": "An eerie hallway connecting Hallway 1 and Hallway 2",
+    "shortDescription": "An eerie hallway connecting Hallway 1 and Hallway 3",
     "roomsConnected": [
       "Hallway 1",
       "Hallway 3"

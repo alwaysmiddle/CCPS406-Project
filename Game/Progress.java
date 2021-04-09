@@ -26,6 +26,7 @@ public class Progress {
     }
 
     public static void checkStage(String actionVerb, String trailing){
+        //TODO: add back enter underworld to gameprogression and handle better
         stageProgressed = false;
         switch (current.requirementCategory){
             //progress only if the requirement category is npc and talking to requirement npc
@@ -33,12 +34,20 @@ public class Progress {
                 if(actionVerb.equalsIgnoreCase("talk") && trailing.equalsIgnoreCase(current.stageRequirement)){stageProgressed = true;}
             }
             case "item" -> {
-                if (trailing.equalsIgnoreCase(current.stageRequirement)){
+                if (trailing.equalsIgnoreCase(current.stageRequirement) && Arrays.stream(player.getPlayerInventory()).anyMatch(current.stageRequirement::equalsIgnoreCase)){
                     if (actionVerb.equalsIgnoreCase("take") || actionVerb.equalsIgnoreCase("use")){stageProgressed = true;}
                 }
             }
         }
+
         if (stageProgressed){
+            if (current.stageRequirement.equalsIgnoreCase("Gemstone")){
+                player.setUnderworld(true);
+                List<NPC> allNPC = JsonDataObjList.getInstance().getListOfNPCs();
+                for (NPC eachNpc :  allNPC){
+                    if(!eachNpc.getNpcName().equalsIgnoreCase("Father")){eachNpc.setAggressive(true);}
+                }
+            }
             current = Progress.getNextProgress();
             player.setCurrentStage(current.stageNum);
             System.out.println(current.worldAnnoucement + "\n");
@@ -50,20 +59,29 @@ public class Progress {
     //check npc status when entering a room
     public static void checkNpcs(String actionVerb, String trailing){
         Room currentRoom = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition());
-        NPC nonplayer = JsonDataObjList.getInstance().getSingleNPC(currentRoom.getNpc());
+        NPC nonplayer = currentRoom.getNpcInThisRoom();
         checkStage(actionVerb, trailing);
-        if (!stageProgressed && nonplayer != null && actionVerb.equalsIgnoreCase("talk")){
-            if (!nonplayer.isAggressive() && trailing.equalsIgnoreCase(nonplayer.getNpcName())) {
-                Random rand = new Random();
-                int output = rand.nextInt(4);
-                switch (output) {
-                    case 1 -> System.out.println("Hello Madelyn, how're you doing? Be careful since the building is quite old. The garden is beautiful around this time of year.");
-                    case 2 -> System.out.println("Oh, Madelyn it's you! I believe I spotted some fresh baked bread in the Kitchen. Try your luck now.");
-                    case 3 -> System.out.println("Do be more careful when prouncing around, Madelyn. You're not a child.");
+        if (!stageProgressed){
+            if(nonplayer != null && actionVerb.trim().equalsIgnoreCase("talk".trim())){
+                if (!nonplayer.isAggressive() && trailing.equalsIgnoreCase(nonplayer.getNpcName())) {
+                    Random rand = new Random();
+                    int output = rand.nextInt(3);
+                    switch (output) {
+                        case 0 -> System.out.println("Hello Madelyn, how're you doing? Be careful since the building is quite old. The garden is beautiful around this time of year.");
+                        case 1 -> System.out.println("Oh, Madelyn it's you! I believe I spotted some fresh baked bread in the Kitchen. Try your luck now.");
+                        case 2 -> System.out.println("Do be more careful when prouncing around, Madelyn. You're not a child.");
+                    }
+                }else{
+                    System.out.println("You cannot talk to this NPC. They are hostile to you.");
+                    player.setCurrentHP(player.getCurrentHP()-1);
+                    System.out.println("You have lost 1 HP for trying to talk to a demon.");
                 }
-            }//else battle i guess
-        }else if(!stageProgressed && actionVerb.equalsIgnoreCase("go") && !currentRoom.getNpc().equalsIgnoreCase("")){
-            System.out.println("\n The " + currentRoom.getNpc() + " is currently in the room. ");
+            }else if(actionVerb.equalsIgnoreCase("go") && nonplayer != null){
+                System.out.println("\nThe " + nonplayer.getNpcName() + " is currently in the room. ");
+            }else if (actionVerb.equalsIgnoreCase("talk")){
+                System.out.println("No one is in the room. Maybe the birds outside will speak to you.");
+            }
+            stageProgressed = false;
         }
         //check npc in the room
         //if not aggressive, then we do:

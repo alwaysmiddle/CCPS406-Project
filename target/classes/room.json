@@ -3,20 +3,28 @@
     "roomName": "Library",
     "longDescription": "Large shelves of books standing tall like guardians of knowledge. Within this room contains boundless knowledge and tables to sit upon.",
     "shortDescription": "A room filled with books and places to read.",
-    "npc": "",
     "roomsConnected": [
-      "Hallway 3",
-      "Underworld"
+      "Hallway 3"
     ],
     "roomInventory": [
       "Journal"
     ]
   },
   {
+    "roomName": "Dungeon",
+    "longDescription": "Dark moldy rooms filled with the stench of prisoners feces. This room is covered in dried blood and looks like no one has taken care of it in years. Don't stay here long.",
+    "shortDescription": "A room filled with human cages.",
+    "roomsConnected": [
+      "Kitchen"
+    ],
+    "roomInventory": [
+      ""
+    ]
+  },
+  {
     "roomName": "Hallway 3",
     "longDescription": "The furthest hallway connected to the library and bedroom of Lady Capulet. At night steps can be heard coming from this hallway but many have failed at identifying the source.",
     "shortDescription": "An eerie hallway connecting to Lady Capulet's bedroom and the library.",
-    "npc": "",
     "roomsConnected": [
       "Bedroom",
       "Library",
@@ -28,7 +36,6 @@
     "roomName": "Dining Room",
     "longDescription": "A sizable room adorned with priceless vases and paintings. This room has stood the test of time and entertained more guests than the years it has stood. This room is connected to the kitchen through a hidden door.",
     "shortDescription": "A glamorous room containing a dining table and connected to the kitchen.",
-    "npc": "Butler",
     "roomsConnected": [
       "Kitchen",
       "Hallway 1"
@@ -40,8 +47,7 @@
   {
     "roomName": "Hallway 2",
     "longDescription": "A short hallway connecting the two major hallways together. Though there are no rooms connected this sizeable area is decorated with the portraits of the Lady and Lord of the Manor. Some say their eyes follow them as they walk. Maybe the walls have eyes and ears.",
-    "shortDescription": "An eerie hallway connecting Hallway 1 and Hallway 2",
-    "npc": "",
+    "shortDescription": "An eerie hallway connecting Hallway 1 and Hallway 3",
     "roomsConnected": [
       "Hallway 1",
       "Hallway 3"
@@ -54,7 +60,6 @@
     "roomName": "Washroom",
     "longDescription": "Practically a historical monument for surviving this long without water damage. Give the person maintaining this room a gold medal. This washroom belonged to Lady Capulet before her marriage and has been unoccupied since.",
     "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
-    "npc": "",
     "roomsConnected": [
       "Bedroom"
     ],
@@ -64,7 +69,6 @@
     "roomName": "Storage",
     "longDescription": "Recently developed dark closet to house strong checmicals, cleaning supplies and handy tools for use of the groundskeeper. Tread carefully.",
     "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
-    "npc": "Gardener",
     "roomsConnected": [
       "Hallway 1"
     ],
@@ -74,7 +78,6 @@
     "roomName": "Powder Room",
     "longDescription": "A simple yet elegant room used by guests for to brush up on their makeup. There have been reports of ghost sightings in the reflection of the mirror.",
     "shortDescription": "A guest washroom with basic toiletries.",
-    "npc": "",
     "roomsConnected": [
       "Hallway 1"
     ],
@@ -84,7 +87,6 @@
     "roomName": "Kitchen",
     "longDescription": "A simple kitchen with heritage cabinets and updated appliances. The kitchen is usually a few degrees hotter than the rest of the house and smells delectable at all hours.",
     "shortDescription": "A simple looking kitchen with the latest appliances. Managed by the cook.",
-    "npc": "",
     "roomsConnected": [
       "Dining Room",
       "Dungeon"
@@ -98,7 +100,6 @@
     "roomName": "Bedroom",
     "longDescription": "This Swedish Gustavian style room was built by hand by the previous owner for his daughter, Lady Capulet, and has remained empty since her marriage.",
     "shortDescription": "Your room. This room once belonged to Lady Capulet.",
-    "npc": "",
     "roomsConnected": [
       "Washroom",
       "Hallway 3"
@@ -111,7 +112,6 @@
     "roomName": "Hallway 1",
     "longDescription": "The main hallway leading from the foyer steps connecting to the Storage Closet, Office, Powder Room, Dining Room and Hallway 2. This long hallway is endorned simply compared to the interior of other rooms.",
     "shortDescription": "A long hallway connecting the main parts of the mansion.",
-    "npc": "",
     "roomsConnected": [
       "Storage",
       "Powder Room",
@@ -125,7 +125,6 @@
     "roomName": "Office",
     "longDescription": "Bookshelves filled with knowledge, trophies and pictures against the wall. An office table in the middle of the room with locked drawers to hide confidentail documents.",
     "shortDescription": "An office with bookshelves and an office desk with locked drawers.",
-    "npc": "",
     "roomsConnected": [
       "Hallway 1"
     ],

@@ -1,19 +1,28 @@
 [
   {
     "npcName": "Gardener",
-    "currentHP": 10,
+    "currentHP": 4,
     "maxHP": 10,
-    "currentPosition": "Closet",
+    "currentPosition": "Storage",
     "npcInventory" : ["Bread"],
     "weaponValue" : 1,
     "isAggressive": false
   },
   {
     "npcName": "Butler",
-    "currentHP": 10,
+    "currentHP": 4,
     "maxHP": 10,
-    "currentPosition": "Library",
+    "currentPosition": "Dining Room",
     "npcInventory" : ["Bread"],
+    "weaponValue" : 2,
+    "isAggressive": false
+  },
+  {
+    "npcName": "Father",
+    "currentHP": 5,
+    "maxHP": 10,
+    "currentPosition": "Dungeon",
+    "npcInventory" : ["Knife"],
     "weaponValue" : 2,
     "isAggressive": false
   }
