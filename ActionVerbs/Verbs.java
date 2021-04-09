@@ -133,9 +133,13 @@ public class Verbs {
             }
             //save actionVerb
             case 8 -> {
-                //only allows 10 save slots
+
                 //only allow second input to be 1 to 10 integer
-                //System.out.println(player.getCurrentStage());
+                if(trailingAction == "") {
+                    System.out.println("Please enter a number between 1 to 10 following 'save' to indicate the save slot.");
+                    return;
+                }
+
                 Integer someInt = 0;
                 try{
                     someInt = Integer.parseInt(trailingAction);
@@ -154,10 +158,16 @@ public class Verbs {
 
             //load action verb
             case 9 -> {
+                if(trailingAction == "") {
+                    System.out.println("Please enter a number between 1 to 10 following 'save' to indicate the save slot.");
+                    return;
+                }
+
                 //when loading the game, only allow second input to be 1 to 10 integer
                 Integer someInt = 0;
-                try{
+                try {
                     someInt = Integer.parseInt(trailingAction);
+
                     if(someInt < 1 || someInt > 10){
                         System.out.println("You are only allowed to Save to a file slot between number 1 to 10");
                         return;
