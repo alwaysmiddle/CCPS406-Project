@@ -187,52 +187,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         new Console(); // create console with no reference
         Verbs.init();
 
-//        Gson gson = new Gson();
-//        String[] connected1 = {"connectedRoom1", "urdad"};
-//        String[] item1 = {"item1", "item2"};
-//        String[] connected2 = {"connectedRoom2", "urmom"};
-//        String[] item2 = {"item3", "item4"};
-//
-//        Room r1 = new Room("haha", "kekw1", "haha", true, connected1, item1);
-//        Room r2 = new Room("haha1", "kekw2", "haha", true, connected2, item2);
-//        //test out json item read/write class
-//
-//        List<Room> testList = new ArrayList<Room>();
-//
-//        testList.add(r1);
-//        testList.add(r2);
-//
-//        try (FileWriter writer = new FileWriter(GlobalReference.TEST_LOCATION)) {
-//            gson.toJson(testList, writer);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try (FileReader reader = new FileReader("Data/test.json"))
-//        {
-//            Type listType = new TypeToken<List<Test>>(){}.getType();
-//            List<Test> list = gson.fromJson(reader, listType);
-//            System.out.println(list.size());
-//            for (Test o : list) { System.out.println(o.level1);}
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-
-//        List<Room> list = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}, GlobalReference.ROOM_JSON_FILE_LOCATION);
-//        System.out.println(list.size());
-//
-//        for (Room o : list) {
-//            System.out.println(o.getRoomsConnected().length);
-//            System.out.println(Arrays.toString(o.getRoomsConnected()));
-//        }
-//
-//        List<Item> list2 = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Item>>(){}, GlobalReference.ITEM_JSON_FILE_LOCATION);
-//        System.out.println(list2.size());
-//
-//        for (Item k : list2) {
-//            System.out.println(k.isEdible());
-//            System.out.println(k.getItemDescription());
-//        }
     }
 
     //region keyboard trigger events

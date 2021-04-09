@@ -1,4 +1,5 @@
 public class PlayerStatus {
+    private int saveFileId;
     private int currentHP;
     private int maxHP;
     private String currentPosition;
@@ -38,9 +39,9 @@ public class PlayerStatus {
 
     public boolean isUnderworld() { return this.isUnderworld; }
 
-    public String[] getRoomsVisited() {
-        return roomsVisited;
-    }
+    public String[] getRoomsVisited() { return roomsVisited; }
+
+    public int getSaveFileId() { return saveFileId; }
     //endregion
 
     //region setters
@@ -76,5 +77,6 @@ public class PlayerStatus {
         this.roomsVisited = roomsVisited;
     }
 
+    public void setSaveFileId(int saveFileId) { this.saveFileId = saveFileId; }
     //endregion
 }

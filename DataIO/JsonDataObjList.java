@@ -20,8 +20,8 @@ public class JsonDataObjList {
     public JsonDataObjList() {
         //load the list of json objects into public fields for rest of the program to work with
 
-        //Player status
-        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+        //Load Player status of the player's choice of saves
+        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.DEFAULT_PLAYER_STATUS_FILE_LOCATION);
 
         //rooms
         _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}.getType(), GlobalReference.ROOM_JSON_FILE_LOCATION);
@@ -44,6 +44,8 @@ public class JsonDataObjList {
 
     public void Save()
     {
+        //save to the save files loation
+
 //        //save the list of rooms
 //        JsonDataFileIO.writeJsonFile(_listOfRooms, GlobalReference.ROOM_JSON_FILE_LOCATION);
 //
@@ -52,6 +54,21 @@ public class JsonDataObjList {
 //
 //        //save the player status
 //        JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_FILE_LOCATION);
+    }
+
+    public void resetToDefault(){
+        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.DEFAULT_PLAYER_STATUS_FILE_LOCATION);
+    }
+
+    public PlayerStatus getPlayerStatus()
+    {
+        //load save file number instead of zero
+        for(PlayerStatus s : _players){
+            if(s.getSaveFileId() == GameSaveSystem.getCurrentSaveIndex())
+            return s;
+        }
+
+        return null;
     }
 
     //map format is: <room_name, room_object>, getSingle will try to match the input with key and return object
@@ -76,11 +93,6 @@ public class JsonDataObjList {
     {
         //return hashmap
         return _mapOfItems;
-    }
-
-    public PlayerStatus getPlayerStatus()
-    {
-        return _players.get(0);
     }
 
     public List<GameProgressionData> getListOfProgressionData(){

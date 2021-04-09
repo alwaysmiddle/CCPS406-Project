@@ -1,0 +1,30 @@
+[
+  {
+    "saveFileId": 1,
+    "currentHP": 1,
+    "maxHP": 8,
+    "currentPosition": "Library",
+    "playerInventory" : ["Bread"],
+    "currentStage" : 1,
+    "weaponEquipped" : "",
+    "weaponValue" : null,
+    "isUnderworld": false,
+    "roomsVisited" : [
+      "Library"
+    ]
+  },
+  {
+    "saveFileId": 2,
+    "currentHP": 2,
+    "maxHP": 8,
+    "currentPosition": "Hallway3",
+    "playerInventory" : ["Bread"],
+    "currentStage" : 2,
+    "weaponEquipped" : "",
+    "weaponValue" : null,
+    "isUnderworld": false,
+    "roomsVisited" : [
+      "Library", "Bedroom"
+    ]
+  }
+]

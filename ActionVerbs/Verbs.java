@@ -14,7 +14,9 @@ public class Verbs {
         verbs.put("eat", 5);
         verbs.put("look", 6);
         verbs.put("status", 7);
-        verbs.put("start", 8);
+        verbs.put("save", 8);
+        verbs.put("load", 9);
+        verbs.put("restart", 10);
     }
 
     //compare user input with verbs and compare nextPosition for output
@@ -116,11 +118,23 @@ public class Verbs {
                         System.out.println("[You are in the Underworld. Be careful since all NPCs are aggressive.]");
                     }
             }
-            //start actionVerb
+            //save actionVerb
             case 8 -> {
-                    //TODO: call first stage world annoucement
+                    //only allows 10 save slots
                     //System.out.println(player.getCurrentStage());
             }
+
+            //load action verb
+            case 9 -> {
+                //only allows 10 load slots
+                //System.out.println(player.getCurrentStage());
+            }
+            //start a new game
+            case 10 -> {
+
+                //System.out.println(player.getCurrentStage());
+            }
+
         }
     }
 }
