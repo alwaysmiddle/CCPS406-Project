@@ -4,8 +4,7 @@
     "longDescription": "Large shelves of books standing tall like guardians of knowledge. Within this room contains boundless knowledge and tables to sit upon.",
     "shortDescription": "A room filled with books and places to read.",
     "roomsConnected": [
-      "Hallway 3",
-      "Underworld"
+      "Hallway 3"
     ],
     "roomInventory": [
       "Journal"

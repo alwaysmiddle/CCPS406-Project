@@ -9,7 +9,7 @@ public class Verbs {
         verbs.put("go", 1);
         verbs.put("take", 2);
         verbs.put("inventory", 3);
-        verbs.put("attack", 4);
+        //verbs.put("attack", 4);
         verbs.put("use", 5);
         verbs.put("eat", 5);
         verbs.put("look", 6);
@@ -46,22 +46,22 @@ public class Verbs {
             //TODO: CHECK PROGRESS
             case 1 -> {
                 Room nextPosition = JsonDataObjList.getInstance().getSingleRoom(trailingAction);
-                boolean validRoom = Arrays.stream(JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomsConnected()).anyMatch(trailingAction::equalsIgnoreCase);
-                if (nextPosition != null && validRoom) {
+                boolean canGoToRoom = Arrays.stream(JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomsConnected()).anyMatch(trailingAction::equalsIgnoreCase);
+                if (canGoToRoom) {
                     if (player.getCurrentHP() < 3){
                         System.out.println("[Your HP is very low. Consider repleneshing health with some food.]\n");
                     }
-                    Go.playerMove(nextPosition.getRoomName());
+                    if (nextPosition != null){Go.playerMove(nextPosition.getRoomName());}
                     Progress.checkNpcs(actionVerb, trailingAction);
                     break;
-                } else if(!trailingAction.equals("")){
+                }else if(nextPosition == null && !trailingAction.equalsIgnoreCase("")){
                     System.out.println("Sorry didn't quite get where \"" + trailingAction + "\" is.");
-                }else if(validRoom){
+                }else if(!trailingAction.equalsIgnoreCase("")){
                     System.out.println("You can't enter this room from where you are.");
                 }
-                    System.out.println(" You can try heading to the following rooms: ");
-                    Go.printConnected(player.getCurrentPosition());
-                    Progress.checkStage(actionVerb, trailingAction);
+                System.out.println(" You can try heading to the following rooms: ");
+                Go.printConnected(player.getCurrentPosition());
+                Progress.checkStage(actionVerb, trailingAction);
             }
             //take the item and put in inventory
             //TODO: CHECK PROGRESS
@@ -87,16 +87,16 @@ public class Verbs {
             }
             //checking if weapon equipped, if so then attack
             //TODO: needs to be improved upon to handle npc
-            case 4 ->{
-                    //if, then you tell them no
-                    //check if npc is in the room first
-                    //if npc is in the room, then do combat
-
-                    //create class if have time *****************
-                    if (player.getWeaponEquipped() != null){
-                        System.out.println("[You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.]\n");
-                    }
-            }
+//            case 4 ->{
+//                    //if, then you tell them no
+//                    //check if npc is in the room first
+//                    //if npc is in the room, then do combat
+//
+//                    //create class if have time *****************
+//                    if (player.getWeaponEquipped() != null){
+//                        System.out.println("[You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.]\n");
+//                    }
+//            }
             //Using the item, if edible then remove from inventory
             case 5 -> {
                 if(item != null) {
@@ -183,15 +183,15 @@ public class Verbs {
             //start a new game
             case 10 -> {
                     GameProgressionData start = JsonDataObjList.getInstance().getListOfProgressionData().get(0);
-//                    player.setCurrentStage(1);
-//                    player.setCurrentPosition("Library");
-//                    player.setCurrentHP(6);
                     JsonDataObjList.getInstance().resetPlayerStatusToDefault();
+                    player = JsonDataObjList.getInstance().getPlayerStatus();
                     System.out.println(start.worldAnnoucement);
             }
             case 11 -> {
-                    System.out.println("After if: " + trailingAction);
-                    Progress.checkNpcs(actionVerb, trailingAction);
+                    if (trailingAction.contains("to")){
+                        trailingAction = trailingAction.replace("to", "").trim();
+                    }
+                    Progress.checkNpcs(actionVerb, trailingAction.trim());
 
             }
         }

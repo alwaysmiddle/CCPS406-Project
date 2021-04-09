@@ -1,7 +1,7 @@
 [
   {
     "npcName": "Gardener",
-    "currentHP": 10,
+    "currentHP": 4,
     "maxHP": 10,
     "currentPosition": "Storage",
     "npcInventory" : ["Bread"],
@@ -10,7 +10,7 @@
   },
   {
     "npcName": "Butler",
-    "currentHP": 10,
+    "currentHP": 4,
     "maxHP": 10,
     "currentPosition": "Dining Room",
     "npcInventory" : ["Bread"],
