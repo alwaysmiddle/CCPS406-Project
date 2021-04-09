@@ -109,13 +109,11 @@ public class Verbs {
             }
             //This looks around the room inventory for items the user can take, if in inventory cannot take
             case 6 -> {
-                String[] roomInventory = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomInventory();
-                if (roomInventory!=null) {
+                List<String> roomInventory = getRoomInventory();
+                if (roomInventory.size() != 0) {
                         System.out.println("Here are the items that you can take: \n");
                         for (String r : roomInventory) {
-                            if (!inventory.contains(r)) {
                                 System.out.println("  - " + r + ".\n");
-                            }
                         }
                     }else{
                     System.out.println("Nothing to see here, carry on...");
@@ -193,5 +191,16 @@ public class Verbs {
             }
             case 11 -> Progress.checkNpcs(actionVerb, trailingAction);
         }
+    }
+    //will get room inventory and compare it to player inventory
+    private static List<String> getRoomInventory(){
+        String[] roomInventory = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomInventory();
+        List<String> newRoomInventory = new ArrayList<>();
+        for (String item : roomInventory){
+            if (!inventory.contains(item)){
+                newRoomInventory.add(item);
+            }
+        }
+        return newRoomInventory;
     }
 }

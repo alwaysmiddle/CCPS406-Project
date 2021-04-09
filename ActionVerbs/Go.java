@@ -17,6 +17,9 @@ public class Go {
     public static void printConnected(String roomName){
         String[] allNames = JsonDataObjList.getInstance().getSingleRoom(roomName).getRoomsConnected();
         for (String nm : allNames){
+            if(player.getCurrentStage() < 5 && nm.equalsIgnoreCase("Underworld")){
+                continue;
+            }
             System.out.println("  - " + nm + "\n");
         }
     }

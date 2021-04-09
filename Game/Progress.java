@@ -12,7 +12,7 @@ public class Progress {
     //check actionVerb == talk and trailing == npcname (Npc)
     //then we display world annoucement upon stagechange
     private static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
-    private static GameProgressionData current = JsonDataObjList.getInstance().getListOfProgressionData().get(player.getCurrentStage());
+    private static GameProgressionData current = JsonDataObjList.getInstance().getListOfProgressionData().get(player.getCurrentStage()-1);
     private static boolean stageProgressed = false;
     //we update the npc status to aggressive when we enter underworld
 
@@ -33,7 +33,9 @@ public class Progress {
                 if(actionVerb.equalsIgnoreCase("talk") && trailing.equalsIgnoreCase(current.stageRequirement)){stageProgressed = true;}
             }
             case "item" -> {
-                if (actionVerb.equalsIgnoreCase("take") || actionVerb.equalsIgnoreCase("use") || Arrays.asList(player.getPlayerInventory()).contains(current.stageRequirement)){stageProgressed = true;}
+                if (trailing.equalsIgnoreCase(current.stageRequirement)){
+                    if (actionVerb.equalsIgnoreCase("take") || actionVerb.equalsIgnoreCase("use")){stageProgressed = true;}
+                }
             }
         }
         if (stageProgressed){

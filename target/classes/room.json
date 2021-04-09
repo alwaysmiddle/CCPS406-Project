@@ -5,7 +5,8 @@
     "shortDescription": "A room filled with books and places to read.",
     "npc": "",
     "roomsConnected": [
-      "Hallway 3"
+      "Hallway 3",
+      "Underworld"
     ],
     "roomInventory": [
       "Journal"
@@ -15,7 +16,7 @@
     "roomName": "Hallway 3",
     "longDescription": "The furthest hallway connected to the library and bedroom of Lady Capulet. At night steps can be heard coming from this hallway but many have failed at identifying the source.",
     "shortDescription": "An eerie hallway connecting to Lady Capulet's bedroom and the library.",
-    "npc": "Gardener",
+    "npc": "",
     "roomsConnected": [
       "Bedroom",
       "Library",
@@ -63,7 +64,7 @@
     "roomName": "Storage",
     "longDescription": "Recently developed dark closet to house strong checmicals, cleaning supplies and handy tools for use of the groundskeeper. Tread carefully.",
     "shortDescription": "An ensuite bathroom connected to the bedroom of Lady Capulet.",
-    "npc": "",
+    "npc": "Gardener",
     "roomsConnected": [
       "Hallway 1"
     ],
