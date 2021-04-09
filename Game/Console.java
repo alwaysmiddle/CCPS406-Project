@@ -50,12 +50,16 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
                 BorderFactory.createEmptyBorder(5,5,10,10)
         ));
         txtArea.setFont(txtArea.getFont().deriveFont(12f));
+        txtArea.setBackground(Color.black);
+        txtArea.setForeground(Color.white);
         textArea.requestFocus();
         textArea.setLineWrap(true);
         textArea.setBorder(BorderFactory.createCompoundBorder(
                 textArea.getBorder(),
                 BorderFactory.createEmptyBorder(10,5,15,10)
         ));
+        textArea.setBackground(Color.BLACK);
+        textArea.setForeground(Color.white);
         textArea.setFont(textArea.getFont().deriveFont(13f));
 
         try
@@ -117,7 +121,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     {
         quit=true;
         this.notifyAll(); // stop all threads
-        try { reader.join(1000);pin.close();   } catch (Exception e){}
+        try { reader.join(1000);pin.close(); } catch (Exception e){}
         //try { reader2.join(1000);pin2.close(); } catch (Exception e){}
         System.exit(0);
     }
@@ -209,7 +213,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
             String[] splitinput = input.trim().split(" ");
             Console.textArea.setText("");
             //textArea.append("Congrats, this somehow works.");
-            Verbs.IdentifyInput(splitinput[0], String.join(" ",Arrays.copyOfRange(splitinput, 1, splitinput.length)));
+            Verbs.IdentifyInput(splitinput[0].toLowerCase(), String.join(" ",Arrays.copyOfRange(splitinput, 1, splitinput.length)));
             //here we do checking for stage progression
             try {
                 updateStates(this.txtArea);

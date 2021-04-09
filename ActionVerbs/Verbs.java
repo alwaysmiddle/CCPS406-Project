@@ -17,6 +17,7 @@ public class Verbs {
         verbs.put("save", 8);
         verbs.put("load", 9);
         verbs.put("restart", 10);
+        verbs.put("start", 10);
         verbs.put("talk", 11);
     }
 
@@ -123,8 +124,6 @@ public class Verbs {
             //tells the user where they are
             case 7 -> {
                     System.out.println("Your HP: " + player.getCurrentHP());
-                    //nextline for testing
-                    System.out.println(player.getCurrentStage());
                     System.out.println("Your Weapon: " + player.getWeaponEquipped());
                     System.out.println("You are at the " + player.getCurrentPosition());
                     if(player.isUnderworld()){
@@ -151,7 +150,6 @@ public class Verbs {
                 //successfully saved
                 System.out.println("You have sucessfully saved!\n");
             }
-
             //load action verb
             case 9 -> {
                 //when loading the game, only allow second input to be 1 to 10 integer
@@ -179,9 +177,15 @@ public class Verbs {
             //start a new game
             case 10 -> {
                     GameProgressionData start = JsonDataObjList.getInstance().getListOfProgressionData().get(0);
+//                    player.setCurrentStage(1);
+//                    player.setCurrentPosition("Library");
+//                    player.setCurrentHP(6);
+                    JsonDataObjList.getInstance().resetPlayerStatusToDefault();
                     System.out.println(start.worldAnnoucement);
             }
-            //TODO: TALK TO NPC - checkProgress
+            case 11 -> {
+                    Progress.checkNpcs(actionVerb, trailingAction);
+            }
         }
     }
 }

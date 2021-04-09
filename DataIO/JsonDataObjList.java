@@ -84,6 +84,13 @@ public class JsonDataObjList {
         return _mapOfItems.get(itemName.trim().toLowerCase());
     }
 
+    public NPC getSingleNPC(String npcName) {
+        if (_listOfNPCs.contains(npcName)){
+            return _listOfNPCs.get(_listOfNPCs.indexOf(npcName));
+        }
+        return null;
+    }
+
 
     public Map<String, Room> getRoomsHashmap() {
         //return hashmap

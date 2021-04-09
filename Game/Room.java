@@ -5,6 +5,7 @@ public class Room {
     private String roomName;
     private String shortDescription;
     private String longDescription;
+    private String npc;
     private String[] roomsConnected;
     private String[] roomInventory;
 
@@ -16,17 +17,19 @@ public class Room {
         return Arrays.asList(visitedRooms).contains(this.getRoomName());
     }
 
-    public String getRoomName(){ return roomName;}
+    public String getRoomName(){ return this.roomName;}
+
+    public String getNpc(){return this.npc;}
 
     //provides short description of rooms
-    public String getShortDescription(){ return shortDescription;}
+    public String getShortDescription(){ return this.shortDescription;}
 
     //provides long description of room
-    public String getLongDescription(){ return longDescription; }
+    public String getLongDescription(){ return this.longDescription; }
 
-    public String[] getRoomInventory() { return roomInventory; }
+    public String[] getRoomInventory() { return this.roomInventory; }
 
-    public String[] getRoomsConnected() { return roomsConnected; }
+    public String[] getRoomsConnected() { return this.roomsConnected; }
     //endregion
 
     //region setters
