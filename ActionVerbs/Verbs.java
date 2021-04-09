@@ -62,6 +62,7 @@ public class Verbs {
                 System.out.println(" You can try heading to the following rooms: ");
                 Go.printConnected(player.getCurrentPosition());
                 Progress.checkStage(actionVerb, trailingAction);
+                JsonDataObjList.getInstance().Save();
             }
             //take the item and put in inventory
             //TODO: CHECK PROGRESS

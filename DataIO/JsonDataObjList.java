@@ -66,8 +66,10 @@ public class JsonDataObjList {
 
     public void Load(Integer saveSlot)
     {
+        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
         _playerState = _players.get(saveSlot);
         _players.set(0, _playerState);
+
     }
 
     //endregion
