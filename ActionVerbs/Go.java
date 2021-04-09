@@ -6,9 +6,8 @@ public class Go {
         //access player current position
         String currentRoomName = JsonDataObjList.getInstance ().getPlayerStatus().getCurrentPosition();
         Room nextRoom = JsonDataObjList.getInstance().getSingleRoom(selectedRoomName);
-
-        System.out.println("You are currently at " + currentRoomName + ".\n");
-        System.out.println("You have moved to the " + nextRoom.getRoomName() + ".\n\n");
+        System.out.println("You are currently at " + currentRoomName + ".");
+        System.out.println("You have moved to the " + nextRoom.getRoomName() + ".\n");
         System.out.println(nextRoom.loadDescription());
         nextRoom.setVisited(true);
         player.setCurrentPosition(nextRoom.getRoomName());

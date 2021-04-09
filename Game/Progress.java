@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 
 public class Progress {
@@ -10,11 +11,12 @@ public class Progress {
     //check actionVerb == talk and trailing == npcname (Npc)
     //then we display world annoucement upon stagechange
     private static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
+    private static GameProgressionData current = JsonDataObjList.getInstance().getListOfProgressionData().get(player.getCurrentStage());
 
     //we update the npc status to aggressive when we enter underworld
 
     public static GameProgressionData getNextProgress(){
-        return getProgressStage(JsonDataObjList.getInstance().getPlayerStatus().getCurrentStage() + 1);
+        return getProgressStage(player.getCurrentStage() + 1);
     }
 
     public static GameProgressionData getProgressStage(int progressToLoad){
@@ -23,17 +25,21 @@ public class Progress {
     }
 
     public static void checkStage(String actionVerb, String trailing){
-        GameProgressionData current = JsonDataObjList.getInstance().getListOfProgressionData().get(player.getCurrentStage());
+        boolean check = false;
         switch (current.requirementCategory){
             //progress only if the requirement category is npc and talking to requirement npc
             case "npc" -> {
-                if(actionVerb.equalsIgnoreCase("talk") && trailing.equalsIgnoreCase(current.stageRequirement)){
-                    current = Progress.getNextProgress();
-                    player.setCurrentStage(current.stageNum);
-                    System.out.println(current.worldAnnoucement);
-                    System.out.println(current.stageDialogue);
-                }
+                if(actionVerb.equalsIgnoreCase("talk") && trailing.equalsIgnoreCase(current.stageRequirement)){check = true;}
             }
+            case "item" -> {
+                if (actionVerb.equalsIgnoreCase("take") || actionVerb.equalsIgnoreCase("use") || Arrays.asList(player.getPlayerInventory()).contains(current.stageRequirement)){check = true;}
+            }
+        }
+        if (check){
+            current = Progress.getNextProgress();
+            player.setCurrentStage(current.stageNum);
+            System.out.println(current.worldAnnoucement);
+            System.out.println(current.stageDialogue);
         }
     }
 

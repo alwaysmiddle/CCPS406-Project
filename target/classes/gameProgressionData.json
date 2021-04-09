@@ -1,0 +1,58 @@
+[
+  {
+    "stageNum": 1,
+    "requirementCategory": "item",
+    "stageRequirement": "journal",
+    "worldAnnoucement" : "This year the Artisan family took a summer vacation for two weeks to the manor they purchased which came with employees. With their bags packed and groceries stocked for the coming weeks the family optimistically ventured on.\n \nUpon arrival at the estate, Madelyn was in awe of the size of the ‘vacation’ home her parents purchased. When she entered the gates waiting at the door was the butler her parents introduced as Alfred Montague, who introduced Guillaume Martin, the groundskeeper, and Mildred Dubois the cook. Madelyn was wary of the groundskeeper with his terrifying visage despite his short stature. However, Madelyn didn’t have time to think about the scary looking groundskeeper when she started worrying about her father. Her father had started almost sleepwalking in the middle of the night, eating practically rare steaks and at times his stare was piercing and frightening. To avoid her father who seemed to be around every corner Madelyn hid in the library. Explore the Library and the rest of the mansion to uncover the secret.",
+    "stageDialogue": "",
+    "tip" : "Have you tried looking in the Library?\n"
+  },
+  {
+    "stageNum": 2,
+    "requirementCategory": "item",
+    "stageRequirement": "key",
+    "worldAnnoucement" : "[You've found a Journal. The entry in this Jounral is not yet available to you.]\n",
+    "stageDialogue": "This diary once belonged to a Lady Capulet that held the secrets she uncovered before her marriage. The Lady is the only surviving member of the family and soon after her departure the entire family perished. Find the key to the journal to find out more.\n ",
+    "tip" : "Have you tried looking in the bedroom?\n"
+  },
+  {
+    "stageNum": 3,
+    "requirementCategory": "npc",
+    "stageRequirement": "Gardener",
+    "worldAnnoucement" : "[You've found a Journal. You may now read the entry.]",
+    "stageDialogue": "\nJanuary 1st, 1860\n\nI’m afraid. One by one the family is becoming scarier. At first the doctors couldn’t help Mother anymore. Now brother and all the servants have become weird. I seem to be the only one left behind. I think they’ve become cursed. Father used to tell me to keep away from the secret door because I could let something evil out. I thought it was a simple fairy tale meant to keep me from causing trouble, but it seems it's true. I recall Father saying that once the evil escapes it drags you down to the underworld and takes your place. Today may be the end for me.\n ",
+    "tip" : "A gardener is useless without his tools."
+  },
+  {
+    "stageNum": 4,
+    "requirementCategory": "item",
+    "stageRequirement": "Gemstone",
+    "worldAnnoucement" : "[You've encountered the Gardener. His family has lived within these walls the longest.]",
+    "stageDialogue": "Gardener: Your father has been captured by an underworld demon and now it poses as your father. The other underworld demons will keep your father locked up and torture him till the end of his life. In order to save your father, you’ll have to enter the belly of the beast and bring him back.\nThe key is not a key but a stone shinning brighter than the most polished diamond. It is located where knowledge and pen write the fate of the Manor.\n ",
+    "tip" : "Secrets are often kept where the head of the household performs their duties."
+  },
+  {
+    "stageNum": 5,
+    "requirementCategory": "npc",
+    "stageRequirement": "Father",
+    "worldAnnoucement" : "[You've found The Gem to the Portal. Beyond the portal are demons who must never hold The Gem.]",
+    "stageDialogue": "The sun can only be masked by the moon but look directly and sight becomes a memory. Find the door hidden in the room of boundless knowledge. Using the key to unlock the gate will take you to where the sun does not shine anymore. Critters and creatures of the dark reside here with appearances to fool even the sharpest human. Beware of whom you meet and pray you never meet the Devil.\n ",
+    "tip" : "Prisoners are often kept here and nobles hide these places where only peasants work."
+  },
+  {
+    "stageNum": 6,
+    "requirementCategory": "item",
+    "stageRequirement": "Gemstone",
+    "worldAnnoucement" : "[Good Job! You've found your father. Don't let your guard down.]",
+    "stageDialogue": "Maddie! Why did you come all the way here?! Either way you've done a good job. I'm heavily injured on my legs and arms so you'll have to lead us out.\n\n[Safely exit the underworld to save you and your father.]\n ",
+    "tip" : "A good weapon and good health is often handy."
+  },
+  {
+    "stageNum": 7,
+    "requirementCategory": "",
+    "stageRequirement": "",
+    "worldAnnoucement": "[You've successfuly escaped the Underworld. The Gem is safe from demons.]",
+    "stageDialogue": "Congratulations, you've returned to the human world safely! You've completed the game! To restart the game type \"Start\" and press Enter.",
+    "tip": ""
+  }
+]

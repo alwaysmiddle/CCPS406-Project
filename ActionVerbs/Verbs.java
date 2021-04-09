@@ -45,7 +45,8 @@ public class Verbs {
             //TODO: CHECK PROGRESS
             case 1 -> {
                 Room nextPosition = JsonDataObjList.getInstance().getSingleRoom(trailingAction);
-                if (nextPosition != null) {
+                boolean validRoom = Arrays.stream(JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomsConnected()).anyMatch(trailingAction::equalsIgnoreCase);
+                if (nextPosition != null && validRoom) {
                     if (player.getCurrentHP() < 3){
                         System.out.println("[Your HP is very low. Consider repleneshing health with some food.]\n");
                     }
@@ -53,6 +54,8 @@ public class Verbs {
                     break;
                 } else if(!trailingAction.equals("")){
                     System.out.println("Sorry didn't quite get where \"" + trailingAction + "\" is.");
+                }else if(validRoom){
+                    System.out.println("You can't enter this room from where you are.");
                 }
                     System.out.println(" You can try heading to the following rooms: ");
                     Go.printConnected(player.getCurrentPosition());
@@ -118,6 +121,8 @@ public class Verbs {
             //tells the user where they are
             case 7 -> {
                     System.out.println("Your HP: " + player.getCurrentHP());
+                    //nextline for testing
+                    System.out.println(player.getCurrentStage());
                     System.out.println("Your Weapon: " + player.getWeaponEquipped());
                     System.out.println("You are at the " + player.getCurrentPosition());
                     if(player.isUnderworld()){
