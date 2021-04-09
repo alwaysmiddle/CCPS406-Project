@@ -46,14 +46,12 @@ public class JsonDataObjList {
 
     public void Save()
     {
-        _playerState.setSaveFileId(0);
         _players.set(0, _playerState);
         JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
     }
 
     public void Save(Integer saveSlot)
     {
-        _playerState.setSaveFileId(saveSlot);
         _players.set(saveSlot, _playerState);
         JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
     }
@@ -87,7 +85,10 @@ public class JsonDataObjList {
     }
 
     public NPC getSingleNPC(String npcName) {
-        return this._listOfNPCs.contains(npcName) ? (NPC)this._listOfNPCs.get(this._listOfNPCs.indexOf(npcName)) : null;
+        if (_listOfNPCs.contains(npcName)){
+            return _listOfNPCs.get(_listOfNPCs.indexOf(npcName));
+        }
+        return null;
     }
 
 
