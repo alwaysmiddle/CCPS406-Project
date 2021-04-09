@@ -190,10 +190,7 @@ public class Verbs {
                     System.out.println(start.worldAnnoucement);
             }
             case 11 -> {
-                    Room current = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition());
-                    if(trailingAction.trim().equalsIgnoreCase("to "+ current.getNpc())){
-                        trailingAction = current.getNpc();
-                    }
+                    System.out.println("After if: " + trailingAction);
                     Progress.checkNpcs(actionVerb, trailingAction);
 
             }
