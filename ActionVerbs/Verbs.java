@@ -153,7 +153,7 @@ public class Verbs {
             }
             //load action verb
             case 9 -> {
-                if(trailingAction == ""){
+                if(trailingAction.equals("")){
                     System.out.println("'Load' action must be followed by a number between 1 to 10!");
                     return;
                 }

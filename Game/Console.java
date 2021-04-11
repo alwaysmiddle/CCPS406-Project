@@ -49,7 +49,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
                 textArea.getBorder(),
                 BorderFactory.createEmptyBorder(5,5,10,10)
         ));
-        txtArea.setFont(txtArea.getFont().deriveFont(12f));
+        txtArea.setFont(txtArea.getFont().deriveFont(24f));
         txtArea.setBackground(Color.black);
         txtArea.setForeground(Color.white);
         textArea.requestFocus();
@@ -61,7 +61,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         ));
         textArea.setBackground(Color.BLACK);
         textArea.setForeground(Color.white);
-        textArea.setFont(textArea.getFont().deriveFont(13f));
+        textArea.setFont(textArea.getFont().deriveFont(25f));
 
         try
         {
