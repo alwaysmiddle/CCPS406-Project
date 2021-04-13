@@ -10,7 +10,7 @@ public class PlayerStatus {
     private boolean isUnderworld;
     private String[] roomsVisited;
 
-    //region getters
+    //////////////////////// getters //////////////////////////////
     public int getCurrentHP() {
         return this.currentHP;
     }
@@ -42,9 +42,8 @@ public class PlayerStatus {
     public String[] getRoomsVisited() { return roomsVisited; }
 
     public int getSaveFileId() { return saveFileId; }
-    //endregion
 
-    //region setters
+    /////////////////////////// setters //////////////////////////
     public void setCurrentHP(int currentHP) {
         this.currentHP = currentHP;
     }
@@ -78,5 +77,4 @@ public class PlayerStatus {
     }
 
     public void setSaveFileId(int saveFileId) { this.saveFileId = saveFileId; }
-    //endregion
 }

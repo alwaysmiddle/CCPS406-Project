@@ -2,21 +2,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Room {
-    //private fields
     private String roomName;
     private String shortDescription;
     private String longDescription;
     private String[] roomsConnected;
     private String[] roomInventory;
 
-    //region simple getters
-
-    public boolean isVisited(){
-        String[] visitedRooms = JsonDataObjList.getInstance().getPlayerStatus().getRoomsVisited();
-
-        return Arrays.asList(visitedRooms).contains(this.getRoomName());
-    }
-
+    ////////////// getters //////////////
     public String getRoomName(){ return this.roomName;}
 
     //provides short description of rooms
@@ -28,9 +20,8 @@ public class Room {
     public String[] getRoomInventory() { return this.roomInventory; }
 
     public String[] getRoomsConnected() { return this.roomsConnected; }
-    //endregion
 
-    //region simple setters
+    ///////////////// setters ///////////////////////
     public void setRoomsConnected(String[] roomsConnected) {
         this.roomsConnected = roomsConnected;
     }
@@ -38,12 +29,9 @@ public class Room {
     public void setRoomInventory(String[] roomInventory) {
         this.roomInventory = roomInventory;
     }
-    //endregion
 
-    //visited status
-    public void setVisited(boolean visited) {
-        //set to visited
-        if(visited) {
+    public void setVisited(boolean visited) { // set to visited
+        if (visited) {
             //if this is not visited
             if(!this.isVisited()){
                 String[] visitedRooms = JsonDataObjList.getInstance().getPlayerStatus().getRoomsVisited();
@@ -51,7 +39,7 @@ public class Room {
                 newVisitedRooms[newVisitedRooms.length - 1] = this.getRoomName();
                 JsonDataObjList.getInstance().getPlayerStatus().setRoomsVisited(newVisitedRooms);
             }
-        }else{
+        } else {
             if(this.isVisited()){
                 String[] visitedRooms = JsonDataObjList.getInstance().getPlayerStatus().getRoomsVisited();
                 visitedRooms = Utilities.removeElements(visitedRooms, this.getRoomName());
@@ -60,8 +48,13 @@ public class Room {
         }
     }
 
-    //determine which description to load based on visited
-    public String loadDescription() {
+    public boolean isVisited() {
+        String[] visitedRooms = JsonDataObjList.getInstance().getPlayerStatus().getRoomsVisited();
+
+        return Arrays.asList(visitedRooms).contains(this.getRoomName());
+    }
+
+    public String loadDescription() { // based on visited
         if (!this.isVisited()) {
             return longDescription;
         } else {
@@ -71,31 +64,28 @@ public class Room {
 
     //=========================== npc loading ===========================
 
-    //find first npc in the room
-    public NPC getNpcInThisRoom(){
+    // find first npc in the room
+    public NPC getNpcInThisRoom() {
         List<NPC> listOfNpcs= JsonDataObjList.getInstance().getListOfNPCs();
 
-        for(NPC k: listOfNpcs)
+        for(NPC npc: listOfNpcs)
         {
-            if(k.getCurrentPosition().equalsIgnoreCase(this.roomName)){
-                return k;
+            if(npc.getCurrentPosition().equalsIgnoreCase(this.roomName)){
+                return npc;
             }
         }
         return null;
     }
 
-    //move the npc into this room by chaning default npc.json, only do this when necessary, this will affect npc starting location
-    public void moveNpcToThisRoom(String npcName)
-    {
+    public void moveNpcToThisRoom(String npcName) {
         List<NPC> listOfNpcs= JsonDataObjList.getInstance().getListOfNPCs();
 
-        for(NPC k: listOfNpcs)
+        for(NPC npc: listOfNpcs)
         {
-            if(k.getCurrentPosition().equalsIgnoreCase(npcName)){
-                k.setCurrentPosition(this.roomName);
+            if(npc.getCurrentPosition().equalsIgnoreCase(npcName)){
+                npc.setCurrentPosition(this.roomName);
             }
         }
-
-        JsonDataObjList.getInstance().UpdateNpcJson();
+        JsonDataObjList.getInstance().UpdateNpcJson(); // change default npc.json, will affect npc starting location
     }
 }

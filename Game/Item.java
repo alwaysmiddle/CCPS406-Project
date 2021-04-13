@@ -5,7 +5,7 @@ public class Item {
     private boolean isWeapon;
     private boolean edible;
 
-    //region getters
+    ///////////////// getters //////////////////////////////
     public String getItemName() {
         return this.itemName;
     }
@@ -24,9 +24,7 @@ public class Item {
         return this.edible;
     }
 
-    //endregion
-
-    //region setters
+    //////////////////// setters /////////////////////////////////
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
@@ -44,6 +42,4 @@ public class Item {
     public void setEdible(boolean edible) {
         this.edible = edible;
     }
-
-    //endregion
 }

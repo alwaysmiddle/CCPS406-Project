@@ -186,7 +186,7 @@ public class Verbs {
                     GameProgressionData start = JsonDataObjList.getInstance().getListOfProgressionData().get(0);
                     JsonDataObjList.getInstance().resetPlayerStatusToDefault();
                     player = JsonDataObjList.getInstance().getPlayerStatus();
-                    System.out.println(start.worldAnnoucement);
+                    System.out.println(start.worldAnnouncement);
             }
             case 11 -> {
                     if (trailingAction.contains("to")){
