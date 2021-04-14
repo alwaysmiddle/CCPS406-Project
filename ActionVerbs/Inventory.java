@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Inventory {
     private static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
-    private static List<String> inventory = new ArrayList<String>(Arrays.asList(player.getPlayerInventory()));
+    private static ArrayList<String> inventory = new ArrayList<>(Arrays.asList(player.getPlayerInventory()));
 
     //wil display all items that are in the inventory, if there are none then default message
     public static void displayInventory(){
@@ -18,6 +20,22 @@ public class Inventory {
             }
         }
     }
+    //will take the item and add it to inventory
+    //if item in the inventory then won't add
+    public static void takeItem(String itemInput){
+        Item item = JsonDataObjList.getInstance().getSingleItem(itemInput);
+        if (item != null && !inventory.contains(item.getItemName())) {
+            System.out.println("Congratulations. You have finally obtained " + item.getItemName() + ".");
+            inventory.add(item.getItemName());
+            if (item.isWeapon()) {
+                player.setWeaponEquipped(item.getItemName());
+            }
+            JsonDataObjList.getInstance().getPlayerStatus().setPlayerInventory(inventory.toArray(String[]::new));
+        }else{
+            System.out.println("You cannot take "+ itemInput);
+        }
+    }
+
     //will use the item and if the item is edible then show a special message
     //if the item is the gemstone then display the default switch message
     public static void useItem(String itemInput){
@@ -42,7 +60,7 @@ public class Inventory {
                 }
                 System.out.println("You have been transported to the " + transport);
             }
-            inventory = Arrays.asList(player.getPlayerInventory());
+            inventory = new ArrayList<>(Arrays.asList(player.getPlayerInventory()));
         }else{
             System.out.println("You can't use " + itemInput);
         }

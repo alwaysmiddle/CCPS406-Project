@@ -4,7 +4,7 @@ public class Verbs {
     //action verbs and the nextPositions the player can move, item names "borrowed"
     public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
-    private static final String[] words = {"to ", "at ", "up ", "into ", "using "};
+    private static final String[] words = {"to ", "at ", "up ", "into ", "using ", "the "};
     public static void init(){
         verbs.put("go", 1);
         verbs.put("take", 2);
@@ -52,7 +52,7 @@ public class Verbs {
             //take the item and put in inventory
             //then check if the obtained item has triggered a progress in the story
             case 2 -> {
-                Take.takeItem(trailingAction.trim());
+                Inventory.takeItem(trailingAction.trim());
                 Progress.checkStage(actionVerb, trailingAction);
             }
             //This is displaying the inventory
