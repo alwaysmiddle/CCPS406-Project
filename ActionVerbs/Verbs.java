@@ -5,29 +5,30 @@ public class Verbs {
     public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
     private static final String[] words = {"to ", "at ", "up ", "into ", "using ", "the "};
+    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "look", "status", "save", "load", "restart", "talk", "start"};
     public static void init(){
-        verbs.put("go", 1);
-        verbs.put("take", 2);
-        verbs.put("inventory", 3);
-        //verbs.put("attack", 4);
-        verbs.put("use", 5);
-        verbs.put("eat", 5);
-        verbs.put("look", 6);
-        verbs.put("status", 7);
-        verbs.put("save", 8);
-        verbs.put("load", 9);
-        verbs.put("restart", 10);
-        verbs.put("start", 10);
-        verbs.put("talk", 11);
+//        verbs.put("go", 1);
+//        verbs.put("take", 2);
+//        verbs.put("inventory", 3);
+//        //verbs.put("attack", 4);
+//        verbs.put("use", 5);
+//        verbs.put("eat", 5);
+//        verbs.put("look", 6);
+//        verbs.put("status", 7);
+//        verbs.put("save", 8);
+//        verbs.put("load", 9);
+//        verbs.put("restart", 10);
+//        verbs.put("start", 10);
+//        verbs.put("talk", 11);
     }
 
     //compare user input with verbs and compare nextPosition for output
     public static void IdentifyInput(String actionVerb, String trailingAction){
-        Integer act = 0;
+        String act = "";
 
         //take split input to compare against verbs
-        if (verbs.containsKey(actionVerb)){
-            act = verbs.get(actionVerb);
+        for (String verb : verbLang){
+            if (verb.contains(actionVerb)){act = verb;}
         }
         //will remove the preposition to sanitize input
         for (String preposition: words) {
@@ -38,22 +39,22 @@ public class Verbs {
 
         //will execute different actions depending on the verb
             switch (act) {
-                case 0 -> {
+                case "" -> {
                     System.out.println("Cannot resolve \"" + actionVerb + "\". Try one of the following: ");
                     for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
                         System.out.println("  - " + entry.getKey());
                     }
                 }
             //going somewhere
-            case 1 -> Go.playerMove(actionVerb, trailingAction);
+            case "go" -> Go.playerMove(actionVerb, trailingAction);
             //take the item and put in inventory
             //then check if the obtained item has triggered a progress in the story
-            case 2 -> {
+            case "take" -> {
                 Inventory.takeItem(trailingAction.trim());
                 Progress.checkStage(actionVerb, trailingAction);
             }
             //This is displaying the inventory
-            case 3 -> Inventory.displayInventory();
+            case "inventory" -> Inventory.displayInventory();
             //checking if weapon equipped, if so then attack
             //TODO: needs to be improved upon to handle npc
 //            case 4 ->{
@@ -68,15 +69,15 @@ public class Verbs {
 //            }
             //Using the item, if edible then remove from inventory
             //Will also check if using some item will progress the story
-            case 5 -> {
+            case "use" -> {
                 Inventory.useItem(trailingAction.trim());
                 Progress.checkStage(actionVerb, trailingAction);
             }
             //This looks around the room inventory for items the user can take, if in inventory cannot take
-            case 6 -> Inventory.roomInventoryLook();
+            case "look" -> Inventory.roomInventoryLook();
 
-            //tells the user where they are
-            case 7 -> {
+            //tells the user their health, weapond equipped, and where they are
+            case "status" -> {
                     System.out.println("Your HP: " + player.getCurrentHP());
                     System.out.println("Your Weapon: " + player.getWeaponEquipped());
                     System.out.println("You are at the " + player.getCurrentPosition());
@@ -85,7 +86,7 @@ public class Verbs {
                     }
             }
             //save actionVerb
-            case 8 -> {
+            case "save" -> {
                 if(trailingAction.equalsIgnoreCase("")){
                     System.out.println("'Save' action must be followed by a number between 1 to 10!");
                     return;
@@ -107,7 +108,7 @@ public class Verbs {
                 System.out.println("You have sucessfully saved!\n");
             }
             //load action verb
-            case 9 -> {
+            case "load" -> {
                 if(trailingAction.equals("")){
                     System.out.println("'Load' action must be followed by a number between 1 to 10!");
                     return;
@@ -136,13 +137,13 @@ public class Verbs {
                 System.out.println(("Load completed!"));
             }
             //start a new game
-            case 10 -> {
+            case "start"-> {
                     GameProgressionData start = JsonDataObjList.getInstance().getListOfProgressionData().get(0);
                     JsonDataObjList.getInstance().resetPlayerStatusToDefault();
                     player = JsonDataObjList.getInstance().getPlayerStatus();
                     System.out.println(start.worldAnnoucement);
             }
-            case 11 -> Progress.checkNpcs(actionVerb, trailingAction.trim());
+            case "talk" -> Progress.checkNpcs(actionVerb, trailingAction.trim());
         }
     }
 

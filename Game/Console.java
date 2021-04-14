@@ -196,7 +196,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     public static void main(String[] arg)
     {
         new Console(); // create console with no reference
-        Verbs.init();
+//        Verbs.init();
 
     }
 
