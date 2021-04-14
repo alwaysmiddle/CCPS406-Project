@@ -83,12 +83,6 @@ public class Progress {
             }
             stageProgressed = false;
         }
-        //check npc in the room
-        //if not aggressive, then we do:
-        //load npc description
-        //display choices of actions: talk, attack
-        //there is an aggressive npc
-        //we do combat
     }
 }
 

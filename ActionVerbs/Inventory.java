@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Inventory {
     private static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
     private static ArrayList<String> inventory = new ArrayList<>(Arrays.asList(player.getPlayerInventory()));
+    private static List<NPC> allNPC = JsonDataObjList.getInstance().getListOfNPCs();
 
     //wil display all items that are in the inventory, if there are none then default message
     public static void displayInventory(){
@@ -56,6 +58,7 @@ public class Inventory {
                     player.setUnderworld(true);
                     transport = "Underworld";
                 }
+                for (NPC npc: allNPC) {npc.setAggressive(player.isUnderworld());}
                 System.out.println("You have been transported to the " + transport);
             }
             inventory = new ArrayList<>(Arrays.asList(player.getPlayerInventory()));
