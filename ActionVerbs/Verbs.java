@@ -45,10 +45,7 @@ public class Verbs {
                     }
                 }
             //going somewhere
-            //TODO: CHECK PROGRESS
-            case 1 -> {
-                    Go.playerMove(actionVerb, trailingAction);
-            }
+            case 1 -> Go.playerMove(actionVerb, trailingAction);
             //take the item and put in inventory
             //then check if the obtained item has triggered a progress in the story
             case 2 -> {
@@ -56,9 +53,7 @@ public class Verbs {
                 Progress.checkStage(actionVerb, trailingAction);
             }
             //This is displaying the inventory
-            case 3 ->{
-                    Inventory.displayInventory();
-            }
+            case 3 -> Inventory.displayInventory();
             //checking if weapon equipped, if so then attack
             //TODO: needs to be improved upon to handle npc
 //            case 4 ->{
@@ -78,9 +73,8 @@ public class Verbs {
                 Progress.checkStage(actionVerb, trailingAction);
             }
             //This looks around the room inventory for items the user can take, if in inventory cannot take
-            case 6 -> {
-                    Inventory.roomInventoryLook();
-            }
+            case 6 -> Inventory.roomInventoryLook();
+
             //tells the user where they are
             case 7 -> {
                     System.out.println("Your HP: " + player.getCurrentHP());
@@ -148,10 +142,7 @@ public class Verbs {
                     player = JsonDataObjList.getInstance().getPlayerStatus();
                     System.out.println(start.worldAnnoucement);
             }
-            case 11 -> {
-                    Progress.checkNpcs(actionVerb, trailingAction.trim());
-
-            }
+            case 11 -> Progress.checkNpcs(actionVerb, trailingAction.trim());
         }
     }
 
