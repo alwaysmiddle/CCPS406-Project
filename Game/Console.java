@@ -77,42 +77,16 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
             textArea.append("Couldn't redirect STDOUT to this console\n"+se.getMessage());
         }
 
-//        try
-//        {
-//            PipedOutputStream pout2=new PipedOutputStream(this.pin2);
-//            System.setErr(new PrintStream(pout2,true));
-//        }
-//        catch (java.io.IOException io)
-//        {
-//            textArea.append("Couldn't redirect STDERR to this console\n"+io.getMessage());
-//        }
-//        catch (SecurityException se)
-//        {
-//            textArea.append("Couldn't redirect STDERR to this console\n"+se.getMessage());
-//        }
-
         quit=false; // signals the Threads that they should exit
 
-        // Starting two separate threads to read from the PipedInputStreams
+        // Starting a thread to read from the PipedInputStreams
         //
         reader=new Thread(this);
         reader.setDaemon(true);
         reader.start();
-        //
-//        reader2=new Thread(this);
-//        reader2.setDaemon(true);
-//        reader2.start();
-
-        // testing part
-        // you may omit this part for your application
-        //
+        //starting message
         System.out.println("Welcome to Capulet Manor!\n\nShall we begin?!");
         System.out.println("Type Start to begin the game!");
-//        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-//        String[] fontNames=ge.getAvailableFontFamilyNames();
-//        for (String fontName : fontNames) System.out.println(fontName);
-        // Testing part: simple an error thrown anywhere in this JVM will be printed on the Console
-        // We do it with a separate Thread because we can't break a Thread used by the Console.
     }
 
 
@@ -148,16 +122,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
                 }
                 if (quit) return;
             }
-//            while (Thread.currentThread()==reader2)
-//            {
-//                try { this.wait(100);}catch(InterruptedException ie) {}
-//                if (pin2.available()!=0)
-//                {
-//                    String input=this.readLine(pin2);
-//                    textArea.append(input);
-//                }
-//                if (quit) return;
-//            }
         } catch (Exception e)
         {
             textArea.append("\nConsole reports an Internal error.");
@@ -187,16 +151,9 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         return input;
     }
 
-    public synchronized void updateStates(JTextArea consoleTextArea) throws Exception
-    {
-        //Here we updates all the backend state
-
-    }
-
     public static void main(String[] arg)
     {
         new Console(); // create console with no reference
-//        Verbs.init();
 
     }
 
@@ -215,12 +172,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
             Console.textArea.setText("");
             //textArea.append("Congrats, this somehow works.");
             Verbs.IdentifyInput(splitinput[0].toLowerCase(), String.join(" ",Arrays.copyOfRange(splitinput, 1, splitinput.length)));
-            //here we do checking for stage progression
-            try {
-                updateStates(this.txtArea);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
         }
 
     }
