@@ -170,7 +170,13 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     public static void main(String[] arg)
     {
         new Console(); // create console with no reference
-//        Verbs.init();
+
+        //testing dctionary reading
+        Map<String, Object> map = JsonDataFileIO.readJsonFileAsMap(GlobalReference.DICTIONARY_FILE_LOCATION);
+
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue().toString());
+        }
 
     }
 
@@ -185,7 +191,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         int id = e.getKeyCode();
         if(id==10){
             input = txtArea.getText();
-            CommandParsing.RunCommand(input);
+            //CommandParsing.RunCommand(input);
             //String[] splitinput = input.trim().split(" ");
             Console.textArea.setText("");
             //textArea.append("Congrats, this somehow works.");
