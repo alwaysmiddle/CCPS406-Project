@@ -87,17 +87,13 @@ public class Verbs {
                     }
             }
             //checking if weapon equipped, if so then attack
-            //TODO: needs to be improved upon to handle npc
-//            case 4 ->{
-//                    //if, then you tell them no
-//                    //check if npc is in the room first
-//                    //if npc is in the room, then do combat
-//
-//                    //create class if have time *****************
-//                    if (player.getWeaponEquipped() != null){
-//                        System.out.println("[You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.]\n");
-//                    }
-//            }
+            case 4 ->{
+                // public static NPC npc = JsonDataObjList.getSingleRoom("Room_name").getNpcInThisRooom();
+                String npc = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getNpcName();
+                if (player.getWeaponEquipped() != null && npc != null){
+                    Combat.doCombatWithNpc(player, npc);
+                }
+            }
             //Using the item, if edible then remove from inventory
             case 5 -> {
                 if(item != null) {
