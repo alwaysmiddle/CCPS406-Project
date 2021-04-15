@@ -9,7 +9,7 @@ public class Verbs {
         verbs.put("go", 1);
         verbs.put("take", 2);
         verbs.put("inventory", 3);
-        //verbs.put("attack", 4);
+        verbs.put("attack", 4);
         verbs.put("use", 5);
         verbs.put("eat", 5);
         verbs.put("look", 6);
@@ -89,9 +89,13 @@ public class Verbs {
             //checking if weapon equipped, if so then attack
             case 4 ->{
                 // public static NPC npc = JsonDataObjList.getSingleRoom("Room_name").getNpcInThisRooom();
-                String npc = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getNpcName();
-                if (player.getWeaponEquipped() != null && npc != null){
-                    Combat.doCombatWithNpc(player, npc);
+                NPC npc = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getNpcInThisRoom();
+                if (player.getWeaponValue() > 0 && npc != null){
+                    Combat.doCombatWithNpc(player, npc.getNpcName());
+                }
+                else {
+                    System.out.println("You do not have a weapon.");
+                    Combat.doHiding(player);
                 }
             }
             //Using the item, if edible then remove from inventory
@@ -182,7 +186,7 @@ public class Verbs {
                     GameProgressionData start = JsonDataObjList.getInstance().getListOfProgressionData().get(0);
                     JsonDataObjList.getInstance().resetPlayerStatusToDefault();
                     player = JsonDataObjList.getInstance().getPlayerStatus();
-                    System.out.println(start.worldAnnouncement);
+                    // System.out.println(start.worldAnnouncement);
             }
             case 11 -> {
                     if (trailingAction.contains("to")){

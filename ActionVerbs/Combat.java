@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Combat {
     public static void doCombatWithNpc(PlayerStatus player, String npcName){
         NPC npc = JsonDataObjList.getInstance().getSingleNPC(npcName);
@@ -21,7 +23,7 @@ public class Combat {
             if (playerHP > npcWeaponVal) {
                 // npc attacks back
                 player.setCurrentHP(playerHP - npcWeaponVal);
-                System.out.println("[" + npcName + " has used "+ npc.getWeaponEquipped() + "to attack. " + npcName + " has done "
+                System.out.println("[" + npcName + " has attacked and caused "
                     + npcWeaponVal + "pts in damage. You won!]\n");
             }
 
@@ -35,6 +37,9 @@ public class Combat {
 
     public static void doHiding(PlayerStatus player) {
         // go to a random connected room
-        player.setcurrentRoom(jsonObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomsConnected()[0]);
+        int arr = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomsConnected().length;
+        int var1 = Utilities.getRandomNumberUsingNextInt(0, arr-1);
+        player.setCurrentPosition(JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getRoomsConnected()[var1]);
+        JsonDataObjList.getInstance().Save();
     }
 }
