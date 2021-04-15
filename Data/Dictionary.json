@@ -1,0 +1,21 @@
+{
+  "verbs": {
+    "go": "1",
+    "inventory": "2",
+    "take": "3",
+    "use": "4",
+    "eat": "4"
+  },
+  "articles": {
+    "a": {},
+    "an": {},
+    "the": {}
+  },
+  "preppositions": {
+    "to": {},
+    "at": {},
+    "up": {},
+    "into": {},
+    "using": {}
+  }
+}

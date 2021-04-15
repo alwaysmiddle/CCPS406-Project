@@ -4,8 +4,8 @@ public class Verbs {
     //action verbs and the nextPositions the player can move, item names "borrowed"
     public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
-    private static final String[] words = {"to ", "at ", "up ", "into ", "using ", "the "};
-    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "look", "status", "save", "load", "restart", "talk", "start"};
+    private static final String[] words = {"to ", "at ", "up", "into ", "using"};
+    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "search", "status", "save", "load", "restart", "talk", "start"};
     public static void init(){
 //        verbs.put("go", 1);
 //        verbs.put("take", 2);
@@ -74,7 +74,7 @@ public class Verbs {
                 Progress.checkStage(actionVerb, trailingAction);
             }
             //This looks around the room inventory for items the user can take, if in inventory cannot take
-            case "look" -> Inventory.roomInventoryLook();
+            case "search" -> Inventory.roomInventoryLook();
 
             //tells the user their health, weapond equipped, and where they are
             case "status" -> {
@@ -141,7 +141,7 @@ public class Verbs {
                     GameProgressionData start = JsonDataObjList.getInstance().getListOfProgressionData().get(0);
                     JsonDataObjList.getInstance().resetPlayerStatusToDefault();
                     player = JsonDataObjList.getInstance().getPlayerStatus();
-                    System.out.println(start.worldAnnoucement);
+//                    System.out.println(start.worldAnnoucement);
             }
             case "talk" -> Progress.checkNpcs(actionVerb, trailingAction.trim());
         }

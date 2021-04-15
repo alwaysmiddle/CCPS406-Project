@@ -77,19 +77,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
             textArea.append("Couldn't redirect STDOUT to this console\n"+se.getMessage());
         }
 
-//        try
-//        {
-//            PipedOutputStream pout2=new PipedOutputStream(this.pin2);
-//            System.setErr(new PrintStream(pout2,true));
-//        }
-//        catch (java.io.IOException io)
-//        {
-//            textArea.append("Couldn't redirect STDERR to this console\n"+io.getMessage());
-//        }
-//        catch (SecurityException se)
-//        {
-//            textArea.append("Couldn't redirect STDERR to this console\n"+se.getMessage());
-//        }
 
         quit=false; // signals the Threads that they should exit
 
@@ -98,10 +85,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         reader=new Thread(this);
         reader.setDaemon(true);
         reader.start();
-        //
-//        reader2=new Thread(this);
-//        reader2.setDaemon(true);
-//        reader2.start();
 
         // testing part
         // you may omit this part for your application
@@ -148,16 +131,7 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
                 }
                 if (quit) return;
             }
-//            while (Thread.currentThread()==reader2)
-//            {
-//                try { this.wait(100);}catch(InterruptedException ie) {}
-//                if (pin2.available()!=0)
-//                {
-//                    String input=this.readLine(pin2);
-//                    textArea.append(input);
-//                }
-//                if (quit) return;
-//            }
+
         } catch (Exception e)
         {
             textArea.append("\nConsole reports an Internal error.");
@@ -210,17 +184,18 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     public void keyPressed(KeyEvent e) {
         int id = e.getKeyCode();
         if(id==10){
-            input = txtArea.getText().trim();
-            String[] splitinput = input.trim().split(" ");
+            input = txtArea.getText();
+            CommandParsing.RunCommand(input);
+            //String[] splitinput = input.trim().split(" ");
             Console.textArea.setText("");
             //textArea.append("Congrats, this somehow works.");
-            Verbs.IdentifyInput(splitinput[0].toLowerCase(), String.join(" ",Arrays.copyOfRange(splitinput, 1, splitinput.length)));
+            //Verbs.IdentifyInput(splitinput[0].toLowerCase(), String.join(" ",Arrays.copyOfRange(splitinput, 1, splitinput.length)));
             //here we do checking for stage progression
-            try {
-                updateStates(this.txtArea);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
+//            try {
+//                updateStates(this.txtArea);
+//            } catch (Exception exception) {
+//                exception.printStackTrace();
+//            }
         }
 
     }
