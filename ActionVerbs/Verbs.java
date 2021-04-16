@@ -4,23 +4,8 @@ public class Verbs {
     //action verbs and the nextPositions the player can move, item names "borrowed"
     public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
-    private static final String[] words = {"to ", "at ", "up ", "into ", "using ", "the "};
-    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "look", "status", "save", "load", "restart", "talk", "start"};
-    public static void init(){
-//        verbs.put("go", 1);
-//        verbs.put("take", 2);
-//        verbs.put("inventory", 3);
-//        //verbs.put("attack", 4);
-//        verbs.put("use", 5);
-//        verbs.put("eat", 5);
-//        verbs.put("look", 6);
-//        verbs.put("status", 7);
-//        verbs.put("save", 8);
-//        verbs.put("load", 9);
-//        verbs.put("restart", 10);
-//        verbs.put("start", 10);
-//        verbs.put("talk", 11);
-    }
+    private static final String[] words = {"at ", "up ", "into ", "using ", "the ", "to "};
+    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "look", "status", "save", "load", "restart", "talk", "start", "attack"};
 
     //compare user input with verbs and compare nextPosition for output
     public static void IdentifyInput(String actionVerb, String trailingAction){
@@ -69,10 +54,11 @@ public class Verbs {
             }
             //Using the item, if edible then remove from inventory
             //Will also check if using some item will progress the story
-            case "use" -> {
+            case "eat", "use" -> {
                 Inventory.useItem(trailingAction.trim());
                 Progress.checkStage(actionVerb, trailingAction);
             }
+
             //This looks around the room inventory for items the user can take, if in inventory cannot take
             case "look" -> Inventory.roomInventoryLook();
 
@@ -141,7 +127,7 @@ public class Verbs {
                     GameProgressionData start = JsonDataObjList.getInstance().getListOfProgressionData().get(0);
                     JsonDataObjList.getInstance().resetPlayerStatusToDefault();
                     player = JsonDataObjList.getInstance().getPlayerStatus();
-                    System.out.println(start.worldAnnoucement);
+                    System.out.println(start.worldAnnouncement);
             }
             case "talk" -> Progress.checkNpcs(actionVerb, trailingAction.trim());
         }

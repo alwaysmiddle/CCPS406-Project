@@ -145,16 +145,9 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         return input;
     }
 
-    public synchronized void updateStates(JTextArea consoleTextArea) throws Exception
-    {
-        // update backend state
-
-    }
-
     public static void main(String[] arg)
     {
         new Console(); // create console with no reference
-        Verbs.init();
 
     }
 
@@ -172,12 +165,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
             String[] splitinput = input.trim().split(" ");
             Console.textArea.setText("");
             Verbs.IdentifyInput(splitinput[0].toLowerCase(), String.join(" ",Arrays.copyOfRange(splitinput, 1, splitinput.length)));
-            // check for stage progression
-            try {
-                updateStates(this.txtArea);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
         }
     }
 

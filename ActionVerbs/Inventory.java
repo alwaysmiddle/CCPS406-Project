@@ -27,10 +27,12 @@ public class Inventory {
         if (item != null && !inventory.contains(item.getItemName())) {
             System.out.println("Congratulations. You have finally obtained " + item.getItemName() + ".");
             inventory.add(item.getItemName());
-            if (item.isWeapon()) {
+            if (item.isWeapon()){
                 player.setWeaponEquipped(item.getItemName());
+                player.setWeaponValue(item.getIntValue());
             }
             JsonDataObjList.getInstance().getPlayerStatus().setPlayerInventory(inventory.toArray(String[]::new));
+            JsonDataObjList.getInstance().Save();
         }else{
             System.out.println("You cannot take "+ itemInput);
         }
@@ -42,13 +44,15 @@ public class Inventory {
         Item item = JsonDataObjList.getInstance().getSingleItem(itemInput);
         if(item != null && inventory.contains(item.getItemName())) {
             System.out.println(item.getItemDescription() + "\n");
-            if (item.isEdible()) {
+            //eat the food, update health and inventory
+            if (item.isEdible()){
                 System.out.println("[You have used the " + item.getItemName() + ". Not the greatest meal, but it'll do. " +
-                        "Your health has increased 2 points.]\n");
-                player.setCurrentHP(player.getCurrentHP()+2);
+                        "Your health has increased " + item.getIntValue() + " points.]\n");
+                player.setCurrentHP(player.getCurrentHP()+ item.getIntValue());
                 inventory.remove(item.getItemName());
                 player.setPlayerInventory(inventory.toArray(new String[0]));
                 displayInventory();
+                //transport player to the other world
             }else if(item.getItemName().equalsIgnoreCase("Gemstone")){
                 String transport;
                 if (player.isUnderworld()){
@@ -62,6 +66,7 @@ public class Inventory {
                 System.out.println("You have been transported to the " + transport);
             }
             inventory = new ArrayList<>(Arrays.asList(player.getPlayerInventory()));
+            JsonDataObjList.getInstance().Save();
         }else{
             System.out.println("You can't use " + itemInput);
         }

@@ -4,6 +4,7 @@
     "itemDescription": "A dull blade dropped by a missing chef.",
     "progressRequirement" : "",
     "isWeapon": true,
+    "intVal": 4,
     "edible": false
   },
   {
@@ -11,6 +12,7 @@
     "itemDescription": "This key belongs to a Lady Capulet. Used to open her secret dia- *ahem* journal.",
     "progressRequirement" : "",
     "isWeapon": false,
+    "intVal": 0,
     "edible": false
   },
   {
@@ -18,6 +20,7 @@
     "itemDescription": "The inscription reads \"This diary belongs to Lady Capulet of the Capulet family. Any trespassing eyes will be beheaded.\"",
     "progressRequirement" : "Key",
     "isWeapon": false,
+    "intVal": 0,
     "edible": false
   },
   {
@@ -25,6 +28,7 @@
     "itemDescription": "Stale bread bought by the cook at a cheap price. Don't expect better for dinner.",
     "progressRequirement" : "",
     "isWeapon": false,
+    "intVal": 3,
     "edible": true
   },
   {
@@ -32,6 +36,7 @@
     "itemDescription": "A mythical and luminous gem that holds powers to unlock a gate of some sort. ",
     "progressRequirement" : "Gemstone",
     "isWeapon": false,
+    "intVal": 0,
     "edible": false
   },
   {
@@ -39,6 +44,7 @@
     "itemDescription": "A newly bought tool by the groundskeeper. Make sure he doesn't find out you have it.",
     "progressRequirement" : "",
     "isWeapon": true,
+    "intVal": 3,
     "edible": false
   },
   {
@@ -46,6 +52,7 @@
     "itemDescription": "A gun with a few bullets. Every shot is fatal. You've been warned.",
     "progressRequirement" : "",
     "isWeapon": true,
+    "intVal": 10,
     "edible": false
   },
   {
@@ -53,6 +60,7 @@
     "itemDescription": "A handheld wrap with carne asada, black beans, brown rice and vegetables.",
     "progressRequirement" : "",
     "isWeapon": false,
+    "intVal": 5,
     "edible": true
   }
 ]

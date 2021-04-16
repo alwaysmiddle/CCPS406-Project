@@ -3,6 +3,7 @@ public class Item {
     private String itemDescription;
     private String progressRequirement;
     private boolean isWeapon;
+    private int intVal;
     private boolean edible;
 
     ///////////////// getters //////////////////////////////
@@ -19,6 +20,8 @@ public class Item {
     public boolean isWeapon() {
         return this.isWeapon;
     }
+
+    public int getIntValue() {return this.intVal;}
 
     public boolean isEdible() {
         return this.edible;
