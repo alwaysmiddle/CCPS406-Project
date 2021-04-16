@@ -46,6 +46,7 @@ public class JsonDataObjList {
 
     public void Save(Integer saveSlot) {
         _playerState.setSaveFileId(saveSlot);
+        refreshPlayersObject();
         _players.set(saveSlot, _playerState);
         JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
     }
@@ -71,16 +72,8 @@ public class JsonDataObjList {
         return _mapOfRooms.get(roomName.trim().toLowerCase());
     }
 
-    public Map<String, Room> getRoomsHashmap() { // <roomName, roomObject>
-        return _mapOfRooms;
-    }
-
     public Item getSingleItem(String itemName) {
         return _mapOfItems.get(itemName.trim().toLowerCase());
-    }
-
-    public Map<String, Item> getItemsHashmap() { // <itemName, itemObject>
-        return _mapOfItems;
     }
 
     public NPC getSingleNPC(String npcName) {
@@ -98,6 +91,10 @@ public class JsonDataObjList {
 
     public void UpdateNpcJson() {
         JsonDataFileIO.getInstance().writeJsonFile(_listOfNPCs, GlobalReference.NPC_FILE_LOCATION);
+    }
+
+    private void refreshPlayersObject(){
+        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
     }
 
     public static JsonDataObjList getInstance() {

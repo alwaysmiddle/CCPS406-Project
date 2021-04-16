@@ -19,3 +19,4 @@ public class Utilities {
         return random.nextInt(max - min) + min;
     }
 }
+

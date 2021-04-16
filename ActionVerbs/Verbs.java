@@ -2,33 +2,35 @@ import java.util.*;
 
 public class Verbs {
     //action verbs and the nextPositions the player can move, item names "borrowed"
-    public static final HashMap<String, Integer> verbs = new HashMap<>();
+//    public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
-    private static final String[] words = {"at ", "up ", "into ", "using ", "the ", "to "};
-    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "look", "status", "save", "load", "restart", "talk", "start", "attack"};
+//    private static final String[] words = {"at ", "up ", "into ", "using ", "the ", "to "};
+//    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "look", "status", "save", "load", "restart", "talk", "start", "attack"};
 
     //compare user input with verbs and compare nextPosition for output
     public static void IdentifyInput(String actionVerb, String trailingAction){
         String act = "";
-
-        //take split input to compare against verbs
-        for (String verb : verbLang){
-            if (verb.contains(actionVerb)){act = verb;}
-        }
-        //will remove the preposition to sanitize input
-        for (String preposition: words) {
-            if (trailingAction.contains(preposition)){
-                trailingAction = trailingAction.replace(preposition, "").trim();
-            }
-        }
+        act = actionVerb;
+//        //take split input to compare against verbs
+//        for (String verb : verbLang){
+//            if (verb.contains(actionVerb)){act = verb;}
+//        }
+//        //will remove the preposition to sanitize input
+//        for (String preposition: words) {
+//            if (trailingAction.contains(preposition)){
+//                trailingAction = trailingAction.replace(preposition, "").trim();
+//            }
+//        }
 
         //will execute different actions depending on the verb
             switch (act) {
                 case "" -> {
                     System.out.println("Cannot resolve \"" + actionVerb + "\". Try one of the following: ");
-                    for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
-                        System.out.println("  - " + entry.getKey());
-                    }
+                    CommandParsing.PrintCommands();
+
+//                    for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
+//                        System.out.println("  - " + entry.getKey());
+//                    }
                 }
             //going somewhere
             case "go" -> Go.playerMove(actionVerb, trailingAction);

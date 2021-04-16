@@ -4,5 +4,6 @@ public class GlobalReference {
     public static final String DEFAULT_PLAYER_STATUS_FILE_LOCATION = "Data/playerStatus.json";
     public static final String PLAYER_STATUS_SAVEFILE_LOCATION = "Saves/playerSaves.json";
     public static final String PROGRESSION_FILE_LOCATION = "Data/gameProgressionData.json";
+    public static final String DICTIONARY_FILE_LOCATION = "Data/dictionary.json";
     public static final String NPC_FILE_LOCATION = "Data/npc.json";
 }
