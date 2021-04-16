@@ -2,12 +2,11 @@ import com.google.gson.reflect.TypeToken;
 import java.util.*;
 
 public class JsonDataObjList {
-    //private fields
     private static Map<String, Room> _mapOfRooms = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     private static Map<String, Item> _mapOfItems = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     private static Map<String, NPC> _mapOfNpcs = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-
     private static PlayerStatus _player = new PlayerStatus();
+    private static JsonDataObjList singletonInstance = null;
     private List<Room> _listOfRooms;
     private List<Item> _listOfItems;
     private List<PlayerStatus> _players;
@@ -15,119 +14,94 @@ public class JsonDataObjList {
     private List<NPC> _listOfNPCs;
     private List<GameProgressionData> _listOfProgressData;
 
-    private static JsonDataObjList singletonInstance = null;
+    public JsonDataObjList() { // load json obj[] into public fields
 
-    //constructor
-    public JsonDataObjList() {
-        //load the list of json objects into public fields for rest of the program to work with
-
-        //Load Player status of the player's choice of saves
         _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
         _playerState = _players.get(0);
 
-        //rooms
         _listOfRooms = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Room>>(){}.getType(), GlobalReference.ROOM_JSON_FILE_LOCATION);
         for (Room r: _listOfRooms) {
             _mapOfRooms.put(r.getRoomName().toLowerCase(), r);
         }
 
-        //items
         _listOfItems = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<Item>>(){}.getType(), GlobalReference.ITEM_JSON_FILE_LOCATION);
         for (Item t: _listOfItems) {
             _mapOfItems.put(t.getItemName().toLowerCase(), t);
         }
 
-        //NPCs
         _listOfNPCs = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<NPC>>(){}.getType(), GlobalReference.NPC_FILE_LOCATION);
 
-        //Progression data
         _listOfProgressData = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<GameProgressionData>>(){}.getType(), GlobalReference.PROGRESSION_FILE_LOCATION);
     }
 
-    //Game scirpt or progresion
-    public List<GameProgressionData> getListOfProgressionData(){
+    public List<GameProgressionData> getListOfProgressionData() {
         return _listOfProgressData;
     }
 
-    //region Save and load
-    public void Save()
-    {
+    public void Save() {
         _playerState.setSaveFileId(0);
         _players.set(0, _playerState);
         JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
     }
 
-    public void Save(Integer saveSlot)
-    {
+    public void Save(Integer saveSlot) {
         _playerState.setSaveFileId(saveSlot);
         _players.set(saveSlot, _playerState);
         JsonDataFileIO.writeJsonFile(_players, GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
     }
 
-    public void Load(Integer saveSlot)
-    {
+    public void Load(Integer saveSlot) {
+        _players = JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.PLAYER_STATUS_SAVEFILE_LOCATION);
         _playerState = _players.get(saveSlot);
         _players.set(0, _playerState);
     }
 
-    //endregion
-
-    public void resetPlayerStatusToDefault(){
+    public void resetPlayerStatusToDefault() {
         PlayerStatus defaultPlayerStatus = (PlayerStatus) JsonDataFileIO.getInstance().readJsonFile(new TypeToken<List<PlayerStatus>>(){}.getType(), GlobalReference.DEFAULT_PLAYER_STATUS_FILE_LOCATION).get(0);
         _players.set(0, defaultPlayerStatus);
         _playerState = _players.get(0);
     }
 
-    public PlayerStatus getPlayerStatus()
-    {
+    public PlayerStatus getPlayerStatus() {
         return _playerState;
     }
 
-    //map format is: <room_name, room_object>, getSingle will try to match the input with key and return object
-    //returns null if this method fails to find the passed field within dictionary. Case insensitive.
-    public Room getSingleRoom(String roomName){
+    public Room getSingleRoom(String roomName) {
+        // return null if it fails to find
         return _mapOfRooms.get(roomName.trim().toLowerCase());
     }
 
-    public Map<String, Room> getRoomsHashmap() {
-        //return hashmap
+    public Map<String, Room> getRoomsHashmap() { // <roomName, roomObject>
         return _mapOfRooms;
     }
 
-    //map format is: <item_name, item_object>, getSingle will try to match the input with key and return object
-    //returns null if this method fails to find the passed field within dictionary. Case insensitive.
-    public Item getSingleItem(String itemName){
+    public Item getSingleItem(String itemName) {
         return _mapOfItems.get(itemName.trim().toLowerCase());
     }
 
-    public Map<String, Item> getItemsHashmap()
-    {
-        //return hashmap
+    public Map<String, Item> getItemsHashmap() { // <itemName, itemObject>
         return _mapOfItems;
     }
 
-    //Npc section
     public NPC getSingleNPC(String npcName) {
-        //return npc when name matches.
-        for (NPC k: _listOfNPCs){
-            if(k.getNpcName().equalsIgnoreCase(npcName)){
-                return k;
+        for (NPC npc: _listOfNPCs){
+            if (npc.getNpcName().equalsIgnoreCase(npcName)) {
+                return npc;
             }
         }
-
         return null;
     }
 
-    public List<NPC> getListOfNPCs(){return _listOfNPCs;}
+    public List<NPC> getListOfNPCs() {
+        return _listOfNPCs;
+    }
 
-    //change the default npc json file.
-    public void UpdateNpcJson(){
+    public void UpdateNpcJson() {
         JsonDataFileIO.getInstance().writeJsonFile(_listOfNPCs, GlobalReference.NPC_FILE_LOCATION);
     }
 
-    public static JsonDataObjList getInstance()
-    {
-        if (singletonInstance == null){
+    public static JsonDataObjList getInstance() {
+        if (singletonInstance == null) {
             singletonInstance = new JsonDataObjList();
         }
         return singletonInstance;

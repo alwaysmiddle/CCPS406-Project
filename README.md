@@ -4,7 +4,7 @@
 ## Group Members (Firstname Lastname)
 - Afsheen Jamal Talwani
 - John Bradley
-- Shizhong Yu 
+- Shizhong Yu
 - Xiaomin Luo
 
 

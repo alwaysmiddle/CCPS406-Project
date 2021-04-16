@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
-//singleton object only 1 instance exists per game.
+// singleton object
 public class JsonDataFileIO {
     private static JsonDataFileIO singletonInstance = null;
 
@@ -28,7 +28,7 @@ public class JsonDataFileIO {
     public static <T> void writeJsonFile(List<T> objToWrite, String filePath)
     {
         Gson gson = new GsonBuilder().serializeNulls().create();
-        //write file to game folder here
+
         try (FileWriter writer = new FileWriter(filePath)) {
             gson.toJson(objToWrite, writer);
         } catch (IOException e) {

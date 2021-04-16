@@ -1,5 +1,4 @@
 public class NPC {
-    //private fields
     private String npcName;
     private int currentHP;
     private int maxHP;
@@ -8,7 +7,7 @@ public class NPC {
     private int weaponValue;
     private boolean isAggressive;
 
-    //region getters
+    //////////////////// getters //////////////////////////////////
     public String getNpcName() {
         return npcName;
     }
@@ -36,9 +35,8 @@ public class NPC {
     public boolean isAggressive() {
         return isAggressive;
     }
-    //endregion
 
-    //region setters
+    //////////////////// setters ////////////////////////////////////
 
     public void setNpcName(String npcName) {
         this.npcName = npcName;
@@ -67,6 +65,4 @@ public class NPC {
     public void setAggressive(boolean aggressive) {
         isAggressive = aggressive;
     }
-
-    //endregion
 }

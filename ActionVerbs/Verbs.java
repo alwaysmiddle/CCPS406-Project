@@ -56,17 +56,17 @@ public class Verbs {
             //This is displaying the inventory
             case "inventory" -> Inventory.displayInventory();
             //checking if weapon equipped, if so then attack
-            //TODO: needs to be improved upon to handle npc
-//            case 4 ->{
-//                    //if, then you tell them no
-//                    //check if npc is in the room first
-//                    //if npc is in the room, then do combat
-//
-//                    //create class if have time *****************
-//                    if (player.getWeaponEquipped() != null){
-//                        System.out.println("[You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.]\n");
-//                    }
-//            }
+            case "attack" ->{
+                // public static NPC npc = JsonDataObjList.getSingleRoom("Room_name").getNpcInThisRooom();
+                NPC npc = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getNpcInThisRoom();
+                if (player.getWeaponValue() > 0 && npc != null){
+                    Combat.doCombatWithNpc(player, npc.getNpcName());
+                }
+                else {
+                    System.out.println("You do not have a weapon.");
+                    Combat.doHiding(player);
+                }
+            }
             //Using the item, if edible then remove from inventory
             //Will also check if using some item will progress the story
             case "use" -> {
