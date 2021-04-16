@@ -35,11 +35,7 @@ public class CommandParsing {
         String s = "ok";
         String lowstr = inputStr.trim().toLowerCase();
 
-        if(lowstr.equals("")){
-            for (Map.Entry<String, Integer> entry : verbsMap.entrySet()) {
-                System.out.println(entry.getKey());
-            }
-        }else{
+
             wordlist = WordList(lowstr);
             ParseCommand(wordlist);
             Verbs.IdentifyInput(getVerb(), getSubject());
@@ -47,7 +43,7 @@ public class CommandParsing {
 //            wordlist.forEach((astr) -> System.out.println(astr));
 //            System.out.println("Verb is: " + getVerb());
 //            System.out.println("Subject is: " + getSubject());
-        }
+
 
     }
 
@@ -66,6 +62,12 @@ public class CommandParsing {
             if (!verbsMap.containsKey(s) && !prepositionsMap.containsKey(s) && !articlesMap.containsKey(s)){
                 subject.add(s);
             }
+        }
+    }
+
+    public static void PrintCommands(){
+        for (Map.Entry<String, Integer> entry : verbsMap.entrySet()) {
+            System.out.println("  - " + entry.getKey());
         }
     }
 

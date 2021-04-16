@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Verbs {
     //action verbs and the nextPositions the player can move, item names "borrowed"
-    public static final HashMap<String, Integer> verbs = new HashMap<>();
+//    public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
 //    private static final String[] words = {"at ", "up ", "into ", "using ", "the ", "to "};
 //    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "look", "status", "save", "load", "restart", "talk", "start", "attack"};
@@ -26,9 +26,11 @@ public class Verbs {
             switch (act) {
                 case "" -> {
                     System.out.println("Cannot resolve \"" + actionVerb + "\". Try one of the following: ");
-                    for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
-                        System.out.println("  - " + entry.getKey());
-                    }
+                    CommandParsing.PrintCommands();
+
+//                    for (Map.Entry<String, Integer> entry : verbs.entrySet()) {
+//                        System.out.println("  - " + entry.getKey());
+//                    }
                 }
             //going somewhere
             case "go" -> Go.playerMove(actionVerb, trailingAction);
