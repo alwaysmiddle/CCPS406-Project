@@ -4,39 +4,23 @@ public class Verbs {
     //action verbs and the nextPositions the player can move, item names "borrowed"
     public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
-//    private static final String[] words = {"to ", "at ", "up", "into ", "using"};
-//    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "search", "status", "save", "load", "restart", "talk", "start"};
-    public static void init(){
-//        verbs.put("go", 1);
-//        verbs.put("take", 2);
-//        verbs.put("inventory", 3);
-//        //verbs.put("attack", 4);
-//        verbs.put("use", 5);
-//        verbs.put("eat", 5);
-//        verbs.put("look", 6);
-//        verbs.put("status", 7);
-//        verbs.put("save", 8);
-//        verbs.put("load", 9);
-//        verbs.put("restart", 10);
-//        verbs.put("start", 10);
-//        verbs.put("talk", 11);
-    }
+    private static final String[] words = {"at ", "up ", "into ", "using ", "the ", "to "};
+    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "look", "status", "save", "load", "restart", "talk", "start", "attack"};
 
     //compare user input with verbs and compare nextPosition for output
     public static void IdentifyInput(String actionVerb, String trailingAction){
         String act = "";
 
-//        //take split input to compare against verbs
-//        for (String verb : verbLang){
-//            if (verb.contains(actionVerb)){act = verb;}
-//        }
-//        //will remove the preposition to sanitize input
-//        for (String preposition: words) {
-//            if (trailingAction.contains(preposition)){
-//                trailingAction = trailingAction.replace(preposition, "").trim();
-//            }
-//        }
-        act = actionVerb;
+        //take split input to compare against verbs
+        for (String verb : verbLang){
+            if (verb.contains(actionVerb)){act = verb;}
+        }
+        //will remove the preposition to sanitize input
+        for (String preposition: words) {
+            if (trailingAction.contains(preposition)){
+                trailingAction = trailingAction.replace(preposition, "").trim();
+            }
+        }
 
         //will execute different actions depending on the verb
             switch (act) {
@@ -57,25 +41,26 @@ public class Verbs {
             //This is displaying the inventory
             case "inventory" -> Inventory.displayInventory();
             //checking if weapon equipped, if so then attack
-            //TODO: needs to be improved upon to handle npc
-//            case 4 ->{
-//                    //if, then you tell them no
-//                    //check if npc is in the room first
-//                    //if npc is in the room, then do combat
-//
-//                    //create class if have time *****************
-//                    if (player.getWeaponEquipped() != null){
-//                        System.out.println("[You have used "+ player.getWeaponEquipped() + "to attack. You have done " + player.getWeaponValue() + "pts in damage.]\n");
-//                    }
-//            }
+            case "attack" ->{
+                // public static NPC npc = JsonDataObjList.getSingleRoom("Room_name").getNpcInThisRooom();
+                NPC npc = JsonDataObjList.getInstance().getSingleRoom(player.getCurrentPosition()).getNpcInThisRoom();
+                if (player.getWeaponValue() > 0 && npc != null){
+                    Combat.doCombatWithNpc(player, npc.getNpcName());
+                }
+                else {
+                    System.out.println("You do not have a weapon.");
+                    Combat.doHiding(player);
+                }
+            }
             //Using the item, if edible then remove from inventory
             //Will also check if using some item will progress the story
-            case "use" -> {
+            case "eat", "use" -> {
                 Inventory.useItem(trailingAction.trim());
                 Progress.checkStage(actionVerb, trailingAction);
             }
+
             //This looks around the room inventory for items the user can take, if in inventory cannot take
-            case "search" -> Inventory.roomInventoryLook();
+            case "look" -> Inventory.roomInventoryLook();
 
             //tells the user their health, weapond equipped, and where they are
             case "status" -> {
@@ -142,7 +127,7 @@ public class Verbs {
                     GameProgressionData start = JsonDataObjList.getInstance().getListOfProgressionData().get(0);
                     JsonDataObjList.getInstance().resetPlayerStatusToDefault();
                     player = JsonDataObjList.getInstance().getPlayerStatus();
-//                    System.out.println(start.worldAnnoucement);
+                    System.out.println(start.worldAnnouncement);
             }
             case "talk" -> Progress.checkNpcs(actionVerb, trailingAction.trim());
         }
