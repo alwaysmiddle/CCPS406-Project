@@ -4,7 +4,14 @@
     "inventory": "2",
     "take": "3",
     "use": "4",
-    "eat": "4"
+    "eat": "4",
+    "search": "5",
+    "status": "6",
+    "start" : "7",
+    "restart" : "7",
+    "talk" : "8",
+    "save" : "9",
+    "load" : "10"
   },
   "articles": {
     "a": "0",

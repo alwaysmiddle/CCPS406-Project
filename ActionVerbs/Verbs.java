@@ -4,8 +4,8 @@ public class Verbs {
     //action verbs and the nextPositions the player can move, item names "borrowed"
     public static final HashMap<String, Integer> verbs = new HashMap<>();
     public static PlayerStatus player = JsonDataObjList.getInstance().getPlayerStatus();
-    private static final String[] words = {"to ", "at ", "up", "into ", "using"};
-    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "search", "status", "save", "load", "restart", "talk", "start"};
+//    private static final String[] words = {"to ", "at ", "up", "into ", "using"};
+//    private static final String[] verbLang = {"go", "take", "inventory", "use", "eat", "search", "status", "save", "load", "restart", "talk", "start"};
     public static void init(){
 //        verbs.put("go", 1);
 //        verbs.put("take", 2);
@@ -26,16 +26,17 @@ public class Verbs {
     public static void IdentifyInput(String actionVerb, String trailingAction){
         String act = "";
 
-        //take split input to compare against verbs
-        for (String verb : verbLang){
-            if (verb.contains(actionVerb)){act = verb;}
-        }
-        //will remove the preposition to sanitize input
-        for (String preposition: words) {
-            if (trailingAction.contains(preposition)){
-                trailingAction = trailingAction.replace(preposition, "").trim();
-            }
-        }
+//        //take split input to compare against verbs
+//        for (String verb : verbLang){
+//            if (verb.contains(actionVerb)){act = verb;}
+//        }
+//        //will remove the preposition to sanitize input
+//        for (String preposition: words) {
+//            if (trailingAction.contains(preposition)){
+//                trailingAction = trailingAction.replace(preposition, "").trim();
+//            }
+//        }
+        act = actionVerb;
 
         //will execute different actions depending on the verb
             switch (act) {

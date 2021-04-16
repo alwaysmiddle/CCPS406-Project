@@ -28,7 +28,7 @@ public class CommandParsing {
         return strList;
     }
 
-    public static String RunCommand(String inputStr){
+    public static void RunCommand(String inputStr){
         initialize();
 
         List<String> wordlist;
@@ -41,12 +41,14 @@ public class CommandParsing {
             }
         }else{
             wordlist = WordList(lowstr);
-            wordlist.forEach((astr) -> System.out.println(astr));
             ParseCommand(wordlist);
-            System.out.println("Verb is: " + getVerb());
-            System.out.println("Subject is: " + getSubject());
+            Verbs.IdentifyInput(getVerb(), getSubject());
+
+//            wordlist.forEach((astr) -> System.out.println(astr));
+//            System.out.println("Verb is: " + getVerb());
+//            System.out.println("Subject is: " + getSubject());
         }
-        return s;
+
     }
 
     public static void ParseCommand(List<String> wordList){

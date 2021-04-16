@@ -195,16 +195,14 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
             input = txtArea.getText();
 
             CommandParsing.RunCommand(input);
-            //String[] splitinput = input.trim().split(" ");
             Console.textArea.setText("");
-            //textArea.append("Congrats, this somehow works.");
-            //Verbs.IdentifyInput(splitinput[0].toLowerCase(), String.join(" ",Arrays.copyOfRange(splitinput, 1, splitinput.length)));
+
             //here we do checking for stage progression
-//            try {
-//                updateStates(this.txtArea);
-//            } catch (Exception exception) {
-//                exception.printStackTrace();
-//            }
+            try {
+                updateStates(this.txtArea);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
 
     }
