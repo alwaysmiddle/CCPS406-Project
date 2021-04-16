@@ -170,16 +170,6 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
     public static void main(String[] arg)
     {
         new Console(); // create console with no reference
-
-        //testing dctionary reading
-        Map<String, Object> jsonFile = JsonDataFileIO.readJsonFileAsMap(GlobalReference.DICTIONARY_FILE_LOCATION);
-        Map<String, Integer> verbsMap = (Map<String, Integer>) jsonFile.get("verbs");
-
-        System.out.println(verbsMap == null);
-        for (Map.Entry<String, Integer> entry : verbsMap.entrySet()) {
-            System.out.println(entry.getKey() + ":" + String.valueOf(entry.getValue()));
-        }
-
     }
 
     //region keyboard trigger events
