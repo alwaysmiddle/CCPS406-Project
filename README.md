@@ -7,8 +7,6 @@
 - Shizhong Yu
 - Xiaomin Luo
 
-
-
 ## Foreword
 Welcome to Group Kidnapped Father, this is the text based game project for CCPS406 - introduction to software engienering course. 
 
@@ -24,3 +22,6 @@ The story document which describes the general storyline can be found [here.](ht
 
 ## Data Structure Description
 A detailed description of the game's underlying data can be found [here.](https://docs.google.com/document/d/1ir9RjZEOMWVO4bS8MEblBhBFeny4-_Tt_HsWAkCFUFA)
+
+## State Diagram
+A state diagrams of the game's underlying data can be found [here.](https://drive.google.com/drive/u/2/folders/1D5JSjeyxpphULG4jKjcMJb-1p7ltEoa3)
