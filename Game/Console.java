@@ -172,10 +172,12 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         new Console(); // create console with no reference
 
         //testing dctionary reading
-        Map<String, Object> map = JsonDataFileIO.readJsonFileAsMap(GlobalReference.DICTIONARY_FILE_LOCATION);
+        Map<String, Object> jsonFile = JsonDataFileIO.readJsonFileAsMap(GlobalReference.DICTIONARY_FILE_LOCATION);
+        Map<String, Integer> verbsMap = (Map<String, Integer>) jsonFile.get("verbs");
 
-        for (Map.Entry<String, Object> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ":" + entry.getValue().toString());
+        System.out.println(verbsMap == null);
+        for (Map.Entry<String, Integer> entry : verbsMap.entrySet()) {
+            System.out.println(entry.getKey() + ":" + String.valueOf(entry.getValue()));
         }
 
     }
@@ -191,7 +193,8 @@ public class Console extends WindowAdapter implements WindowListener, Runnable, 
         int id = e.getKeyCode();
         if(id==10){
             input = txtArea.getText();
-            //CommandParsing.RunCommand(input);
+
+            CommandParsing.RunCommand(input);
             //String[] splitinput = input.trim().split(" ");
             Console.textArea.setText("");
             //textArea.append("Congrats, this somehow works.");

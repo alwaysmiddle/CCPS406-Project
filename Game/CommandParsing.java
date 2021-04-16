@@ -2,11 +2,20 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class CommandParsing {
-    private static final String[] Verbs = {"go", "take", "inventory", "use", "eat", "look", "status", "save", "load", "restart", "talk", "start"};
-    private static final String[] Prepositions = {"to", "at", "up", "into", "using"};
-    private static final String[] Articles = {"a", "an", "the"};
+    private static Map<String, Integer> verbsMap;
+    private static Map<String, Integer> prepositionsMap;
+    private static Map<String, Integer> articlesMap;
+    private static List<String> subject;
+    private static String verb;
 
-    public static List<String> WordList(String input){
+    private static void initialize() {
+        Map<String, Object> jsonFile = JsonDataFileIO.readJsonFileAsMap(GlobalReference.DICTIONARY_FILE_LOCATION);
+        verbsMap = (Map<String, Integer>) jsonFile.get("verbs");
+        prepositionsMap = (Map<String, Integer>) jsonFile.get("prepositions");
+        articlesMap = (Map<String, Integer>) jsonFile.get("articles");
+    }
+
+    private static List<String> WordList(String input){
         String delims = " \t,.:;?!\"'";
         List<String> strList = new ArrayList<>();
         StringTokenizer tokenizer = new StringTokenizer(input , delims);
@@ -20,32 +29,49 @@ public class CommandParsing {
     }
 
     public static String RunCommand(String inputStr){
+        initialize();
+
         List<String> wordlist;
         String s = "ok";
         String lowstr = inputStr.trim().toLowerCase();
 
         if(lowstr.equals("")){
-            s= "You must enter a command";
+            for (Map.Entry<String, Integer> entry : verbsMap.entrySet()) {
+                System.out.println(entry.getKey());
+            }
         }else{
             wordlist = WordList(lowstr);
             wordlist.forEach((astr) -> System.out.println(astr));
-            //parsecommand here;
+            ParseCommand(wordlist);
+            System.out.println("Verb is: " + getVerb());
+            System.out.println("Subject is: " + getSubject());
         }
         return s;
     }
 
     public static void ParseCommand(List<String> wordList){
-        String verb;
-        String proposition;
-        List<String> commands = new ArrayList<>(Arrays.asList(Verbs));
-        List<String> prepositions = new ArrayList<>(Arrays.asList(Prepositions));
-        List<String> articles = new ArrayList<>(Arrays.asList(Articles));
+        verb = "";
+        subject = new ArrayList<>();
 
-        if(wordList.size() > 2 ) {
-            System.out.println("bigger than 2 words list");
-        }else{
-            System.out.println("This is a big table");
+        for (String s : wordList){
+            if (verbsMap.containsKey(s)){
+                verb = s;
+                break;
+            }
         }
 
+        for (String s : wordList){
+            if (!verbsMap.containsKey(s) && !prepositionsMap.containsKey(s) && !articlesMap.containsKey(s)){
+                subject.add(s);
+            }
+        }
+    }
+
+    public static String getSubject() {
+        return String.join(" ", subject);
+    }
+
+    public static String getVerb() {
+        return verb;
     }
 }
