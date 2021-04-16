@@ -11,13 +11,13 @@ public class Combat {
         if (playerWeaponVal > npcHP) {
             // player attacks first
             npc.setCurrentHP(0);
-            System.out.println("[You have used "+ player.getWeaponEquipped() + "to attack. You have done "
-                + playerWeaponVal + "pts in damage and defeated" + npcName + ". You won!]\n");
+            System.out.println("[You have used "+ player.getWeaponEquipped() + " to attack. You have done "
+                + playerWeaponVal + "pts in damage and defeated " + npcName + ". You won!]\n");
         }
         if (npcHP > playerWeaponVal) {
             // player attacks first
             npc.setCurrentHP(npcHP - playerWeaponVal);
-            System.out.println("[You have used "+ player.getWeaponEquipped() + "to attack. You have done "
+            System.out.println("[You have used "+ player.getWeaponEquipped() + " to attack. You have done "
                 + playerWeaponVal + "pts in damage.]\n");
 
             if (playerHP > npcWeaponVal) {
